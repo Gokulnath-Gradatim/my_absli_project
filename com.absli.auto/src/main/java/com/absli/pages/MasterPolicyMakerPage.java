@@ -115,6 +115,9 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	@FindBy(id="ContentPlaceHolder1_ddlVariantType")
 	WebElement variantTypeDropDown;
 	
+	@FindBy(id = "ContentPlaceHolder1_ddlGroupGrade")
+	WebElement gradeDropDown;
+	
 	@FindBy(id="ContentPlaceHolder1_txtSumAssured")
 	WebElement sumAssured;
 
@@ -145,7 +148,7 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	}
 	
 	/* TestDataFromTC_MPM_001 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 'GPS Base Benefit' & 
-	 * varient type as 'Customer Defined SA'.
+	 * variant type as 'Customer Defined SA'.
 	 */
 	public void masterPolicyWithMandatoryFieldsAndCustomerDefinedSA(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
 			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
@@ -248,7 +251,7 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	}
 	
 	/* TestDataFromTC_MPM_002 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 'GPS Base Benefit' & 
-	 * varient type as 'Flat Sum Assured'.
+	 * variant type as 'Flat Sum Assured'.
 	 */
 
 	public void masterPolicyWithMandatoryFieldsAndFlatSumAssured(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
@@ -353,7 +356,7 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	}
 	
 	/* TestDataFromTC_MPM_003 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 'GPS Base Benefit' & 
-	 * varient type as 'Multiple Of Salary'.
+	 * variant type as 'Multiple Of Salary'.
 	 */
 	public void masterPolicyWithMandatoryFieldsAndMultipleOfSalary(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
 			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
@@ -450,6 +453,130 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		freeCoverLimit.sendKeys(freeCoverLimitValue);
 		minimumCap.sendKeys(minimumCapValue);
 		maximumCap.sendKeys(maximumCapValue);
+		Thread.sleep(3000);
+		addRidersButton.click();
+		Thread.sleep(5000);
+		popUpMsgOkButton.click();
+		Thread.sleep(3000);
+		sentToCheckerButton.click();
+	}
+
+	public void masterPolicyWithMandatoryFieldsAndGradedCover(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
+			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
+			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
+			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String RetirementAgeValue, String NRALetterReceivedDateValue,
+			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String AddressDetails,String benefits, 
+			String varientType, String gradeValue1, String sumAssuredValue1,String freeCoverLimitValue1, String minimumCapValue1, 
+			String maximumCapValue1, String gradeValue2, String sumAssuredValue2,String freeCoverLimitValue2, String minimumCapValue2, 
+			String maximumCapValue2, String gradeValue3, String sumAssuredValue3,String freeCoverLimitValue3, String minimumCapValue3, 
+			String maximumCapValue3) throws Exception 
+	{
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(2000));
+		clienNameSearchField.sendKeys(clientName);
+		Thread.sleep(2000);
+		clienNameSearchField.sendKeys(Keys.ARROW_DOWN,Keys.ENTER);
+		Thread.sleep(9000);
+		agreementNumber.sendKeys(agreementNumberStringValue);
+		Thread.sleep(3000);
+		quotationDetails.sendKeys(quotationDetailsStringValue);
+		Thread.sleep(3000);
+		selectVisibleText(contactPersonTitle, title);
+		Thread.sleep(3000);
+		contactPersonFirstName.sendKeys(firstName);
+		Thread.sleep(3000);
+		contactNumber.sendKeys(number);
+		Thread.sleep(3000);
+		emailID.sendKeys(emailIDStringValue);
+		Thread.sleep(3000);
+		totalProbableNumberOfInsured.click();
+		totalProbableNumberOfInsured.sendKeys(numberOfInsured);
+		Thread.sleep(3000);
+		totalSumAssured.sendKeys(totalSumAssuredStringValue);
+		Thread.sleep(3000);
+		inceptionDate.sendKeys(inceptionDateValue);
+		Thread.sleep(3000);
+		agentCode.sendKeys(agentCodeValue);
+		Thread.sleep(3000);
+		brokerageUpdation.clear();
+		brokerageUpdation.sendKeys(brokerageUpdationValue);
+		selectVisibleText(variantDropDown, varient);
+		Thread.sleep(3000);
+		specialConditions.sendKeys(conditionsValue);
+		Thread.sleep(3000);
+		selectVisibleText(benefitTypeDropDown, benefitType);
+		Thread.sleep(3000);
+		if (typeOfRenewal.equals("Scheme Level")) {
+			schemeLevelButton.click();
+		} else {
+			memberLevelButton.click();
+		}
+		Thread.sleep(3000);
+		windowPeriodForMemberAddition.sendKeys(windowPeriodValue);
+		Thread.sleep(3000); 
+		if(nraLetterReceived.equals("Yes"))
+		{
+			isNRALetterReceivedYesButton.click();
+			retirementAge.sendKeys(RetirementAgeValue);
+			nraLetterReceivedDate.sendKeys(NRALetterReceivedDateValue);
+
+		}else {
+
+			isNRALetterReceivedNoButton.click();
+		}
+		Thread.sleep(3000);
+		selectVisibleText(frequencyDropDown, frequency);
+		Thread.sleep(3000);
+		selectVisibleText(zoneDropDown, zone);
+		Thread.sleep(3000);
+		underwritingMinimumAge.sendKeys(minimumAge);
+		Thread.sleep(3000);
+		underwritingMaximumAge.sendKeys(maximumAge);
+		Thread.sleep(3000);
+		selectVisibleText(reInsurerDropDown, reinsurerValue);
+		Thread.sleep(3000);
+		//Unit Details
+		if(unitAddress.equals("No")) {
+			unitAddressNoButton.click();
+		}else {
+			unitAddressYesButton.click();
+			//need to write the code for new unit address
+		}
+		
+		Thread.sleep(3000); 
+		if(AddressDetails.equals("No"))
+		{
+			addressNoButton.click();
+		}else {
+			addressYesButton.click();
+			//need to write the code for new address
+		}
+		Thread.sleep(3000);
+		
+		
+		selectVisibleText(benefitsDropDown, benefits);
+		Thread.sleep(3000);
+		selectVisibleText(variantTypeDropDown, varientType);
+		Thread.sleep(3000);
+		selectVisibleText(gradeDropDown, gradeValue1);
+		sumAssured.sendKeys(sumAssuredValue1);
+		freeCoverLimit.sendKeys(freeCoverLimitValue1);
+		minimumCap.sendKeys(minimumCapValue1);
+		maximumCap.sendKeys(maximumCapValue1);
+		Thread.sleep(3000);
+		addRidersButton.click();
+		Thread.sleep(5000);
+		popUpMsgOkButton.click();
+		Thread.sleep(3000);
+		
+		selectVisibleText(benefitsDropDown, benefits);
+		Thread.sleep(3000);
+		selectVisibleText(variantTypeDropDown, varientType);
+		Thread.sleep(3000);
+		selectVisibleText(gradeDropDown, gradeValue2);
+		sumAssured.sendKeys(sumAssuredValue2);
+		freeCoverLimit.sendKeys(freeCoverLimitValue2);
+		minimumCap.sendKeys(minimumCapValue2);
+		maximumCap.sendKeys(maximumCapValue2);
 		Thread.sleep(3000);
 		addRidersButton.click();
 		Thread.sleep(5000);
