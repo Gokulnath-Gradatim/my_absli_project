@@ -6,7 +6,7 @@
       <class name="com.absli.testCases.MasterPolicyMakerFunctionalityTest">
         <methods>
           <include name="setUp"/>
-          <include name="createAMasterPolicyWithGradedCover" invocation-numbers="0"/>
+          <include name="createAMasterPolicyWithGradedCoverSalaryMultiple" invocation-numbers="0"/>
         </methods>
       </class> <!-- com.absli.testCases.MasterPolicyMakerFunctionalityTest -->
     </classes>

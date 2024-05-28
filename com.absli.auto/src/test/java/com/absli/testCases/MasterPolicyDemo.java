@@ -5,14 +5,13 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.absli.base.AbsliBase;
-import com.absli.extentReport.MyExtentReports;
 import com.absli.pages.HomePage;
 import com.absli.pages.LoginPage;
 import com.absli.pages.MasterPolicyPage;
 import com.absli.utill.MyITestListener;
 import com.absli.utill.MySuiteListener;
 
-@Listeners({MyExtentReports.class,MySuiteListener.class,MyITestListener.class})
+@Listeners({MySuiteListener.class,MyITestListener.class})
 public class MasterPolicyDemo extends AbsliBase {
 	
 	LoginPage loginPage;

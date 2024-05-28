@@ -3,7 +3,10 @@ package com.absli.utill;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.LocalTime;
+import java.util.Calendar;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -29,6 +32,13 @@ public class TestUtill extends AbsliBase {
 		String time = LocalTime.now().toString().replace(":", "-");
 		File permFile = new File(".//ScreenShot//"+name+"-"+time+"-absli.png");
 		FileUtils.copyFile(tempFile, permFile);
+	}
+	
+	public static String getDateTimeString()
+	{
+		Calendar cal =Calendar.getInstance();
+		SimpleDateFormat sf = new SimpleDateFormat("ddMMyyyy_HHmmss");
+		return sf.format(cal.getTime());
 	}
 	
 	public static Object[][] getDataFromExcel(String FileName, String sheetName)

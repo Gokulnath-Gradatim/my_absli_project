@@ -121,17 +121,19 @@ public class ClientOrganizationPage extends AbsliBase {
 			String Pan, String gstNumberValue, String servicingBranchDropDown, String marketingOfficerCodeNum, String adds1, String adds2, String zipCode, 
 			String county, String state, String district) throws Exception  {
 		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(7000));
 		clientNameAdd.sendKeys(cName);
 		occuption.sendKeys(occup);
 		selectVisibleText(titleDropdown, title);
 		firstName.sendKeys(Fname);
 		selectVisibleText(typeOfClientDropDown, typeofClient);
-		System.out.println(gstType);
 		Thread.sleep(6000);
 		selectVisibleText(gstTypeForRegular, gstType);
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
+		wait.until(ExpectedConditions.elementToBeClickable(gstNumber));
 		panNumber.sendKeys(Pan);
-		Thread.sleep(3000);
+	//	wait.until(ExpectedConditions.)
+		//Thread.sleep(3000);
 		gstNumber.sendKeys(gstNumberValue);
 		selectVisibleText(servicingBranch, servicingBranchDropDown);
 		Thread.sleep(3000);

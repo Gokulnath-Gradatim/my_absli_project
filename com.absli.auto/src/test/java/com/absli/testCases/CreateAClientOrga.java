@@ -8,7 +8,6 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.absli.base.AbsliBase;
-import com.absli.extentReport.MyExtentReports;
 import com.absli.pages.ClientOrganizationPage;
 import com.absli.pages.HomePage;
 import com.absli.pages.LoginPage;
@@ -17,7 +16,7 @@ import com.absli.utill.MySuiteListener;
 import com.absli.utill.TestUtill;
 
 
-@Listeners({MyExtentReports.class,MySuiteListener.class,MyITestListener.class})
+@Listeners({MySuiteListener.class,MyITestListener.class})
 public class CreateAClientOrga extends AbsliBase {
 
 	LoginPage loginPage;
@@ -30,7 +29,6 @@ public class CreateAClientOrga extends AbsliBase {
 		loginPage=new LoginPage();
 		loginPage.loginFunction(prof.getProperty("username"), prof.getProperty("password"));
 		homePage=new HomePage();
-		
 	}
 	
 	@DataProvider(name = "DataFromTC_CO_001")
@@ -39,7 +37,7 @@ public class CreateAClientOrga extends AbsliBase {
 		return arrobj;
 	}
 	
-	@Test(dataProvider = "DataFromTC_CO_001", dataProviderClass = CreateAClientOrga.class)
+	@Test(priority = 0, dataProvider = "DataFromTC_CO_001", dataProviderClass = CreateAClientOrga.class)
 	public void createClientWithMandatoryFieldsAndWithoutGST (String clientName, String occupation, String title, String firstName, String typeOfClient, String gstType, String pan, 
 			String servicingBranchDropDown, String marketingOfficerCode, String address1, String address2,  String zipCode, String county, String state, String district) throws Exception 
 	{
@@ -54,7 +52,7 @@ public class CreateAClientOrga extends AbsliBase {
 		Object arrobj[][] = TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\eclipse-workspace\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Client Organization.xlsx","TC_CO_002");
 		return arrobj;
 	}
-	@Test(dataProvider = "DataFromTC_CO_002", dataProviderClass = CreateAClientOrga.class)
+	@Test(priority = 1,dataProvider = "DataFromTC_CO_002", dataProviderClass = CreateAClientOrga.class)
 	public void createClientWithMandatoryFieldsAndWithGST(String clientName, String occupation, String title, String firstName, 
 			String typeOfClient, String gstType, String pan, String gstNumberValue, 
 			String servicingBranchDropDown, String marketingOfficerCode, 
@@ -73,7 +71,7 @@ public class CreateAClientOrga extends AbsliBase {
 		return arrobj;
 	}
 	
-	@Test(dataProvider = "DataFromTC_CO_003", dataProviderClass = CreateAClientOrga.class)
+	@Test(priority = 2,dataProvider = "DataFromTC_CO_003", dataProviderClass = CreateAClientOrga.class)
 	public void createClientWithMandatoryFieldsAndGradeWithOutGST(String clientName, String occupation, String title, String firstName, 
 			String typeOfClient, String gstType, String pan, 
 			String servicingBranchDropDown, String marketingOfficerCode, String gradeValue,
@@ -92,7 +90,7 @@ public class CreateAClientOrga extends AbsliBase {
 		Object arrobj[][] = TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\eclipse-workspace\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Client Organization.xlsx","TC_CO_004");
 		return arrobj;
 	}
-	@Test(dataProvider = "DataFromTC_CO_004", dataProviderClass = CreateAClientOrga.class)
+	@Test(priority = 3,dataProvider = "DataFromTC_CO_004", dataProviderClass = CreateAClientOrga.class)
 	public void createClientWithMandatoryFieldsAndWithGSTAndGrade(String clientName, String occupation, String title, String firstName, 
 			String typeOfClient, String gstType, String pan, String gstNumberValue, 
 			String servicingBranchDropDown, String marketingOfficerCode, String gradeValue,
