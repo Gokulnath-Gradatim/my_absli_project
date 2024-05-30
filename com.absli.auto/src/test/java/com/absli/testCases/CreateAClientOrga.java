@@ -33,53 +33,55 @@ public class CreateAClientOrga extends AbsliBase {
 	
 	@DataProvider(name = "DataFromTC_CO_001")
 	public Object[][] getTestDataFromTC_CO_001() {
-		Object arrobj[][] = TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\eclipse-workspace\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Client Organization.xlsx","TC_CO_001");
+		Object arrobj[][] = TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\git\\com.absli.auto\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Client Organization.xlsx","TC_CO_001");
 		return arrobj;
 	}
 	
 	@Test(priority = 0, dataProvider = "DataFromTC_CO_001", dataProviderClass = CreateAClientOrga.class)
-	public void createClientWithMandatoryFieldsAndWithoutGST (String clientName, String occupation, String title, String firstName, String typeOfClient, String gstType, String pan, 
-			String servicingBranchDropDown, String marketingOfficerCode, String address1, String address2,  String zipCode, String county, String state, String district) throws Exception 
+	public void createClientWithMandatoryFieldsAndWithoutGST (String clientName, String occupation, String title, String firstName, String typeOfClient, String pan, String gstType, 
+			String changePasswordAccessValue, String servicingBranchDropDown, String marketingOfficerCode, String address1, String address2,  String zipCode, String county, String state, String district) throws Exception 
 	{
 		homePage.clientOrganizationPage();
 		ClientOrganizationPage co = new ClientOrganizationPage();
-		co.passTheValueToMandatoryFieldsWithoutGST(clientName, occupation, title, firstName, typeOfClient, pan, gstType, servicingBranchDropDown, marketingOfficerCode, 
+		co.passTheValueToMandatoryFieldsWithoutGST(clientName, occupation, title, firstName, typeOfClient, pan, gstType, changePasswordAccessValue, servicingBranchDropDown, marketingOfficerCode, 
 						address1, address2, zipCode, county, state, district);
 	}
 	
 	@DataProvider(name = "DataFromTC_CO_002")
 	public Object[][] getTestDataFromTC_CO_002() {
-		Object arrobj[][] = TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\eclipse-workspace\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Client Organization.xlsx","TC_CO_002");
+		Object arrobj[][] = TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\git\\com.absli.auto\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Client Organization.xlsx","TC_CO_002");
 		return arrobj;
 	}
 	@Test(priority = 1,dataProvider = "DataFromTC_CO_002", dataProviderClass = CreateAClientOrga.class)
 	public void createClientWithMandatoryFieldsAndWithGST(String clientName, String occupation, String title, String firstName, 
-			String typeOfClient, String gstType, String pan, String gstNumberValue, 
+			String typeOfClient, String gstType, String pan, String gstNumberValue, String changePasswordAccessValue, 
 			String servicingBranchDropDown, String marketingOfficerCode, 
 			String address1, String address2,  String zipCode, String county, String state, String district) throws Exception
 	{
 		homePage.clientOrganizationPage();
 		ClientOrganizationPage co = new ClientOrganizationPage();
-		co.passTheValueToMandatoryFieldsWithGST(clientName, occupation, title, firstName, typeOfClient, gstType, pan, gstNumberValue, servicingBranchDropDown, marketingOfficerCode, 
+		co.passTheValueToMandatoryFieldsWithGST(clientName, occupation, title, firstName, typeOfClient, gstType, pan, gstNumberValue, 
+				changePasswordAccessValue, servicingBranchDropDown, marketingOfficerCode, 
 				address1, address2, zipCode, county, state, district);
 	
 	}
 	
 	@DataProvider(name = "DataFromTC_CO_003")
 	public Object[][] getTestDataFromTC_CO_003() {
-		Object arrobj[][] = TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\eclipse-workspace\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Client Organization.xlsx","TC_CO_003");
+		Object arrobj[][] = TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\git\\com.absli.auto\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Client Organization.xlsx","TC_CO_003");
 		return arrobj;
 	}
 	
 	@Test(priority = 2,dataProvider = "DataFromTC_CO_003", dataProviderClass = CreateAClientOrga.class)
 	public void createClientWithMandatoryFieldsAndGradeWithOutGST(String clientName, String occupation, String title, String firstName, 
-			String typeOfClient, String gstType, String pan, 
+			String typeOfClient, String gstType, String pan, String changePasswordAccessValue, 
 			String servicingBranchDropDown, String marketingOfficerCode, String gradeValue,
 			String address1, String address2,  String zipCode, String county, String state, String district) throws Exception
 	{
 		homePage.clientOrganizationPage();
 		ClientOrganizationPage co = new ClientOrganizationPage();
-		co.passTheValueToMandatoryFieldsAndGradeWithoutGST(clientName, occupation, title, firstName, typeOfClient, gstType, pan, servicingBranchDropDown, 
+		co.passTheValueToMandatoryFieldsAndGradeWithoutGST(clientName, occupation, title, firstName, typeOfClient, gstType, pan, 
+				changePasswordAccessValue, servicingBranchDropDown, 
 				marketingOfficerCode, gradeValue, address1, address2, zipCode, county, state, district);
 	
 	}
@@ -87,27 +89,28 @@ public class CreateAClientOrga extends AbsliBase {
 	
 	@DataProvider(name = "DataFromTC_CO_004")
 	public Object[][] getTestDataFromTC_CO_004() {
-		Object arrobj[][] = TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\eclipse-workspace\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Client Organization.xlsx","TC_CO_004");
+		Object arrobj[][] = TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\git\\com.absli.auto\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Client Organization.xlsx","TC_CO_004");
 		return arrobj;
 	}
 	@Test(priority = 3,dataProvider = "DataFromTC_CO_004", dataProviderClass = CreateAClientOrga.class)
 	public void createClientWithMandatoryFieldsAndWithGSTAndGrade(String clientName, String occupation, String title, String firstName, 
-			String typeOfClient, String gstType, String pan, String gstNumberValue, 
+			String typeOfClient, String gstType, String pan, String gstNumberValue, String changePasswordAccessValue, 
 			String servicingBranchDropDown, String marketingOfficerCode, String gradeValue,
 			String address1, String address2,  String zipCode, String county, String state, String district) throws Exception
 	{
 		homePage.clientOrganizationPage();
 		ClientOrganizationPage co = new ClientOrganizationPage();
-		co.passTheValueToMandatoryFieldsWithGST(clientName, occupation, title, firstName, typeOfClient, gstType, pan, gstNumberValue,
+		co.passTheValueToMandatoryFieldsWithGSTAndGrade(clientName, occupation, title, firstName, typeOfClient, gstType, pan, 
+				gstNumberValue, changePasswordAccessValue,
 				servicingBranchDropDown, marketingOfficerCode, gradeValue,
 				address1, address2, zipCode, county, state, district);
 	
 	}
 	
-//	@AfterMethod
-//	public void endUp()
-//	{
-//		homePage.logoutFunction();
-//		end();
-//	}
+	@AfterMethod
+	public void endUp()
+	{
+		homePage.logoutFunction();
+		end();
+	}
 }

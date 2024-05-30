@@ -26,6 +26,9 @@ public class HomePage extends AbsliBase {
 	@FindBy(xpath = "//a[text()=\"Master Policy - Maker\"]")
 	WebElement masterPolicyMaker;
 	
+	@FindBy(xpath = "//a[text()='Master Policy - Checker']")
+	WebElement masterPloicyChecker;
+	
 	public HomePage()
 	{
 		PageFactory.initElements(driver, this);
@@ -53,5 +56,10 @@ public class HomePage extends AbsliBase {
 	{
 		clientMaster.click();
 		masterPolicyMaker.click();
+	}
+	public void masterPolicyChecker()
+	{
+		clientMaster.click();
+		masterPloicyChecker.click();
 	}
 }

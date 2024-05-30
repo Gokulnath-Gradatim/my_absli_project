@@ -153,13 +153,13 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	WebElement addRidersButton;
 
 	@FindBy(xpath = "//button[@type=\"button\"][@class=\"ui-button ui-corner-all ui-widget\"]")
-	WebElement popUpMsgOkButton;
+	WebElement okButtonInPopMessage;
 	
 	@FindBy(id = "ContentPlaceHolder1_btnSendToApprover")
 	WebElement sentToCheckerButton;
 	
 	@FindBy(id="ContentPlaceHolder1_Messagebox_lblMsg")
-	WebElement checkerApprovalMsg;
+	WebElement popMessageText;
 	
 	public MasterPolicyMakerPage()
 	{
@@ -238,107 +238,36 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		}
 	}
 	
+	
+	
 	/* TestDataFromTC_MPM_001 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 'GPS Base Benefit' & 
 	 * variant type as 'Customer Defined SA'.
 	 */
 	public void masterPolicyWithMandatoryFieldsAndCustomerDefinedSA(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
 			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
 			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String RetirementAgeValue, String NRALetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String UnitAddress, String AddressDetails,String benefits, 
-			String varientType, String freeCoverLimitValue) throws Exception 
+			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
+			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,String benefits, 
+			String varientType, String freeCoverLimitValue) throws Throwable 
 	{
-		clienNameSearchField.sendKeys(clientName);
-		Thread.sleep(3000);
-		clienNameSearchField.sendKeys(Keys.ARROW_DOWN,Keys.ENTER);
-		Thread.sleep(9000);
-		agreementNumber.sendKeys(agreementNumberStringValue,Keys.ENTER);
-		//Thread.sleep(3000);
-		quotationDetails.sendKeys(quotationDetailsStringValue,Keys.ENTER);
-		//Thread.sleep(3000);
-		selectVisibleText(contactPersonTitle, title);
-		Thread.sleep(3000);
-		contactPersonFirstName.sendKeys(firstName,Keys.ENTER);
-		//Thread.sleep(3000);
-		contactNumber.sendKeys(number,Keys.ENTER);
-		//Thread.sleep(3000);
-		emailID.sendKeys(emailIDStringValue,Keys.ENTER);
-		//Thread.sleep(3000);
-		totalProbableNumberOfInsured.click();
-		totalProbableNumberOfInsured.sendKeys(numberOfInsured,Keys.ENTER);
-		//Thread.sleep(3000);
-		totalSumAssured.sendKeys(totalSumAssuredStringValue,Keys.ENTER);
-		//Thread.sleep(3000);
-		inceptionDate.sendKeys(inceptionDateValue,Keys.ENTER);
-		//Thread.sleep(3000);
-		agentCode.sendKeys(agentCodeValue,Keys.ENTER);
-		//Thread.sleep(3000);
-		brokerageUpdation.clear();
-		brokerageUpdation.sendKeys(brokerageUpdationValue,Keys.ENTER);
-		selectVisibleText(variantDropDown, varient);
-		Thread.sleep(3000);
-		specialConditions.sendKeys(conditionsValue);
-		Thread.sleep(3000);
-		//wait.until(ExpectedConditions.te)
-		selectVisibleText(benefitTypeDropDown, benefitType);
-		Thread.sleep(3000);
-		if (typeOfRenewal.equals("Scheme Level")) {
-			schemeLevelButton.click();
-		} else {
-			memberLevelButton.click();
-		}
-		//Thread.sleep(3000);
-		windowPeriodForMemberAddition.sendKeys(windowPeriodValue,Keys.ENTER);
-		//Thread.sleep(3000); 
-		if(nraLetterReceived.equals("Yes"))
-		{
-			isNRALetterReceivedYesButton.click();
-			retirementAge.sendKeys(RetirementAgeValue,Keys.ENTER);
-			nraLetterReceivedDate.sendKeys(NRALetterReceivedDateValue,Keys.ENTER);
+		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
+				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
+				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
+				reinsurerValue, unitAddress, addressDetails);
 
-		}else {
-
-			isNRALetterReceivedNoButton.click();
-		}
-		//Thread.sleep(3000);
-		selectVisibleText(frequencyDropDown, frequency);
-		Thread.sleep(3000);
-		selectVisibleText(zoneDropDown, zone);
-		Thread.sleep(3000);
-		underwritingMinimumAge.sendKeys(minimumAge,Keys.ENTER);
-		//Thread.sleep(3000);
-		underwritingMaximumAge.sendKeys(maximumAge,Keys.ENTER);
-		//Thread.sleep(3000);
-		selectVisibleText(reInsurerDropDown, reinsurerValue);
-		Thread.sleep(3000);
-		//Unit Details
-		if(UnitAddress.equals("No")) {
-			unitAddressNoButton.click();
-		}else {
-			unitAddressYesButton.click();
-			//need to write the code for new unit address
-		}
-		
-		//Thread.sleep(3000); 
-		if(AddressDetails.equals("No"))
-		{
-			addressNoButton.click();
-		}else {
-			addressYesButton.click();
-			//need to write the code for new address
-		}
-		//Thread.sleep(3000);
 		selectVisibleText(benefitsDropDown, benefits);
-		//Thread.sleep(3000);
 		selectVisibleText(variantTypeDropDown, varientType);
 		wait.until(ExpectedConditions.elementToBeClickable(freeCoverLimit));
 		freeCoverLimit.sendKeys(freeCoverLimitValue,Keys.ENTER);
-		//Thread.sleep(3000);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(popUpMsgOkButton));
-		popUpMsgOkButton.click();
-		//Thread.sleep(3000);
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		okButtonInPopMessage.click();
 		sentToCheckerButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		String popMsgTextValue = popMessageText.getText();
+		System.out.println("Popup Message: " + popMsgTextValue);
+		okButtonInPopMessage.click();
 		
 	}
 	
@@ -349,80 +278,29 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	public void masterPolicyWithMandatoryFieldsAndFlatSumAssured(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
 			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
 			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String RetirementAgeValue, String NRALetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String UnitAddress, String AddressDetails,String benefits, 
-			String varientType, String sumAssuredValue, String freeCoverLimitValue) throws Exception 
+			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
+			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,String benefits, 
+			String varientType, String sumAssuredValue, String freeCoverLimitValue) throws Throwable 
 	{
-		clienNameSearchField.sendKeys(clientName);
-		Thread.sleep(2000);
-		clienNameSearchField.sendKeys(Keys.ARROW_DOWN,Keys.ENTER);
-		Thread.sleep(9000);
-		agreementNumber.sendKeys(agreementNumberStringValue,Keys.ENTER);
-		quotationDetails.sendKeys(quotationDetailsStringValue,Keys.ENTER);
-		selectVisibleText(contactPersonTitle, title);
-		contactPersonFirstName.sendKeys(firstName,Keys.ENTER);
-		contactNumber.sendKeys(number,Keys.ENTER);
-		emailID.sendKeys(emailIDStringValue,Keys.ENTER);
-		totalProbableNumberOfInsured.click();
-		totalProbableNumberOfInsured.sendKeys(numberOfInsured,Keys.ENTER);
-		totalSumAssured.sendKeys(totalSumAssuredStringValue,Keys.ENTER);
-		inceptionDate.sendKeys(inceptionDateValue,Keys.ENTER);
-		agentCode.sendKeys(agentCodeValue,Keys.ENTER);
-		brokerageUpdation.clear();
-		brokerageUpdation.sendKeys(brokerageUpdationValue,Keys.ENTER);
-		selectVisibleText(variantDropDown, varient);
-		Thread.sleep(3000);
-		specialConditions.sendKeys(conditionsValue,Keys.ENTER);
-		Thread.sleep(3000);
-		selectVisibleText(benefitTypeDropDown, benefitType);
-		Thread.sleep(3000);
-		if (typeOfRenewal.equals("Scheme Level")) {
-			schemeLevelButton.click();
-		} else {
-			memberLevelButton.click();
-		}
-		windowPeriodForMemberAddition.sendKeys(windowPeriodValue,Keys.ENTER); 
-		if(nraLetterReceived.equals("Yes"))
-		{
-			isNRALetterReceivedYesButton.click();
-			retirementAge.sendKeys(RetirementAgeValue);
-			nraLetterReceivedDate.sendKeys(NRALetterReceivedDateValue);
-
-		}else {
-
-			isNRALetterReceivedNoButton.click();
-		}
-		selectVisibleText(frequencyDropDown, frequency);
-		Thread.sleep(3000);
-		selectVisibleText(zoneDropDown, zone);
-		Thread.sleep(3000);
-		underwritingMinimumAge.sendKeys(minimumAge,Keys.ENTER);
-		underwritingMaximumAge.sendKeys(maximumAge,Keys.ENTER);
-		selectVisibleText(reInsurerDropDown, reinsurerValue);
-		Thread.sleep(3000);
-		//Unit Details
-		if(UnitAddress.equals("No")) {
-			unitAddressNoButton.click();
-		}else {
-			unitAddressYesButton.click();
-			//need to write the code for new unit address
-		}
-		if(AddressDetails.equals("No"))
-		{
-			addressNoButton.click();
-		}else {
-			addressYesButton.click();
-			//need to write the code for new address
-		}
+		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
+				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
+				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
+				reinsurerValue, unitAddress, addressDetails);
+		
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
 		wait.until(ExpectedConditions.elementToBeClickable(sumAssured));
 		sumAssured.sendKeys(sumAssuredValue,Keys.ENTER);
 		freeCoverLimit.sendKeys(freeCoverLimitValue,Keys.ENTER);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(popUpMsgOkButton));
-		popUpMsgOkButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		okButtonInPopMessage.click();
 		sentToCheckerButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		String popMsgTextValue = popMessageText.getText();
+		System.out.println("Popup Message: " + popMsgTextValue);
+		okButtonInPopMessage.click();
 	}
 	
 	/* TestDataFromTC_MPM_003 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 'GPS Base Benefit' & 
@@ -431,71 +309,16 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	public void masterPolicyWithMandatoryFieldsAndMultipleOfSalary(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
 			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
 			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String RetirementAgeValue, String NRALetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String UnitAddress, String AddressDetails,String benefits, 
-			String varientType, String multiplesOfSalaryValue, String freeCoverLimitValue, String minimumCapValue, String maximumCapValue) throws Exception 
+			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
+			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,String benefits, 
+			String varientType, String multiplesOfSalaryValue, String freeCoverLimitValue, String minimumCapValue, String maximumCapValue) throws Throwable 
 	{
-		clienNameSearchField.sendKeys(clientName);
-		Thread.sleep(2000);
-		clienNameSearchField.sendKeys(Keys.ARROW_DOWN,Keys.ENTER);
-		Thread.sleep(9000);
-		agreementNumber.sendKeys(agreementNumberStringValue,Keys.ENTER);
-		quotationDetails.sendKeys(quotationDetailsStringValue,Keys.ENTER);
-		selectVisibleText(contactPersonTitle, title);
-		contactPersonFirstName.sendKeys(firstName,Keys.ENTER);
-		contactNumber.sendKeys(number,Keys.ENTER);
-		emailID.sendKeys(emailIDStringValue,Keys.ENTER);
-		totalProbableNumberOfInsured.click();
-		totalProbableNumberOfInsured.sendKeys(numberOfInsured,Keys.ENTER);
-		totalSumAssured.sendKeys(totalSumAssuredStringValue,Keys.ENTER);
-		inceptionDate.sendKeys(inceptionDateValue,Keys.ENTER);
-		agentCode.sendKeys(agentCodeValue,Keys.ENTER);
-		brokerageUpdation.clear();
-		brokerageUpdation.sendKeys(brokerageUpdationValue,Keys.ENTER);
-		selectVisibleText(variantDropDown, varient);
-		Thread.sleep(3000);
-		specialConditions.sendKeys(conditionsValue,Keys.ENTER);
-		Thread.sleep(3000);
-		selectVisibleText(benefitTypeDropDown, benefitType);
-		Thread.sleep(3000);
-		if (typeOfRenewal.equals("Scheme Level")) {
-			schemeLevelButton.click();
-		} else {
-			memberLevelButton.click();
-		}
-		windowPeriodForMemberAddition.sendKeys(windowPeriodValue,Keys.ENTER);
-		if(nraLetterReceived.equals("Yes"))
-		{
-			isNRALetterReceivedYesButton.click();
-			retirementAge.sendKeys(RetirementAgeValue,Keys.ENTER);
-			nraLetterReceivedDate.sendKeys(NRALetterReceivedDateValue,Keys.ENTER);
-
-		}else {
-
-			isNRALetterReceivedNoButton.click();
-		}
-		selectVisibleText(frequencyDropDown, frequency);
-		Thread.sleep(3000);
-		selectVisibleText(zoneDropDown, zone);
-		Thread.sleep(3000);
-		underwritingMinimumAge.sendKeys(minimumAge,Keys.ENTER);
-		underwritingMaximumAge.sendKeys(maximumAge,Keys.ENTER);
-		selectVisibleText(reInsurerDropDown, reinsurerValue);
-		Thread.sleep(3000);
-		//Unit Details
-		if(UnitAddress.equals("No")) {
-			unitAddressNoButton.click();
-		}else {
-			unitAddressYesButton.click();
-			//need to write the code for new unit address
-		}
-		if(AddressDetails.equals("No"))
-		{
-			addressNoButton.click();
-		}else {
-			addressYesButton.click();
-			//need to write the code for new address
-		}
+		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
+				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
+				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
+				reinsurerValue, unitAddress, addressDetails);
+		
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
 		wait.until(ExpectedConditions.elementToBeClickable(multiplesOfSalary));
@@ -504,9 +327,13 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		minimumCap.sendKeys(minimumCapValue,Keys.ENTER);
 		maximumCap.sendKeys(maximumCapValue,Keys.ENTER);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(popUpMsgOkButton));
-		popUpMsgOkButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		okButtonInPopMessage.click();
 		sentToCheckerButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		String popMsgTextValue = popMessageText.getText();
+		System.out.println("Popup Message: " + popMsgTextValue);
+		okButtonInPopMessage.click();
 	}
 
 	/* TestDataFromTC_MPM_004 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 'GPS Base Benefit' & 
@@ -515,75 +342,18 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	public void masterPolicyWithMandatoryFieldsAndGradedCover(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
 			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
 			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String RetirementAgeValue, String NRALetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String AddressDetails,String benefits, 
+			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
+			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,String benefits, 
 			String varientType, String noOfGrade, String gradeValue1, String sumAssuredValue1,String freeCoverLimitValue1, String minimumCapValue1, 
 			String maximumCapValue1, String gradeValue2, String sumAssuredValue2,String freeCoverLimitValue2, String minimumCapValue2, 
 			String maximumCapValue2, String gradeValue3, String sumAssuredValue3,String freeCoverLimitValue3, String minimumCapValue3, 
-			String maximumCapValue3) throws Exception 
+			String maximumCapValue3) throws Throwable 
 	{
-		clienNameSearchField.sendKeys(clientName);
-		Thread.sleep(2000);
-		clienNameSearchField.sendKeys(Keys.ARROW_DOWN,Keys.ENTER);
-		Thread.sleep(9000);
-		agreementNumber.sendKeys(agreementNumberStringValue,Keys.ENTER);
-		quotationDetails.sendKeys(quotationDetailsStringValue,Keys.ENTER);
-		selectVisibleText(contactPersonTitle, title);
-		contactPersonFirstName.sendKeys(firstName,Keys.ENTER);
-		contactNumber.sendKeys(number,Keys.ENTER);
-		emailID.sendKeys(emailIDStringValue,Keys.ENTER);
-		totalProbableNumberOfInsured.click();
-		totalProbableNumberOfInsured.sendKeys(numberOfInsured,Keys.ENTER);
-		totalSumAssured.sendKeys(totalSumAssuredStringValue,Keys.ENTER);
-		inceptionDate.sendKeys(inceptionDateValue,Keys.ENTER);
-		agentCode.sendKeys(agentCodeValue,Keys.ENTER);
-		brokerageUpdation.clear();
-		brokerageUpdation.sendKeys(brokerageUpdationValue,Keys.ENTER);
-		selectVisibleText(variantDropDown, varient);
-		Thread.sleep(3000);
-		specialConditions.sendKeys(conditionsValue,Keys.ENTER);
-		//Thread.sleep(3000);
-		selectVisibleText(benefitTypeDropDown, benefitType);
-		Thread.sleep(3000);
-		if (typeOfRenewal.equals("Scheme Level")) {
-			schemeLevelButton.click();
-		} else {
-			memberLevelButton.click();
-		}
-		windowPeriodForMemberAddition.sendKeys(windowPeriodValue,Keys.ENTER);
-		if(nraLetterReceived.equals("Yes"))
-		{
-			isNRALetterReceivedYesButton.click();
-			retirementAge.sendKeys(RetirementAgeValue,Keys.ENTER);
-			nraLetterReceivedDate.sendKeys(NRALetterReceivedDateValue,Keys.ENTER);
-
-		}else {
-
-			isNRALetterReceivedNoButton.click();
-		}
-		
-		selectVisibleText(frequencyDropDown, frequency);
-		Thread.sleep(3000);
-		selectVisibleText(zoneDropDown, zone);
-		Thread.sleep(3000);
-		underwritingMinimumAge.sendKeys(minimumAge,Keys.ENTER);
-		underwritingMaximumAge.sendKeys(maximumAge,Keys.ENTER);
-		selectVisibleText(reInsurerDropDown, reinsurerValue);
-		Thread.sleep(3000);
-		//Unit Details
-		if(unitAddress.equals("No")) {
-			unitAddressNoButton.click();
-		}else {
-			unitAddressYesButton.click();
-			//need to write the code for new unit address
-		} 
-		if(AddressDetails.equals("No"))
-		{
-			addressNoButton.click();
-		}else {
-			addressYesButton.click();
-			//need to write the code for new address
-		}
+		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
+				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
+				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
+				reinsurerValue, unitAddress, addressDetails);
 
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
@@ -594,8 +364,8 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		minimumCap.sendKeys(minimumCapValue1,Keys.ENTER);
 		maximumCap.sendKeys(maximumCapValue1,Keys.ENTER);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(popUpMsgOkButton));
-		popUpMsgOkButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		okButtonInPopMessage.click();
 		
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
@@ -606,8 +376,8 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		minimumCap.sendKeys(minimumCapValue2,Keys.ENTER);
 		maximumCap.sendKeys(maximumCapValue2,Keys.ENTER);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(popUpMsgOkButton));
-		popUpMsgOkButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		okButtonInPopMessage.click();
 		
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
@@ -618,10 +388,14 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		minimumCap.sendKeys(minimumCapValue3,Keys.ENTER);
 		maximumCap.sendKeys(maximumCapValue3,Keys.ENTER);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(popUpMsgOkButton));
-		popUpMsgOkButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		okButtonInPopMessage.click();
 		
 		sentToCheckerButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		String popMsgTextValue = popMessageText.getText();
+		System.out.println("Popup Message: " + popMsgTextValue);
+		okButtonInPopMessage.click();
 		
 	}
 
@@ -652,9 +426,13 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		minimumCap.sendKeys(minimumCapValue,Keys.ENTER);
 		maximumCap.sendKeys(maximumCapValue,Keys.ENTER);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(popUpMsgOkButton));
-		popUpMsgOkButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		okButtonInPopMessage.click();
 		sentToCheckerButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		String popMsgTextValue = popMessageText.getText();
+		System.out.println("Popup Message: " + popMsgTextValue);
+		okButtonInPopMessage.click();
 	}
 	
 	/* TestDataFromTC_MPM_006 - Verify user able to create the Master Policy by providing only the Mandatory fields with 
@@ -682,8 +460,8 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		wait.until(ExpectedConditions.elementToBeClickable(freeCoverLimit));
 		freeCoverLimit.sendKeys(freeCoverLimitValueForBaseBenefit,Keys.ENTER);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(popUpMsgOkButton));
-		popUpMsgOkButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		okButtonInPopMessage.click();
 		
 		//Additional Rider
 		selectVisibleText(benefitsDropDown, benefits2);
@@ -694,9 +472,13 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		minimumCap.sendKeys(minimumCapValue,Keys.ENTER);
 		maximumCap.sendKeys(maximumCapValue,Keys.ENTER);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(popUpMsgOkButton));
-		popUpMsgOkButton.click();
-		sentToCheckerButton.click();	
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		okButtonInPopMessage.click();
+		sentToCheckerButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		String popMsgTextValue = popMessageText.getText();
+		System.out.println("Popup Message: " + popMsgTextValue);
+		okButtonInPopMessage.click();
 	}
 	
 	/* TestDataFromTC_MPM_007 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 
@@ -727,8 +509,8 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		minimumCap.sendKeys(minimumCapValue1,Keys.ENTER);
 		maximumCap.sendKeys(maximumCapValue1,Keys.ENTER);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(popUpMsgOkButton));
-		popUpMsgOkButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		okButtonInPopMessage.click();
 		//Grade 2
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
@@ -739,8 +521,8 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		minimumCap.sendKeys(minimumCapValue2,Keys.ENTER);
 		maximumCap.sendKeys(maximumCapValue2,Keys.ENTER);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(popUpMsgOkButton));
-		popUpMsgOkButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		okButtonInPopMessage.click();
 		//Grade 3
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
@@ -751,10 +533,13 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		minimumCap.sendKeys(minimumCapValue3,Keys.ENTER);
 		maximumCap.sendKeys(maximumCapValue3,Keys.ENTER);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(popUpMsgOkButton));
-		popUpMsgOkButton.click();
-		
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		okButtonInPopMessage.click();
 		sentToCheckerButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		String popMsgTextValue = popMessageText.getText();
+		System.out.println("Popup Message: " + popMsgTextValue);
+		okButtonInPopMessage.click();
 	
 		
 	}

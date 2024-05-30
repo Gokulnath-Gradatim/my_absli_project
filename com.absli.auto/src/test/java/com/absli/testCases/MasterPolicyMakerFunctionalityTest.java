@@ -32,8 +32,7 @@ public class MasterPolicyMakerFunctionalityTest extends AbsliBase {
 	public Object[][] getTestDataFromTestDataFromTC_MPM_001()
 	{
 		Object arrogj[][]=TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\git\\com.absli.auto\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Master Policy Maker - Test Data.xlsx", "TC_MPM_001");
-		return arrogj;
-				
+		return arrogj;			
 	}
 
 	@Test(priority = 0, dataProvider = "TestDataFromTC_MPM_001", dataProviderClass = MasterPolicyMakerFunctionalityTest.class)
@@ -42,7 +41,7 @@ public class MasterPolicyMakerFunctionalityTest extends AbsliBase {
 			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
 			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
 			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
-			String benefits, String varientType, String freeCoverLimitValue) throws Exception {
+			String benefits, String varientType, String freeCoverLimitValue) throws Throwable {
 		
 		homePage.masterPolicyMaker();
 		masterPolicyMakerPage= new MasterPolicyMakerPage();
@@ -66,7 +65,7 @@ public class MasterPolicyMakerFunctionalityTest extends AbsliBase {
 			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
 			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
 			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,String benefits, 
-			String varientType, String sumAssuredValue, String freeCoverLimitValue) throws Exception {
+			String varientType, String sumAssuredValue, String freeCoverLimitValue) throws Throwable {
 		
 		homePage.masterPolicyMaker();
 		masterPolicyMakerPage= new MasterPolicyMakerPage();
@@ -90,7 +89,7 @@ public class MasterPolicyMakerFunctionalityTest extends AbsliBase {
 			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
 			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
 			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,String benefits, 
-			String varientType, String multiplesOfSalaryValue, String freeCoverLimitValue, String minimumCapValue, String maximumCapValue) throws Exception {
+			String varientType, String multiplesOfSalaryValue, String freeCoverLimitValue, String minimumCapValue, String maximumCapValue) throws Throwable {
 		
 		homePage.masterPolicyMaker();
 		masterPolicyMakerPage= new MasterPolicyMakerPage();
@@ -118,7 +117,7 @@ public class MasterPolicyMakerFunctionalityTest extends AbsliBase {
 			String varientType, String noOfGrade, String gradeValue1, String sumAssuredValue1,String freeCoverLimitValue1, String minimumCapValue1, 
 			String maximumCapValue1, String gradeValue2, String sumAssuredValue2,String freeCoverLimitValue2, String minimumCapValue2, 
 			String maximumCapValue2, String gradeValue3, String sumAssuredValue3,String freeCoverLimitValue3, String minimumCapValue3, 
-			String maximumCapValue3) throws Exception {
+			String maximumCapValue3) throws Throwable {
 		
 		homePage.masterPolicyMaker();
 		masterPolicyMakerPage= new MasterPolicyMakerPage();
@@ -214,10 +213,10 @@ public class MasterPolicyMakerFunctionalityTest extends AbsliBase {
 				gradeValue3, multiplesOfSalaryValue3, freeCoverLimitValue3, minimumCapValue3, maximumCapValue3);
 	}
 	
-//	@AfterMethod
-//	public void endUp()
-//	{
-//		homePage.logoutFunction();
-//		end();
-//	}
+	@AfterMethod
+	public void endUp()
+	{
+		homePage.logoutFunction();
+		end();
+	}
 }

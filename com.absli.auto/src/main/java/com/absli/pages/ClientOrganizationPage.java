@@ -34,6 +34,9 @@ public class ClientOrganizationPage extends AbsliBase {
 
 	@FindBy(id="ContentPlaceHolder1_ucGroupParty_txtPANNo")
 	WebElement panNumber;
+	
+	@FindBy(id = "ContentPlaceHolder1_ucGroupParty_ddlChangePassword")
+	WebElement changePasswordAccessRequiredAtclaimPortalDropDown;
 
 	@FindBy(xpath = "//select[@id='ContentPlaceHolder1_ucGroupParty_ddlGSTType']")
 	WebElement gstTypeForRegular;
@@ -74,11 +77,14 @@ public class ClientOrganizationPage extends AbsliBase {
 	@FindBy(id = "ContentPlaceHolder1_ucPartyAddress_btnAddress")
 	WebElement addAddressButton;
 
-	@FindBy(xpath = "//button[text()=\"Ok\"]")
+	@FindBy(xpath = "//button[text()='Ok']")
 	WebElement okButtonInPopMessage;
 
 	@FindBy(id = "ContentPlaceHolder1_btnAddParty")
 	WebElement addClientButton;
+	
+	@FindBy(id = "ContentPlaceHolder1_MessageBox_lblMsg")
+	WebElement popMsgText;
 
 	public ClientOrganizationPage()
 	{
@@ -87,38 +93,46 @@ public class ClientOrganizationPage extends AbsliBase {
 
 	
 	//TC_CO_001 - Verify user able to create the Client Organization by providing only the Mandatory fields & without GST
-	public void passTheValueToMandatoryFieldsWithoutGST(String cName, String occup, String title, String Fname, String typeofClient, String gstType, 
-			String Pan, String servicingBranchDropDown, String marketingOfficerCodeNum, String adds1, String adds2, String zipCode, 
+	public void passTheValueToMandatoryFieldsWithoutGST(String cName, String occup, String title, String Fname, String typeofClient, 
+			String Pan, String gstType, String changePasswordAccessValue, String servicingBranchDropDown, String marketingOfficerCodeNum, String adds1, String adds2, String zipCode, 
 			String county, String state, String district) throws Exception  {
 		clientNameAdd.sendKeys(cName);
 		occuption.sendKeys(occup);
 		selectVisibleText(titleDropdown, title);
 		firstName.sendKeys(Fname);
 		selectVisibleText(typeOfClientDropDown, typeofClient);
-		Thread.sleep(6000);
+		Thread.sleep(8000);
 		selectVisibleText(gstTypeForRegular, gstType);
 		Thread.sleep(3000);
 		panNumber.sendKeys(Pan);
+		if (changePasswordAccessValue.equals("Yes")) {
+			//need to write code foe 'Yes' option(if required)
+		}else {
+			selectVisibleText(changePasswordAccessRequiredAtclaimPortalDropDown, "No");
+		}
 		selectVisibleText(servicingBranch, servicingBranchDropDown);
 		marketingOfficerCode.sendKeys(marketingOfficerCodeNum);
-//		marketingOfficerCode.sendKeys(Keys.BACK_SPACE);
-//		marketingOfficerCode.sendKeys(Keys.ENTER);
 		address1.sendKeys(adds1);
 		address2.sendKeys(adds2);
 		pinCode.sendKeys(zipCode);
 		selectVisibleText(countryDropDown, county);
 		selectVisibleText(stateDropDown, state);
-		Thread.sleep(7000);
+		Thread.sleep(8000);
 		selectVisibleText(districtDropDown, district);
 		Thread.sleep(4000);
 		addAddressButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
 		okButtonInPopMessage.click();
 		addClientButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		String popMsgTextValue = popMsgText.getText();
+		System.out.println("Popup Message: " + popMsgTextValue);
+		okButtonInPopMessage.click();
 	}
 	
 	//TC_CO_002 - Verify user able to create the Client Organization by providing only the Mandatory fields & with GST
 	public void passTheValueToMandatoryFieldsWithGST(String cName, String occup, String title, String Fname, String typeofClient, String gstType, 
-			String Pan, String gstNumberValue, String servicingBranchDropDown, String marketingOfficerCodeNum, String adds1, String adds2, String zipCode, 
+			String Pan, String gstNumberValue, String changePasswordAccessValue, String servicingBranchDropDown, String marketingOfficerCodeNum, String adds1, String adds2, String zipCode, 
 			String county, String state, String district) throws Exception  {
 		
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(7000));
@@ -129,12 +143,14 @@ public class ClientOrganizationPage extends AbsliBase {
 		selectVisibleText(typeOfClientDropDown, typeofClient);
 		Thread.sleep(6000);
 		selectVisibleText(gstTypeForRegular, gstType);
-		//Thread.sleep(3000);
 		wait.until(ExpectedConditions.elementToBeClickable(gstNumber));
-		panNumber.sendKeys(Pan);
-	//	wait.until(ExpectedConditions.)
-		//Thread.sleep(3000);
+		panNumber.sendKeys(Pan,Keys.ENTER);;
 		gstNumber.sendKeys(gstNumberValue);
+		if (changePasswordAccessValue.equals("Yes")) {
+			//need to write code foe 'Yes' option(if required)
+		}else {
+			selectVisibleText(changePasswordAccessRequiredAtclaimPortalDropDown, "No");
+		}
 		selectVisibleText(servicingBranch, servicingBranchDropDown);
 		Thread.sleep(3000);
 		marketingOfficerCode.sendKeys(marketingOfficerCodeNum);
@@ -147,13 +163,18 @@ public class ClientOrganizationPage extends AbsliBase {
 		selectVisibleText(districtDropDown, district);
 		Thread.sleep(4000);
 		addAddressButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
 		okButtonInPopMessage.click();
 		addClientButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		String popMsgTextValue = popMsgText.getText();
+		System.out.println("Popup Message: " + popMsgTextValue);
+		okButtonInPopMessage.click();
 	}
 	
 	//TC_CO_003 - Verify user able to create the Client Organization by providing only the Mandatory fields with Grade & without GST
 	public void passTheValueToMandatoryFieldsAndGradeWithoutGST(String cName, String occup, String title, String Fname, 
-			String typeofClient, String gstType, String Pan, String servicingBranchDropDown, String marketingOfficerCodeNum, 
+			String typeofClient, String gstType, String Pan, String changePasswordAccessValue, String servicingBranchDropDown, String marketingOfficerCodeNum, 
 			String gradeValue, String adds1, String adds2, String zipCode, 
 			String county, String state, String district) throws Exception  {
 		
@@ -166,8 +187,12 @@ public class ClientOrganizationPage extends AbsliBase {
 		selectVisibleText(gstTypeForRegular, gstType);
 		Thread.sleep(3000);
 		panNumber.sendKeys(Pan);
+		if (changePasswordAccessValue.equals("Yes")) {
+			//need to write code foe 'Yes' option(if required)
+		}else {
+			selectVisibleText(changePasswordAccessRequiredAtclaimPortalDropDown, "No");
+		}
 		selectVisibleText(servicingBranch, servicingBranchDropDown);
-		
 		marketingOfficerCode.sendKeys(marketingOfficerCodeNum);
 		Thread.sleep(3000);
 		String gradeString = gradeValue;
@@ -176,7 +201,7 @@ public class ClientOrganizationPage extends AbsliBase {
 		{
 			gradeField.sendKeys("Grade" +" "+ i);
 			saveGradeButton.click();
-			Thread.sleep(5000);
+			wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
 			okButtonInPopMessage.click();
 		}
 		address1.sendKeys(adds1);
@@ -188,14 +213,19 @@ public class ClientOrganizationPage extends AbsliBase {
 		selectVisibleText(districtDropDown, district);
 		Thread.sleep(4000);
 		addAddressButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
 		okButtonInPopMessage.click();
 		addClientButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		String popMsgTextValue = popMsgText.getText();
+		System.out.println("Popup Message: " + popMsgTextValue);
+		okButtonInPopMessage.click();
 	}
 	
 	//TC_CO_004 - Verify user able to create the Client Organization by providing only the Mandatory fields & with GST and Grade
 	
-	public void passTheValueToMandatoryFieldsWithGST(String cName, String occup, String title, String Fname, String typeofClient, String gstType, 
-			String Pan, String gstNumberValue, String servicingBranchDropDown, String marketingOfficerCodeNum, String gradeValue, String adds1, String adds2, String zipCode, 
+	public void passTheValueToMandatoryFieldsWithGSTAndGrade(String cName, String occup, String title, String Fname, String typeofClient, String gstType, 
+			String Pan, String gstNumberValue, String changePasswordAccessValue, String servicingBranchDropDown, String marketingOfficerCodeNum, String gradeValue, String adds1, String adds2, String zipCode, 
 			String county, String state, String district) throws Exception  {
 		
 		clientNameAdd.sendKeys(cName);
@@ -203,13 +233,16 @@ public class ClientOrganizationPage extends AbsliBase {
 		selectVisibleText(titleDropdown, title);
 		firstName.sendKeys(Fname);
 		selectVisibleText(typeOfClientDropDown, typeofClient);
-		System.out.println(gstType);
 		Thread.sleep(6000);
 		selectVisibleText(gstTypeForRegular, gstType);
-		Thread.sleep(3000);
-		panNumber.sendKeys(Pan);
-		Thread.sleep(3000);
-		gstNumber.sendKeys(gstNumberValue);
+		wait.until(ExpectedConditions.elementToBeClickable(panNumber));
+		panNumber.sendKeys(Pan,Keys.ENTER);
+		gstNumber.sendKeys(gstNumberValue,Keys.ENTER);
+		if (changePasswordAccessValue.equals("Yes")) {
+			//need to write code foe 'Yes' option(if required)
+		}else {
+			selectVisibleText(changePasswordAccessRequiredAtclaimPortalDropDown, "No");
+		}
 		selectVisibleText(servicingBranch, servicingBranchDropDown);
 		Thread.sleep(3000);
 		marketingOfficerCode.sendKeys(marketingOfficerCodeNum);
@@ -219,7 +252,7 @@ public class ClientOrganizationPage extends AbsliBase {
 		{
 			gradeField.sendKeys("Grade" +" "+ i);
 			saveGradeButton.click();
-			Thread.sleep(5000);
+			wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
 			okButtonInPopMessage.click();
 		}
 		address1.sendKeys(adds1);
@@ -231,8 +264,13 @@ public class ClientOrganizationPage extends AbsliBase {
 		selectVisibleText(districtDropDown, district);
 		Thread.sleep(4000);
 		addAddressButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
 		okButtonInPopMessage.click();
 		addClientButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		String popMsgTextValue = popMsgText.getText();
+		System.out.println("Popup Message: " + popMsgTextValue);
+		okButtonInPopMessage.click();
 	}
 }
 

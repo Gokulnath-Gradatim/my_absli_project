@@ -1,253 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="6" total="7" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-05-28T14:39:09 IST" name="Default suite" finished-at="2024-05-28T14:40:22 IST" duration-ms="73614">
+  <suite started-at="2024-05-30T16:06:44 IST" name="Default suite" finished-at="2024-05-30T16:08:00 IST" duration-ms="76129">
     <groups>
     </groups>
-    <test started-at="2024-05-28T14:39:09 IST" name="Default test" finished-at="2024-05-28T14:40:22 IST" duration-ms="73614">
-      <class name="com.absli.testCases.MasterPolicyMakerFunctionalityTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.absli.testCases.MasterPolicyMakerFunctionalityTest@2dc54ad4]" started-at="2024-05-28T14:39:12 IST" name="setUp" finished-at="2024-05-28T14:39:23 IST" duration-ms="10828" status="PASS">
+    <test started-at="2024-05-30T16:06:44 IST" name="Default test" finished-at="2024-05-30T16:08:00 IST" duration-ms="76129">
+      <class name="com.absli.testCases.MasterPolicyCheckerFunctionalityTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.absli.testCases.MasterPolicyCheckerFunctionalityTest@51e69659]" started-at="2024-05-30T16:06:46 IST" name="setUp" finished-at="2024-05-30T16:06:53 IST" duration-ms="7060" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="createAMasterPolicyWithGradedCover(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:3, instance:com.absli.testCases.MasterPolicyMakerFunctionalityTest@2dc54ad4]" started-at="2024-05-28T14:39:23 IST" name="createAMasterPolicyWithGradedCover" data-provider="TestDataFromTC_MPM_004" finished-at="2024-05-28T14:40:22 IST" duration-ms="59023" status="PASS">
+        <test-method signature="masterPolicyCheckerPage(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.absli.testCases.MasterPolicyCheckerFunctionalityTest@51e69659]" started-at="2024-05-30T16:06:53 IST" name="masterPolicyCheckerPage" data-provider="TestDataFromTC_MPC_001" finished-at="2024-05-30T16:07:15 IST" duration-ms="21533" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[grade-001]]>
+                <![CDATA[Absli-Grade-001]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[132411.0]]>
+                <![CDATA[132452.0]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[NA]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[Mr]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[Absli]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[9.489466321E9]]>
-              </value>
-            </param>
-            <param index="6">
-              <value>
-                <![CDATA[absli@gmail.com]]>
-              </value>
-            </param>
-            <param index="7">
-              <value>
-                <![CDATA[200]]>
-              </value>
-            </param>
-            <param index="8">
-              <value>
-                <![CDATA[300000]]>
-              </value>
-            </param>
-            <param index="9">
-              <value>
-                <![CDATA[01-Feb-2024]]>
-              </value>
-            </param>
-            <param index="10">
-              <value>
-                <![CDATA[1324]]>
-              </value>
-            </param>
-            <param index="11">
-              <value>
-                <![CDATA[10]]>
-              </value>
-            </param>
-            <param index="12">
-              <value>
-                <![CDATA[GPS Benefit and Rider]]>
-              </value>
-            </param>
-            <param index="13">
-              <value>
-                <![CDATA[xyz]]>
-              </value>
-            </param>
-            <param index="14">
-              <value>
-                <![CDATA[Employer Employee]]>
-              </value>
-            </param>
-            <param index="15">
-              <value>
-                <![CDATA[Scheme Level]]>
-              </value>
-            </param>
-            <param index="16">
-              <value>
-                <![CDATA[30]]>
-              </value>
-            </param>
-            <param index="17">
-              <value>
-                <![CDATA[No]]>
-              </value>
-            </param>
-            <param index="18">
-              <value>
-                <![CDATA[]]>
-              </value>
-            </param>
-            <param index="19">
-              <value>
-                <![CDATA[]]>
-              </value>
-            </param>
-            <param index="20">
-              <value>
-                <![CDATA[Regular Customer]]>
-              </value>
-            </param>
-            <param index="21">
-              <value>
-                <![CDATA[Annual]]>
-              </value>
-            </param>
-            <param index="22">
-              <value>
-                <![CDATA[South Zone]]>
-              </value>
-            </param>
-            <param index="23">
-              <value>
-                <![CDATA[17.0]]>
-              </value>
-            </param>
-            <param index="24">
-              <value>
-                <![CDATA[65.0]]>
-              </value>
-            </param>
-            <param index="25">
-              <value>
-                <![CDATA[test]]>
-              </value>
-            </param>
-            <param index="26">
-              <value>
-                <![CDATA[No]]>
-              </value>
-            </param>
-            <param index="27">
-              <value>
-                <![CDATA[No]]>
-              </value>
-            </param>
-            <param index="28">
-              <value>
-                <![CDATA[GPS Base Benefit]]>
-              </value>
-            </param>
-            <param index="29">
-              <value>
-                <![CDATA[Graded Cover]]>
-              </value>
-            </param>
-            <param index="30">
-              <value>
-                <![CDATA[3]]>
-              </value>
-            </param>
-            <param index="31">
-              <value>
-                <![CDATA[Grade 1]]>
-              </value>
-            </param>
-            <param index="32">
-              <value>
-                <![CDATA[1000000]]>
-              </value>
-            </param>
-            <param index="33">
-              <value>
-                <![CDATA[5000000]]>
-              </value>
-            </param>
-            <param index="34">
-              <value>
-                <![CDATA[1000]]>
-              </value>
-            </param>
-            <param index="35">
-              <value>
-                <![CDATA[10000000]]>
-              </value>
-            </param>
-            <param index="36">
-              <value>
-                <![CDATA[Grade 2]]>
-              </value>
-            </param>
-            <param index="37">
-              <value>
-                <![CDATA[2000000]]>
-              </value>
-            </param>
-            <param index="38">
-              <value>
-                <![CDATA[5000000]]>
-              </value>
-            </param>
-            <param index="39">
-              <value>
-                <![CDATA[1000]]>
-              </value>
-            </param>
-            <param index="40">
-              <value>
-                <![CDATA[10000000]]>
-              </value>
-            </param>
-            <param index="41">
-              <value>
-                <![CDATA[Grade 3]]>
-              </value>
-            </param>
-            <param index="42">
-              <value>
-                <![CDATA[3000000]]>
-              </value>
-            </param>
-            <param index="43">
-              <value>
-                <![CDATA[5000000]]>
-              </value>
-            </param>
-            <param index="44">
-              <value>
-                <![CDATA[1000]]>
-              </value>
-            </param>
-            <param index="45">
-              <value>
-                <![CDATA[10000000]]>
+                <![CDATA[Approved]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- createAMasterPolicyWithGradedCover -->
-      </class> <!-- com.absli.testCases.MasterPolicyMakerFunctionalityTest -->
+        </test-method> <!-- masterPolicyCheckerPage -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.absli.testCases.MasterPolicyCheckerFunctionalityTest@51e69659]" started-at="2024-05-30T16:07:15 IST" name="setUp" finished-at="2024-05-30T16:07:20 IST" duration-ms="5180" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="masterPolicyCheckerPage(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.absli.testCases.MasterPolicyCheckerFunctionalityTest@51e69659]" started-at="2024-05-30T16:07:20 IST" name="masterPolicyCheckerPage" data-provider="TestDataFromTC_MPC_001" finished-at="2024-05-30T16:07:37 IST" duration-ms="17321" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Absli-Grade-001]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[132402.0]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Approved]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- masterPolicyCheckerPage -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.absli.testCases.MasterPolicyCheckerFunctionalityTest@51e69659]" started-at="2024-05-30T16:07:37 IST" name="setUp" finished-at="2024-05-30T16:07:43 IST" duration-ms="5257" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="masterPolicyCheckerPage(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.absli.testCases.MasterPolicyCheckerFunctionalityTest@51e69659]" started-at="2024-05-30T16:07:43 IST" name="masterPolicyCheckerPage" data-provider="TestDataFromTC_MPC_001" finished-at="2024-05-30T16:08:00 IST" duration-ms="17479" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Absli-Grade-001]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[132451.0]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Approved]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- masterPolicyCheckerPage -->
+      </class> <!-- com.absli.testCases.MasterPolicyCheckerFunctionalityTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
