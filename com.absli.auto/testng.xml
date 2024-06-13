@@ -3,15 +3,14 @@
 <suite name="Regression Suite">
 	<listeners>
 		<listener class-name="com.absli.utill.MyITestListener"></listener>
+		<listener class-name="com.absli.utill.MySuiteListener"></listener>
 	</listeners>
 	
   <test name="Regression Test">
     <classes>
-	  <class name="com.absli.testCases.MasterPolicyMakerFunctionalityTest">
-		<methods>
-			<include name="createAMasterPolicyWithGradedCoverSalaryMultiple"></include>
-		</methods>
+	  <class name="com.absli.testCases.CreateAClientOrga">
 	  </class>
+	  <class name="com.absli.testCases.MasterPolicyMakerFunctionalityTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

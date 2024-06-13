@@ -31,8 +31,8 @@ public class MasterPolicyMakerFunctionalityTest extends AbsliBase {
 	@DataProvider(name="TestDataFromTC_MPM_001")
 	public Object[][] getTestDataFromTestDataFromTC_MPM_001()
 	{
-		Object arrogj[][]=TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\git\\com.absli.auto\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Master Policy Maker - Test Data.xlsx", "TC_MPM_001");
-		return arrogj;			
+		Object arrobj[][]=TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\git\\com.absli.auto\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Master Policy Maker - Test Data.xlsx", "TC_MPM_001");
+		return arrobj;			
 	}
 
 	@Test(priority = 0, dataProvider = "TestDataFromTC_MPM_001", dataProviderClass = MasterPolicyMakerFunctionalityTest.class)
@@ -43,7 +43,7 @@ public class MasterPolicyMakerFunctionalityTest extends AbsliBase {
 			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits, String varientType, String freeCoverLimitValue) throws Throwable {
 		
-		homePage.masterPolicyMaker();
+		homePage.masterPolicyMakerPage();
 		masterPolicyMakerPage= new MasterPolicyMakerPage();
 		masterPolicyMakerPage.masterPolicyWithMandatoryFieldsAndCustomerDefinedSA(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
 				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
@@ -54,8 +54,8 @@ public class MasterPolicyMakerFunctionalityTest extends AbsliBase {
 	@DataProvider(name="TestDataFromTC_MPM_002")
 	public Object[][] getTestDataFromTestDataFromTC_MPM_002()
 	{
-		Object arrogj[][]=TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\eclipse-workspace\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Master Policy Maker - Test Data.xlsx", "TC_MPM_002");
-		return arrogj;
+		Object arrobj[][]=TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\eclipse-workspace\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Master Policy Maker - Test Data.xlsx", "TC_MPM_002");
+		return arrobj;
 				
 	}
 	
@@ -67,7 +67,7 @@ public class MasterPolicyMakerFunctionalityTest extends AbsliBase {
 			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,String benefits, 
 			String varientType, String sumAssuredValue, String freeCoverLimitValue) throws Throwable {
 		
-		homePage.masterPolicyMaker();
+		homePage.masterPolicyMakerPage();
 		masterPolicyMakerPage= new MasterPolicyMakerPage();
 		masterPolicyMakerPage.masterPolicyWithMandatoryFieldsAndFlatSumAssured(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
 				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
@@ -78,8 +78,8 @@ public class MasterPolicyMakerFunctionalityTest extends AbsliBase {
 	@DataProvider(name="TestDataFromTC_MPM_003")
 	public Object[][] getTestDataFromTestDataFromTC_MPM_003()
 	{
-		Object arrogj[][]=TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\eclipse-workspace\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Master Policy Maker - Test Data.xlsx", "TC_MPM_003");
-		return arrogj;
+		Object arrobj[][]=TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\eclipse-workspace\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Master Policy Maker - Test Data.xlsx", "TC_MPM_003");
+		return arrobj;
 				
 	}
 	
@@ -91,7 +91,7 @@ public class MasterPolicyMakerFunctionalityTest extends AbsliBase {
 			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,String benefits, 
 			String varientType, String multiplesOfSalaryValue, String freeCoverLimitValue, String minimumCapValue, String maximumCapValue) throws Throwable {
 		
-		homePage.masterPolicyMaker();
+		homePage.masterPolicyMakerPage();
 		masterPolicyMakerPage= new MasterPolicyMakerPage();
 		masterPolicyMakerPage.masterPolicyWithMandatoryFieldsAndMultipleOfSalary(clientName, agreementNumberStringValue, quotationDetailsStringValue, 
 				title, firstName, number, emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
@@ -103,8 +103,8 @@ public class MasterPolicyMakerFunctionalityTest extends AbsliBase {
 	@DataProvider(name="TestDataFromTC_MPM_004")
 	public Object[][] getTestDataFromTestDataFromTC_MPM_004()
 	{
-		Object arrogj[][]=TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\git\\com.absli.auto\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Master Policy Maker - Test Data.xlsx", "TC_MPM_004");
-		return arrogj;
+		Object arrobj[][]=TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\git\\com.absli.auto\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Master Policy Maker - Test Data.xlsx", "TC_MPM_004");
+		return arrobj;
 				
 	}
 	
@@ -119,7 +119,7 @@ public class MasterPolicyMakerFunctionalityTest extends AbsliBase {
 			String maximumCapValue2, String gradeValue3, String sumAssuredValue3,String freeCoverLimitValue3, String minimumCapValue3, 
 			String maximumCapValue3) throws Throwable {
 		
-		homePage.masterPolicyMaker();
+		homePage.masterPolicyMakerPage();
 		masterPolicyMakerPage= new MasterPolicyMakerPage();
 		masterPolicyMakerPage.masterPolicyWithMandatoryFieldsAndGradedCover(clientName, agreementNumberStringValue, quotationDetailsStringValue, 
 				title, firstName, number, emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
@@ -134,8 +134,8 @@ public class MasterPolicyMakerFunctionalityTest extends AbsliBase {
 	@DataProvider(name="TestDataFromTC_MPM_005")
 	public Object[][] getTestDataFromTestDataFromTC_MPM_005()
 	{
-		Object arrogj[][]=TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\git\\com.absli.auto\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Master Policy Maker - Test Data.xlsx", "TC_MPM_005");
-		return arrogj;
+		Object arrobj[][]=TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\git\\com.absli.auto\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Master Policy Maker - Test Data.xlsx", "TC_MPM_005");
+		return arrobj;
 				
 	}
 	
@@ -148,7 +148,7 @@ public class MasterPolicyMakerFunctionalityTest extends AbsliBase {
 			String varientType, String retirementAgeValueInVariantType, String maxSumAssuredValue, String freeCoverLimitValue, String minimumCapValue, 
 			String maximumCapValue) throws Throwable {
 		
-		homePage.masterPolicyMaker();
+		homePage.masterPolicyMakerPage();
 		masterPolicyMakerPage= new MasterPolicyMakerPage();
 		masterPolicyMakerPage.masterPolicyWithMandatoryFieldsAndFutureServiceGratuityAmount(clientName, agreementNumberStringValue, quotationDetailsStringValue, 
 				title, firstName, number, emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
@@ -160,8 +160,8 @@ public class MasterPolicyMakerFunctionalityTest extends AbsliBase {
 	@DataProvider(name="TestDataFromTC_MPM_006")
 	public Object[][] getTestDataFromTestDataFromTC_MPM_006()
 	{
-		Object arrogj[][]=TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\git\\com.absli.auto\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Master Policy Maker - Test Data.xlsx", "TC_MPM_006");
-		return arrogj;
+		Object arrobj[][]=TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\git\\com.absli.auto\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Master Policy Maker - Test Data.xlsx", "TC_MPM_006");
+		return arrobj;
 				
 	}
 	
@@ -174,7 +174,7 @@ public class MasterPolicyMakerFunctionalityTest extends AbsliBase {
 			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, 
 			String minimumCapValue, String maximumCapValue) throws Throwable {
 		
-		homePage.masterPolicyMaker();
+		homePage.masterPolicyMakerPage();
 		masterPolicyMakerPage= new MasterPolicyMakerPage();
 		masterPolicyMakerPage.masterPolicyWithMandatoryFieldsAndRider(clientName, agreementNumberStringValue, quotationDetailsStringValue, 
 				title, firstName, number, emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
@@ -186,8 +186,8 @@ public class MasterPolicyMakerFunctionalityTest extends AbsliBase {
 	@DataProvider(name="TestDataFromTC_MPM_007")
 	public Object[][] getTestDataFromTestDataFromTC_MPM_007()
 	{
-		Object arrogj[][]=TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\git\\com.absli.auto\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Master Policy Maker - Test Data.xlsx", "TC_MPM_007");
-		return arrogj;
+		Object arrobj[][]=TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\git\\com.absli.auto\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\Master Policy Maker - Test Data.xlsx", "TC_MPM_007");
+		return arrobj;
 				
 	}
 	
@@ -202,7 +202,7 @@ public class MasterPolicyMakerFunctionalityTest extends AbsliBase {
 			String maximumCapValue2, String gradeValue3, String multiplesOfSalaryValue3,String freeCoverLimitValue3, String minimumCapValue3, 
 			String maximumCapValue3) throws Throwable {
 		
-		homePage.masterPolicyMaker();
+		homePage.masterPolicyMakerPage();
 		masterPolicyMakerPage= new MasterPolicyMakerPage();
 		masterPolicyMakerPage.masterPolicyWithMandatoryFieldsAndGradedCoverSalaryMultiple(clientName, agreementNumberStringValue, quotationDetailsStringValue, 
 				title, firstName, number, emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 

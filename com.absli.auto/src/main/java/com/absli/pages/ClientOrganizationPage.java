@@ -3,9 +3,11 @@ import java.time.Duration;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -101,7 +103,7 @@ public class ClientOrganizationPage extends AbsliBase {
 		selectVisibleText(titleDropdown, title);
 		firstName.sendKeys(Fname);
 		selectVisibleText(typeOfClientDropDown, typeofClient);
-		Thread.sleep(8000);
+		Thread.sleep(9000);
 		selectVisibleText(gstTypeForRegular, gstType);
 		Thread.sleep(3000);
 		panNumber.sendKeys(Pan);
@@ -117,7 +119,7 @@ public class ClientOrganizationPage extends AbsliBase {
 		pinCode.sendKeys(zipCode);
 		selectVisibleText(countryDropDown, county);
 		selectVisibleText(stateDropDown, state);
-		Thread.sleep(8000);
+		Thread.sleep(9000);
 		selectVisibleText(districtDropDown, district);
 		Thread.sleep(4000);
 		addAddressButton.click();
@@ -141,7 +143,7 @@ public class ClientOrganizationPage extends AbsliBase {
 		selectVisibleText(titleDropdown, title);
 		firstName.sendKeys(Fname);
 		selectVisibleText(typeOfClientDropDown, typeofClient);
-		Thread.sleep(6000);
+		Thread.sleep(9000);
 		selectVisibleText(gstTypeForRegular, gstType);
 		wait.until(ExpectedConditions.elementToBeClickable(gstNumber));
 		panNumber.sendKeys(Pan,Keys.ENTER);;
@@ -159,7 +161,7 @@ public class ClientOrganizationPage extends AbsliBase {
 		pinCode.sendKeys(zipCode);
 		selectVisibleText(countryDropDown, county);
 		selectVisibleText(stateDropDown, state);
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 		selectVisibleText(districtDropDown, district);
 		Thread.sleep(4000);
 		addAddressButton.click();
@@ -183,7 +185,7 @@ public class ClientOrganizationPage extends AbsliBase {
 		selectVisibleText(titleDropdown, title);
 		firstName.sendKeys(Fname);
 		selectVisibleText(typeOfClientDropDown, typeofClient);
-		Thread.sleep(5000);
+		Thread.sleep(9000);
 		selectVisibleText(gstTypeForRegular, gstType);
 		Thread.sleep(3000);
 		panNumber.sendKeys(Pan);
@@ -209,7 +211,7 @@ public class ClientOrganizationPage extends AbsliBase {
 		pinCode.sendKeys(zipCode);
 		selectVisibleText(countryDropDown, county);
 		selectVisibleText(stateDropDown, state);
-		Thread.sleep(7000);
+		Thread.sleep(6000);
 		selectVisibleText(districtDropDown, district);
 		Thread.sleep(4000);
 		addAddressButton.click();
@@ -233,7 +235,7 @@ public class ClientOrganizationPage extends AbsliBase {
 		selectVisibleText(titleDropdown, title);
 		firstName.sendKeys(Fname);
 		selectVisibleText(typeOfClientDropDown, typeofClient);
-		Thread.sleep(6000);
+		Thread.sleep(9000);
 		selectVisibleText(gstTypeForRegular, gstType);
 		wait.until(ExpectedConditions.elementToBeClickable(panNumber));
 		panNumber.sendKeys(Pan,Keys.ENTER);
@@ -260,7 +262,7 @@ public class ClientOrganizationPage extends AbsliBase {
 		pinCode.sendKeys(zipCode);
 		selectVisibleText(countryDropDown, county);
 		selectVisibleText(stateDropDown, state);
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 		selectVisibleText(districtDropDown, district);
 		Thread.sleep(4000);
 		addAddressButton.click();

@@ -29,6 +29,24 @@ public class HomePage extends AbsliBase {
 	@FindBy(xpath = "//a[text()='Master Policy - Checker']")
 	WebElement masterPloicyChecker;
 	
+	@FindBy(id = "liUnderwriting")
+	WebElement underWriting;
+	
+	@FindBy(id="li_2001")
+	WebElement underWritingMedicalTest;
+	
+	@FindBy(id="li_2002")
+	WebElement underWritingDetailst;
+	
+	@FindBy(id="li_2003")
+	WebElement coreUnderWriting;
+	
+	@FindBy(id = "liEndorsement")
+	WebElement endorsement;
+	
+	@FindBy(id = "li_2005")
+	WebElement gpsUWDecision;
+	
 	public HomePage()
 	{
 		PageFactory.initElements(driver, this);
@@ -52,14 +70,38 @@ public class HomePage extends AbsliBase {
 		masterPolicy.click();
 	}
 	
-	public void masterPolicyMaker()
+	public void masterPolicyMakerPage()
 	{
 		clientMaster.click();
 		masterPolicyMaker.click();
 	}
-	public void masterPolicyChecker()
+	public void masterPolicyCheckerPage()
 	{
 		clientMaster.click();
 		masterPloicyChecker.click();
+	}
+	
+	public void underWritingMedicalTestPage()
+	{
+		underWriting.click();
+		underWritingMedicalTest.click();
+	}
+	
+	public void underWritingDetailsPage()
+	{
+		underWriting.click();
+		underWritingDetailst.click();
+	}
+	
+	public void coreUnderwritingPage()
+	{
+		underWriting.click();
+		coreUnderWriting.click();	
+	}
+	
+	public void gpsUWDecisionPage()
+	{
+		endorsement.click();
+		gpsUWDecision.click();
 	}
 }

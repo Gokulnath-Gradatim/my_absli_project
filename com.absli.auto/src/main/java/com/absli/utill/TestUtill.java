@@ -21,7 +21,7 @@ import com.absli.base.AbsliBase;
 
 public class TestUtill extends AbsliBase {
 	
-	public static long Implicitly_Wait = 2000;
+	public static long Implicitly_Wait = 3000;
 	public static long pageLoad_Timeout = 5000;
 	public static long Explicitly_Wait = 20;
 

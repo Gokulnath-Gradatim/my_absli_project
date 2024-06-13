@@ -37,7 +37,7 @@ public class AbsliBase {
 		try {
 			prof = new Properties();
 			FileInputStream ip;
-			ip = new FileInputStream("C:\\Users\\Gokulnath\\eclipse-workspace\\com.absli.auto\\src\\main\\java\\com\\absli\\config\\BasicConfig.properties");
+			ip = new FileInputStream("C:\\Users\\Gokulnath\\git\\com.absli.auto\\com.absli.auto\\src\\main\\java\\com\\absli\\config\\BasicConfig.properties");
 			prof.load(ip);
 			//log = LogManager.getLogger(AbsliBase.class);
 

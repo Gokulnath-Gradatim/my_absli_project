@@ -1,88 +1,665 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+<testng-results ignored="0" total="12" passed="12" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-05-30T16:06:44 IST" name="Default suite" finished-at="2024-05-30T16:08:00 IST" duration-ms="76129">
+  <suite started-at="2024-06-13T14:02:23 IST" name="Suite" finished-at="2024-06-13T14:06:51 IST" duration-ms="268585">
     <groups>
     </groups>
-    <test started-at="2024-05-30T16:06:44 IST" name="Default test" finished-at="2024-05-30T16:08:00 IST" duration-ms="76129">
-      <class name="com.absli.testCases.MasterPolicyCheckerFunctionalityTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.absli.testCases.MasterPolicyCheckerFunctionalityTest@51e69659]" started-at="2024-05-30T16:06:46 IST" name="setUp" finished-at="2024-05-30T16:06:53 IST" duration-ms="7060" status="PASS">
+    <test started-at="2024-06-13T14:02:23 IST" name="Test" finished-at="2024-06-13T14:06:51 IST" duration-ms="268585">
+      <class name="com.absli.testCases.UnderwritingDetailsFunctionalityTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.absli.testCases.UnderwritingDetailsFunctionalityTest@51e69659]" started-at="2024-06-13T14:02:25 IST" name="setUp" finished-at="2024-06-13T14:02:32 IST" duration-ms="6442" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="masterPolicyCheckerPage(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.absli.testCases.MasterPolicyCheckerFunctionalityTest@51e69659]" started-at="2024-05-30T16:06:53 IST" name="masterPolicyCheckerPage" data-provider="TestDataFromTC_MPC_001" finished-at="2024-05-30T16:07:15 IST" duration-ms="21533" status="PASS">
+        <test-method signature="approveTheMemberFromUnderwritingDetailsToCoreUW(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.absli.testCases.UnderwritingDetailsFunctionalityTest@51e69659]" started-at="2024-06-13T14:02:32 IST" name="approveTheMemberFromUnderwritingDetailsToCoreUW" data-provider="TestDataFromTC_UWD_001" finished-at="2024-06-13T14:02:47 IST" duration-ms="14979" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Absli-Grade-001]]>
+                <![CDATA[13-June-2024]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[132452.0]]>
+                <![CDATA[13-June-2024]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[Approved]]>
+                <![CDATA[UW Automation-1]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[UW GPOY202400022026 ( 31/12/2024)]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[ABSLI012024000000099888]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- masterPolicyCheckerPage -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.absli.testCases.MasterPolicyCheckerFunctionalityTest@51e69659]" started-at="2024-05-30T16:07:15 IST" name="setUp" finished-at="2024-05-30T16:07:20 IST" duration-ms="5180" status="PASS">
+        </test-method> <!-- approveTheMemberFromUnderwritingDetailsToCoreUW -->
+        <test-method is-config="true" signature="endUp()[pri:0, instance:com.absli.testCases.UnderwritingDetailsFunctionalityTest@51e69659]" started-at="2024-06-13T14:02:47 IST" name="endUp" finished-at="2024-06-13T14:02:49 IST" duration-ms="2802" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.absli.testCases.UnderwritingDetailsFunctionalityTest@51e69659]" started-at="2024-06-13T14:02:49 IST" name="setUp" finished-at="2024-06-13T14:02:55 IST" duration-ms="5264" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="masterPolicyCheckerPage(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.absli.testCases.MasterPolicyCheckerFunctionalityTest@51e69659]" started-at="2024-05-30T16:07:20 IST" name="masterPolicyCheckerPage" data-provider="TestDataFromTC_MPC_001" finished-at="2024-05-30T16:07:37 IST" duration-ms="17321" status="PASS">
+        <test-method signature="approveTheMemberFromUnderwritingDetailsToCoreUW(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.absli.testCases.UnderwritingDetailsFunctionalityTest@51e69659]" started-at="2024-06-13T14:02:55 IST" name="approveTheMemberFromUnderwritingDetailsToCoreUW" data-provider="TestDataFromTC_UWD_001" finished-at="2024-06-13T14:03:07 IST" duration-ms="12049" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Absli-Grade-001]]>
+                <![CDATA[13-June-2024]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[132402.0]]>
+                <![CDATA[13-June-2024]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[Approved]]>
+                <![CDATA[UW Automation-1]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[UW GPOY202400022026 ( 31/12/2024)]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[ABSLI012024000000099889]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- masterPolicyCheckerPage -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.absli.testCases.MasterPolicyCheckerFunctionalityTest@51e69659]" started-at="2024-05-30T16:07:37 IST" name="setUp" finished-at="2024-05-30T16:07:43 IST" duration-ms="5257" status="PASS">
+        </test-method> <!-- approveTheMemberFromUnderwritingDetailsToCoreUW -->
+        <test-method is-config="true" signature="endUp()[pri:0, instance:com.absli.testCases.UnderwritingDetailsFunctionalityTest@51e69659]" started-at="2024-06-13T14:03:07 IST" name="endUp" finished-at="2024-06-13T14:03:11 IST" duration-ms="3966" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.absli.testCases.UnderwritingDetailsFunctionalityTest@51e69659]" started-at="2024-06-13T14:03:11 IST" name="setUp" finished-at="2024-06-13T14:03:16 IST" duration-ms="5088" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="masterPolicyCheckerPage(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.absli.testCases.MasterPolicyCheckerFunctionalityTest@51e69659]" started-at="2024-05-30T16:07:43 IST" name="masterPolicyCheckerPage" data-provider="TestDataFromTC_MPC_001" finished-at="2024-05-30T16:08:00 IST" duration-ms="17479" status="PASS">
+        <test-method signature="approveTheMemberFromUnderwritingDetailsToCoreUW(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.absli.testCases.UnderwritingDetailsFunctionalityTest@51e69659]" started-at="2024-06-13T14:03:16 IST" name="approveTheMemberFromUnderwritingDetailsToCoreUW" data-provider="TestDataFromTC_UWD_001" finished-at="2024-06-13T14:03:28 IST" duration-ms="12512" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Absli-Grade-001]]>
+                <![CDATA[13-June-2024]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[132451.0]]>
+                <![CDATA[13-June-2024]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[Approved]]>
+                <![CDATA[UW Automation-1]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[UW GPOY202400022026 ( 31/12/2024)]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[ABSLI012024000000099890]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- masterPolicyCheckerPage -->
-      </class> <!-- com.absli.testCases.MasterPolicyCheckerFunctionalityTest -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+        </test-method> <!-- approveTheMemberFromUnderwritingDetailsToCoreUW -->
+        <test-method is-config="true" signature="endUp()[pri:0, instance:com.absli.testCases.UnderwritingDetailsFunctionalityTest@51e69659]" started-at="2024-06-13T14:03:28 IST" name="endUp" finished-at="2024-06-13T14:03:31 IST" duration-ms="2252" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.absli.testCases.UnderwritingDetailsFunctionalityTest@51e69659]" started-at="2024-06-13T14:03:31 IST" name="setUp" finished-at="2024-06-13T14:03:36 IST" duration-ms="5138" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="approveTheMemberFromUnderwritingDetailsToCoreUW(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.absli.testCases.UnderwritingDetailsFunctionalityTest@51e69659]" started-at="2024-06-13T14:03:36 IST" name="approveTheMemberFromUnderwritingDetailsToCoreUW" data-provider="TestDataFromTC_UWD_001" finished-at="2024-06-13T14:03:48 IST" duration-ms="11982" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[13-June-2024]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[13-June-2024]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[UW Automation-1]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[UW GPOY202400022026 ( 31/12/2024)]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[ABSLI012024000000099891]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- approveTheMemberFromUnderwritingDetailsToCoreUW -->
+        <test-method is-config="true" signature="endUp()[pri:0, instance:com.absli.testCases.UnderwritingDetailsFunctionalityTest@51e69659]" started-at="2024-06-13T14:03:48 IST" name="endUp" finished-at="2024-06-13T14:03:50 IST" duration-ms="2326" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endUp -->
+      </class> <!-- com.absli.testCases.UnderwritingDetailsFunctionalityTest -->
+      <class name="com.absli.testCases.GPSUWDecisionFunctionalityTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.absli.testCases.GPSUWDecisionFunctionalityTest@41a0aa7d]" started-at="2024-06-13T14:05:23 IST" name="setUp" finished-at="2024-06-13T14:05:28 IST" duration-ms="4890" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="approveTheMemberFromUWDEcision(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.absli.testCases.GPSUWDecisionFunctionalityTest@41a0aa7d]" started-at="2024-06-13T14:05:28 IST" name="approveTheMemberFromUWDEcision" data-provider="TestDataFromTC_GPSUWD_001" finished-at="2024-06-13T14:05:41 IST" duration-ms="13455" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[13-June-2024]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[13-June-2024]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[UW Automation-1]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[UW GPOY202400022026 ( 31/12/2024)]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[ABSLI012024000000099888]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[Standard Rate]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[12/04/2024]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Purpose  of Testing ]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- approveTheMemberFromUWDEcision -->
+        <test-method is-config="true" signature="endUp()[pri:0, instance:com.absli.testCases.GPSUWDecisionFunctionalityTest@41a0aa7d]" started-at="2024-06-13T14:05:41 IST" name="endUp" finished-at="2024-06-13T14:05:45 IST" duration-ms="3998" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.absli.testCases.GPSUWDecisionFunctionalityTest@41a0aa7d]" started-at="2024-06-13T14:05:45 IST" name="setUp" finished-at="2024-06-13T14:05:50 IST" duration-ms="4887" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="approveTheMemberFromUWDEcision(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.absli.testCases.GPSUWDecisionFunctionalityTest@41a0aa7d]" started-at="2024-06-13T14:05:50 IST" name="approveTheMemberFromUWDEcision" data-provider="TestDataFromTC_GPSUWD_001" finished-at="2024-06-13T14:06:04 IST" duration-ms="13707" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[13-June-2024]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[13-June-2024]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[UW Automation-1]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[UW GPOY202400022026 ( 31/12/2024)]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[ABSLI012024000000099889]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[Standard Rate]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[12/04/2024]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Purpose  of Testing ]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- approveTheMemberFromUWDEcision -->
+        <test-method is-config="true" signature="endUp()[pri:0, instance:com.absli.testCases.GPSUWDecisionFunctionalityTest@41a0aa7d]" started-at="2024-06-13T14:06:04 IST" name="endUp" finished-at="2024-06-13T14:06:08 IST" duration-ms="3954" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.absli.testCases.GPSUWDecisionFunctionalityTest@41a0aa7d]" started-at="2024-06-13T14:06:08 IST" name="setUp" finished-at="2024-06-13T14:06:13 IST" duration-ms="5129" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="approveTheMemberFromUWDEcision(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.absli.testCases.GPSUWDecisionFunctionalityTest@41a0aa7d]" started-at="2024-06-13T14:06:13 IST" name="approveTheMemberFromUWDEcision" data-provider="TestDataFromTC_GPSUWD_001" finished-at="2024-06-13T14:06:26 IST" duration-ms="12781" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[13-June-2024]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[13-June-2024]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[UW Automation-1]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[UW GPOY202400022026 ( 31/12/2024)]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[ABSLI012024000000099890]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[Rate Up Decision]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[12/04/2024]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[12/04/2024]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Purpose  of Testing ]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- approveTheMemberFromUWDEcision -->
+        <test-method is-config="true" signature="endUp()[pri:0, instance:com.absli.testCases.GPSUWDecisionFunctionalityTest@41a0aa7d]" started-at="2024-06-13T14:06:26 IST" name="endUp" finished-at="2024-06-13T14:06:28 IST" duration-ms="2220" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.absli.testCases.GPSUWDecisionFunctionalityTest@41a0aa7d]" started-at="2024-06-13T14:06:28 IST" name="setUp" finished-at="2024-06-13T14:06:33 IST" duration-ms="5358" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="approveTheMemberFromUWDEcision(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.absli.testCases.GPSUWDecisionFunctionalityTest@41a0aa7d]" started-at="2024-06-13T14:06:33 IST" name="approveTheMemberFromUWDEcision" data-provider="TestDataFromTC_GPSUWD_001" finished-at="2024-06-13T14:06:47 IST" duration-ms="13792" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[13-June-2024]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[13-June-2024]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[UW Automation-1]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[UW GPOY202400022026 ( 31/12/2024)]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[ABSLI012024000000099891]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[Rate Up Decision]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[12/04/2024]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[12/04/2024]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Purpose  of Testing ]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- approveTheMemberFromUWDEcision -->
+        <test-method is-config="true" signature="endUp()[pri:0, instance:com.absli.testCases.GPSUWDecisionFunctionalityTest@41a0aa7d]" started-at="2024-06-13T14:06:47 IST" name="endUp" finished-at="2024-06-13T14:06:51 IST" duration-ms="4208" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endUp -->
+      </class> <!-- com.absli.testCases.GPSUWDecisionFunctionalityTest -->
+      <class name="com.absli.testCases.CoreUnderwritingFunctionalityTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.absli.testCases.CoreUnderwritingFunctionalityTest@e350b40]" started-at="2024-06-13T14:03:50 IST" name="setUp" finished-at="2024-06-13T14:03:55 IST" duration-ms="4987" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="approveTheMemberFromCoreUWPageToUWDecision(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.absli.testCases.CoreUnderwritingFunctionalityTest@e350b40]" started-at="2024-06-13T14:03:55 IST" name="approveTheMemberFromCoreUWPageToUWDecision" data-provider="TestDataFromTC_CUW_001" finished-at="2024-06-13T14:04:11 IST" duration-ms="15803" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[13-June-2024]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[13-June-2024]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[UW Automation-1]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[UW GPOY202400022026 ( 31/12/2024)]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[ABSLI012024000000099888]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[Standard Rate]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[13/06/2024]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Demo]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Testing Purpose]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- approveTheMemberFromCoreUWPageToUWDecision -->
+        <test-method is-config="true" signature="endUp()[pri:0, instance:com.absli.testCases.CoreUnderwritingFunctionalityTest@e350b40]" started-at="2024-06-13T14:04:11 IST" name="endUp" finished-at="2024-06-13T14:04:13 IST" duration-ms="2347" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.absli.testCases.CoreUnderwritingFunctionalityTest@e350b40]" started-at="2024-06-13T14:04:13 IST" name="setUp" finished-at="2024-06-13T14:04:18 IST" duration-ms="5118" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="approveTheMemberFromCoreUWPageToUWDecision(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.absli.testCases.CoreUnderwritingFunctionalityTest@e350b40]" started-at="2024-06-13T14:04:18 IST" name="approveTheMemberFromCoreUWPageToUWDecision" data-provider="TestDataFromTC_CUW_001" finished-at="2024-06-13T14:04:34 IST" duration-ms="15485" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[13-June-2024]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[13-June-2024]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[UW Automation-1]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[UW GPOY202400022026 ( 31/12/2024)]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[ABSLI012024000000099889]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[Standard Rate]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[13/06/2025]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Demo]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Testing Purpose]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- approveTheMemberFromCoreUWPageToUWDecision -->
+        <test-method is-config="true" signature="endUp()[pri:0, instance:com.absli.testCases.CoreUnderwritingFunctionalityTest@e350b40]" started-at="2024-06-13T14:04:34 IST" name="endUp" finished-at="2024-06-13T14:04:36 IST" duration-ms="2195" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.absli.testCases.CoreUnderwritingFunctionalityTest@e350b40]" started-at="2024-06-13T14:04:36 IST" name="setUp" finished-at="2024-06-13T14:04:41 IST" duration-ms="5189" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="approveTheMemberFromCoreUWPageToUWDecision(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.absli.testCases.CoreUnderwritingFunctionalityTest@e350b40]" started-at="2024-06-13T14:04:41 IST" name="approveTheMemberFromCoreUWPageToUWDecision" data-provider="TestDataFromTC_CUW_001" finished-at="2024-06-13T14:04:56 IST" duration-ms="15232" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[13-June-2024]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[13-June-2024]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[UW Automation-1]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[UW GPOY202400022026 ( 31/12/2024)]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[ABSLI012024000000099890]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[Rate Up Decision]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[13/06/2026]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[100]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Demo]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Testing Purpose]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- approveTheMemberFromCoreUWPageToUWDecision -->
+        <test-method is-config="true" signature="endUp()[pri:0, instance:com.absli.testCases.CoreUnderwritingFunctionalityTest@e350b40]" started-at="2024-06-13T14:04:56 IST" name="endUp" finished-at="2024-06-13T14:04:59 IST" duration-ms="2180" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.absli.testCases.CoreUnderwritingFunctionalityTest@e350b40]" started-at="2024-06-13T14:04:59 IST" name="setUp" finished-at="2024-06-13T14:05:04 IST" duration-ms="5063" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="approveTheMemberFromCoreUWPageToUWDecision(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.absli.testCases.CoreUnderwritingFunctionalityTest@e350b40]" started-at="2024-06-13T14:05:04 IST" name="approveTheMemberFromCoreUWPageToUWDecision" data-provider="TestDataFromTC_CUW_001" finished-at="2024-06-13T14:05:19 IST" duration-ms="15107" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[13-June-2024]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[13-June-2024]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[UW Automation-1]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[UW GPOY202400022026 ( 31/12/2024)]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[ABSLI012024000000099891]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[Rate Up Decision]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[13/06/2027]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[75]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Demo]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Testing Purpose]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- approveTheMemberFromCoreUWPageToUWDecision -->
+        <test-method is-config="true" signature="endUp()[pri:0, instance:com.absli.testCases.CoreUnderwritingFunctionalityTest@e350b40]" started-at="2024-06-13T14:05:19 IST" name="endUp" finished-at="2024-06-13T14:05:23 IST" duration-ms="4007" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endUp -->
+      </class> <!-- com.absli.testCases.CoreUnderwritingFunctionalityTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
 </testng-results>

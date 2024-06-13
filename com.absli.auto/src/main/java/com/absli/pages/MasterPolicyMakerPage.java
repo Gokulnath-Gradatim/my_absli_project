@@ -158,6 +158,9 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	@FindBy(id = "ContentPlaceHolder1_btnSendToApprover")
 	WebElement sentToCheckerButton;
 	
+	@FindBy(id = "ContentPlaceHolder1_btnSave")
+	WebElement saveButton;
+	
 	@FindBy(id="ContentPlaceHolder1_Messagebox_lblMsg")
 	WebElement popMessageText;
 	
@@ -179,6 +182,7 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		clienNameSearchField.sendKeys(Keys.ARROW_DOWN,Keys.ENTER);
 		Thread.sleep(9000);
 		agreementNumber.sendKeys(agreementNumberStringValue,Keys.ENTER);
+		System.out.println(agreementNumberStringValue);
 		quotationDetails.sendKeys(quotationDetailsStringValue,Keys.ENTER);
 		selectVisibleText(contactPersonTitle, title);
 		contactPersonFirstName.sendKeys(firstName,Keys.ENTER);
@@ -264,6 +268,7 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
 		okButtonInPopMessage.click();
 		sentToCheckerButton.click();
+		//saveButton.click();
 		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
 		String popMsgTextValue = popMessageText.getText();
 		System.out.println("Popup Message: " + popMsgTextValue);
