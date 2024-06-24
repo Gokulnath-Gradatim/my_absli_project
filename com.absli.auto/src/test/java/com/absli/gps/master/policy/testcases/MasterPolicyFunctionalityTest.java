@@ -1,4 +1,4 @@
-package com.absli.testCases;
+package com.absli.gps.master.policy.testcases;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;

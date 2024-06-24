@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<Configuration status="WARN" strict="true">
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="log4j2.xsd" status="WARN" strict="true">
     <Appenders>
         <Appender type="Console" name="STDOUT">
             <Layout type="PatternLayout"

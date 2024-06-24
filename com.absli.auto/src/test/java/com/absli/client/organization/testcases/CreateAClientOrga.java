@@ -1,4 +1,4 @@
-package com.absli.testCases;
+package com.absli.client.organization.testcases;
 
 
 import org.testng.annotations.AfterMethod;

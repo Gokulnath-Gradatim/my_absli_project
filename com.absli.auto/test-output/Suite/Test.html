@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>12/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/0/1</td>
 </tr><tr>
-<td>Started on:</td><td>Thu Jun 13 14:02:23 IST 2024</td>
+<td>Started on:</td><td>Wed Jun 19 20:10:52 IST 2024</td>
 </tr>
-<tr><td>Total time:</td><td>268 seconds (268585 ms)</td>
+<tr><td>Total time:</td><td>63 seconds (63310 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,73 +67,157 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED CONFIGURATIONS</b></td></tr>
 <tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
 <td width="30%"><b>Exception</b></td>
 <td width="10%"><b>Time (seconds)</b></td>
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.absli.testCases.GPSUWDecisionFunctionalityTest.approveTheMemberFromUWDEcision()'><b>approveTheMemberFromUWDEcision</b><br>Test class: com.absli.testCases.GPSUWDecisionFunctionalityTest<br>Parameters: 13-June-2024, 13-June-2024, UW Automation-1, UW GPOY202400022026 ( 31/12/2024), ABSLI012024000000099890, Rate Up Decision, 12/04/2024, 12/04/2024, Purpose  of Testing </td>
-<td></td>
-<td>12</td>
-<td>com.absli.testCases.GPSUWDecisionFunctionalityTest@41a0aa7d</td></tr>
+<td title='com.absli.client.organization.testcases.ClientOrganizationWithGradeAndGST.setUp()'><b>setUp</b><br>Test class: com.absli.client.organization.testcases.ClientOrganizationWithGradeAndGST</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: Unable to find element with locator By.xpath: //input[@id=&quot;ContentPlaceHolder1_txtUserName&quot;]
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.18.1&apos;, revision: &apos;b1d3319b48&apos;
+System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.10&apos;
+Driver info: driver.version: RemoteWebDriver
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:168)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:356)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy18.sendKeys(Unknown Source)
+	at com.absli.pages.LoginPage.loginFunction(LoginPage.java:34)
+	at com.absli.client.organization.testcases.ClientOrganizationWithGradeAndGST.setUp(ClientOrganizationWithGradeAndGST.java:28)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 31 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1781459498", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1781459498'><pre>org.openqa.selenium.NoSuchElementException: Unable to find element with locator By.xpath: //input[@id=&quot;ContentPlaceHolder1_txtUserName&quot;]
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.18.1&apos;, revision: &apos;b1d3319b48&apos;
+System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.10&apos;
+Driver info: driver.version: RemoteWebDriver
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:168)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:356)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy18.sendKeys(Unknown Source)
+	at com.absli.pages.LoginPage.loginFunction(LoginPage.java:34)
+	at com.absli.client.organization.testcases.ClientOrganizationWithGradeAndGST.setUp(ClientOrganizationWithGradeAndGST.java:28)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
+	at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:833)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:600)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div></td>
+<td>60</td>
+<td>com.absli.client.organization.testcases.ClientOrganizationWithGradeAndGST@7ae0a9ec</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
 <tr>
-<td title='com.absli.testCases.GPSUWDecisionFunctionalityTest.approveTheMemberFromUWDEcision()'><b>approveTheMemberFromUWDEcision</b><br>Test class: com.absli.testCases.GPSUWDecisionFunctionalityTest<br>Parameters: 13-June-2024, 13-June-2024, UW Automation-1, UW GPOY202400022026 ( 31/12/2024), ABSLI012024000000099891, Rate Up Decision, 12/04/2024, 12/04/2024, Purpose  of Testing </td>
-<td></td>
-<td>13</td>
-<td>com.absli.testCases.GPSUWDecisionFunctionalityTest@41a0aa7d</td></tr>
-<tr>
-<td title='com.absli.testCases.UnderwritingDetailsFunctionalityTest.approveTheMemberFromUnderwritingDetailsToCoreUW()'><b>approveTheMemberFromUnderwritingDetailsToCoreUW</b><br>Test class: com.absli.testCases.UnderwritingDetailsFunctionalityTest<br>Parameters: 13-June-2024, 13-June-2024, UW Automation-1, UW GPOY202400022026 ( 31/12/2024), ABSLI012024000000099888</td>
-<td></td>
-<td>14</td>
-<td>com.absli.testCases.UnderwritingDetailsFunctionalityTest@51e69659</td></tr>
-<tr>
-<td title='com.absli.testCases.CoreUnderwritingFunctionalityTest.approveTheMemberFromCoreUWPageToUWDecision()'><b>approveTheMemberFromCoreUWPageToUWDecision</b><br>Test class: com.absli.testCases.CoreUnderwritingFunctionalityTest<br>Parameters: 13-June-2024, 13-June-2024, UW Automation-1, UW GPOY202400022026 ( 31/12/2024), ABSLI012024000000099891, Rate Up Decision, 13/06/2027, 75, Demo, Testing Purpose</td>
-<td></td>
-<td>15</td>
-<td>com.absli.testCases.CoreUnderwritingFunctionalityTest@e350b40</td></tr>
-<tr>
-<td title='com.absli.testCases.CoreUnderwritingFunctionalityTest.approveTheMemberFromCoreUWPageToUWDecision()'><b>approveTheMemberFromCoreUWPageToUWDecision</b><br>Test class: com.absli.testCases.CoreUnderwritingFunctionalityTest<br>Parameters: 13-June-2024, 13-June-2024, UW Automation-1, UW GPOY202400022026 ( 31/12/2024), ABSLI012024000000099889, Standard Rate, 13/06/2025, , Demo, Testing Purpose</td>
-<td></td>
-<td>15</td>
-<td>com.absli.testCases.CoreUnderwritingFunctionalityTest@e350b40</td></tr>
-<tr>
-<td title='com.absli.testCases.UnderwritingDetailsFunctionalityTest.approveTheMemberFromUnderwritingDetailsToCoreUW()'><b>approveTheMemberFromUnderwritingDetailsToCoreUW</b><br>Test class: com.absli.testCases.UnderwritingDetailsFunctionalityTest<br>Parameters: 13-June-2024, 13-June-2024, UW Automation-1, UW GPOY202400022026 ( 31/12/2024), ABSLI012024000000099889</td>
-<td></td>
-<td>12</td>
-<td>com.absli.testCases.UnderwritingDetailsFunctionalityTest@51e69659</td></tr>
-<tr>
-<td title='com.absli.testCases.UnderwritingDetailsFunctionalityTest.approveTheMemberFromUnderwritingDetailsToCoreUW()'><b>approveTheMemberFromUnderwritingDetailsToCoreUW</b><br>Test class: com.absli.testCases.UnderwritingDetailsFunctionalityTest<br>Parameters: 13-June-2024, 13-June-2024, UW Automation-1, UW GPOY202400022026 ( 31/12/2024), ABSLI012024000000099891</td>
-<td></td>
-<td>11</td>
-<td>com.absli.testCases.UnderwritingDetailsFunctionalityTest@51e69659</td></tr>
-<tr>
-<td title='com.absli.testCases.GPSUWDecisionFunctionalityTest.approveTheMemberFromUWDEcision()'><b>approveTheMemberFromUWDEcision</b><br>Test class: com.absli.testCases.GPSUWDecisionFunctionalityTest<br>Parameters: 13-June-2024, 13-June-2024, UW Automation-1, UW GPOY202400022026 ( 31/12/2024), ABSLI012024000000099888, Standard Rate, 12/04/2024, , Purpose  of Testing </td>
-<td></td>
-<td>13</td>
-<td>com.absli.testCases.GPSUWDecisionFunctionalityTest@41a0aa7d</td></tr>
-<tr>
-<td title='com.absli.testCases.UnderwritingDetailsFunctionalityTest.approveTheMemberFromUnderwritingDetailsToCoreUW()'><b>approveTheMemberFromUnderwritingDetailsToCoreUW</b><br>Test class: com.absli.testCases.UnderwritingDetailsFunctionalityTest<br>Parameters: 13-June-2024, 13-June-2024, UW Automation-1, UW GPOY202400022026 ( 31/12/2024), ABSLI012024000000099890</td>
-<td></td>
-<td>12</td>
-<td>com.absli.testCases.UnderwritingDetailsFunctionalityTest@51e69659</td></tr>
-<tr>
-<td title='com.absli.testCases.CoreUnderwritingFunctionalityTest.approveTheMemberFromCoreUWPageToUWDecision()'><b>approveTheMemberFromCoreUWPageToUWDecision</b><br>Test class: com.absli.testCases.CoreUnderwritingFunctionalityTest<br>Parameters: 13-June-2024, 13-June-2024, UW Automation-1, UW GPOY202400022026 ( 31/12/2024), ABSLI012024000000099890, Rate Up Decision, 13/06/2026, 100, Demo, Testing Purpose</td>
-<td></td>
-<td>15</td>
-<td>com.absli.testCases.CoreUnderwritingFunctionalityTest@e350b40</td></tr>
-<tr>
-<td title='com.absli.testCases.CoreUnderwritingFunctionalityTest.approveTheMemberFromCoreUWPageToUWDecision()'><b>approveTheMemberFromCoreUWPageToUWDecision</b><br>Test class: com.absli.testCases.CoreUnderwritingFunctionalityTest<br>Parameters: 13-June-2024, 13-June-2024, UW Automation-1, UW GPOY202400022026 ( 31/12/2024), ABSLI012024000000099888, Standard Rate, 13/06/2024, , Demo, Testing Purpose</td>
-<td></td>
-<td>15</td>
-<td>com.absli.testCases.CoreUnderwritingFunctionalityTest@e350b40</td></tr>
-<tr>
-<td title='com.absli.testCases.GPSUWDecisionFunctionalityTest.approveTheMemberFromUWDEcision()'><b>approveTheMemberFromUWDEcision</b><br>Test class: com.absli.testCases.GPSUWDecisionFunctionalityTest<br>Parameters: 13-June-2024, 13-June-2024, UW Automation-1, UW GPOY202400022026 ( 31/12/2024), ABSLI012024000000099889, Standard Rate, 12/04/2024, , Purpose  of Testing </td>
-<td></td>
-<td>13</td>
-<td>com.absli.testCases.GPSUWDecisionFunctionalityTest@41a0aa7d</td></tr>
+<td title='com.absli.client.organization.testcases.ClientOrganizationWithGradeAndGST.createClientWithMandatoryFieldsAndWithGSTAndGrade()'><b>createClientWithMandatoryFieldsAndWithGSTAndGrade</b><br>Test class: com.absli.client.organization.testcases.ClientOrganizationWithGradeAndGST<br>Parameters: Absli-GST-Grade-002, Business , Mr, absli-001, Regular Customer, GST, FGHIJ5678G, 29FGHIJ5678G1Z4, No, Bangalore, 132430, 2, BTM, BTM, 560076.0, India, Karnataka, Bangalore</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: Unable to find element with locator By.xpath: //input[@id=&quot;ContentPlaceHolder1_txtUserName&quot;]
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.18.1&apos;, revision: &apos;b1d3319b48&apos;
+System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.10&apos;
+Driver info: driver.version: RemoteWebDriver
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:168)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:356)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy18.sendKeys(Unknown Source)
+	at com.absli.pages.LoginPage.loginFunction(LoginPage.java:34)
+	at com.absli.client.organization.testcases.ClientOrganizationWithGradeAndGST.setUp(ClientOrganizationWithGradeAndGST.java:28)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 31 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1852655488", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1852655488'><pre>org.openqa.selenium.NoSuchElementException: Unable to find element with locator By.xpath: //input[@id=&quot;ContentPlaceHolder1_txtUserName&quot;]
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.18.1&apos;, revision: &apos;b1d3319b48&apos;
+System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.10&apos;
+Driver info: driver.version: RemoteWebDriver
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:168)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:356)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy18.sendKeys(Unknown Source)
+	at com.absli.pages.LoginPage.loginFunction(LoginPage.java:34)
+	at com.absli.client.organization.testcases.ClientOrganizationWithGradeAndGST.setUp(ClientOrganizationWithGradeAndGST.java:28)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
+	at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:833)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:600)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div></td>
+<td>0</td>
+<td>com.absli.client.organization.testcases.ClientOrganizationWithGradeAndGST@7ae0a9ec</td></tr>
 </table><p>
 </body>
 </html>

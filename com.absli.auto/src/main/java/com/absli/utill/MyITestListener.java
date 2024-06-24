@@ -24,13 +24,10 @@ public class MyITestListener extends AbsliBase implements ITestListener  {
 	public ExtentReports extent;
 	public ExtentTest test;
 	
-			
-
 	@Override
 	public void onTestStart(ITestResult result) {
 		// TODO Auto-generated method stub
 		ITestListener.super.onTestStart(result);
-		System.out.println("*****Starting Test Case*****");
 		System.out.println("Test Case Started: "+result.getName());
 	}
 

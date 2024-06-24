@@ -1,4 +1,4 @@
-package com.absli.testCases;
+package com.absli.login.testcases;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;

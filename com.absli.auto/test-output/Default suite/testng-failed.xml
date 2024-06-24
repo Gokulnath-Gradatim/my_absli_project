@@ -3,12 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.absli.testCases.GPSUWDecisionFunctionalityTest">
+      <class name="com.absli.gps.master.policy.maker.page.testcases.TC_MPM_001_MasterPolicyMakerWithGPSBaseBenefitAndCustomerDefinedSA">
         <methods>
-          <include name="approveTheMemberFromUWDEcision" invocation-numbers="0"/>
           <include name="setUp"/>
+          <include name="endUp"/>
+          <include name="createAMasterPolicyWithCustomerDefinedSA" invocation-numbers="0"/>
         </methods>
-      </class> <!-- com.absli.testCases.GPSUWDecisionFunctionalityTest -->
+      </class> <!-- com.absli.gps.master.policy.maker.page.testcases.TC_MPM_001_MasterPolicyMakerWithGPSBaseBenefitAndCustomerDefinedSA -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

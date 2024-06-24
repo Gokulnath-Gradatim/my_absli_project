@@ -16,6 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import com.absli.base.AbsliBase;
+import com.absli.utill.TestUtill;
 
 public class MasterPolicyMakerPage extends AbsliBase {
 	
@@ -100,6 +101,15 @@ public class MasterPolicyMakerPage extends AbsliBase {
 
 	@FindBy(id="ContentPlaceHolder1_txtUnderwritingMaximumAge")
 	WebElement underwritingMaximumAge;
+	
+	@FindBy(id="ContentPlaceHolder1_txtMinimumTenor")
+	WebElement minimumTenure;
+
+	@FindBy(id="ContentPlaceHolder1_txtMaximumTenor")
+	WebElement maximumTenure;
+	
+	@FindBy(id="ContentPlaceHolder1_txtMaturityAge")
+	WebElement maturityAge;
 
 	@FindBy(id="ContentPlaceHolder1_ddlReinsurer")
 	WebElement reInsurerDropDown;
@@ -169,6 +179,7 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		PageFactory.initElements(driver, this);
 	}
 	
+	//common steps  - GPS
 	public void mandatoryFields(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
 			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
 			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, 
@@ -182,7 +193,6 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		clienNameSearchField.sendKeys(Keys.ARROW_DOWN,Keys.ENTER);
 		Thread.sleep(9000);
 		agreementNumber.sendKeys(agreementNumberStringValue,Keys.ENTER);
-		System.out.println(agreementNumberStringValue);
 		quotationDetails.sendKeys(quotationDetailsStringValue,Keys.ENTER);
 		selectVisibleText(contactPersonTitle, title);
 		contactPersonFirstName.sendKeys(firstName,Keys.ENTER);
@@ -217,7 +227,6 @@ public class MasterPolicyMakerPage extends AbsliBase {
 
 			isNRALetterReceivedNoButton.click();
 		}
-		
 		selectVisibleText(frequencyDropDown, frequency);
 		Thread.sleep(3000);
 		selectVisibleText(zoneDropDown, zone);
@@ -242,7 +251,7 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		}
 	}
 	
-	
+	//Product - GPS
 	
 	/* TestDataFromTC_MPM_001 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 'GPS Base Benefit' & 
 	 * variant type as 'Customer Defined SA'.
@@ -545,8 +554,123 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		String popMsgTextValue = popMessageText.getText();
 		System.out.println("Popup Message: " + popMsgTextValue);
 		okButtonInPopMessage.click();
+	}
+
 	
-		
+	//Verify able to capture the Error popup message & screenshot
+	
+	public void captureAErrorPopupMessage(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
+			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
+			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
+			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
+			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,String benefits, 
+			String varientType, String freeCoverLimitValue) throws Throwable 
+	{
+		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
+				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
+				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
+				reinsurerValue, unitAddress, addressDetails);
+
+		selectVisibleText(benefitsDropDown, benefits);
+		selectVisibleText(variantTypeDropDown, varientType);
+		wait.until(ExpectedConditions.elementToBeClickable(freeCoverLimit));
+		freeCoverLimit.sendKeys(freeCoverLimitValue,Keys.ENTER);
+		addRidersButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		okButtonInPopMessage.click();
+		sentToCheckerButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		String popMsgTextValue = popMessageText.getText();
+		if(popMsgTextValue.equals("Master Policy Number Sent for Checker Approval Successfully"))
+		{
+			System.out.println("Popup Message: " + popMsgTextValue);
+		}
+		else
+		{
+			System.out.println("Popup Message: " + popMsgTextValue);
+			TestUtill.takeScreenshotAtEndOfTest(popMsgTextValue);
+		}
+		okButtonInPopMessage.click();
 	}
 	
+	
+	
+	
+	
+	//Product - GBY
+	
+	/*  TC_GBY_MPM_001 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 
+	 * 'ABSLI Group BIMA Yojana Death Benefit V3' & variant type as 'Customer Defined SA'.
+	 */
+	public void createMasterPolicyMakerWithGPSBaseBenefitAndVariantType(String clientName, String agreementNumberStringValue, 
+			String quotationDetailsStringValue, String title, String firstName, String number, String emailIDStringValue, 
+			String numberOfInsured, String totalSumAssuredStringValue, String agentCodeValue, String brokerageUpdationValue, 
+			String varient, String inceptionDateValue, String conditionsValue, String benefitType, String windowPeriodValue, 
+			String zone, String minimumAge, String maximumAge, String minimumTenureValue, String maximumTenureValue, 
+   			String maturityAgeValue, String reinsurerValue, String unitAddress, String addressDetails, String benefits, 
+   			String varientType, String freeCoverLimitValue, String minimumCapValue, String maximumCapValue) throws Throwable
+	{
+		clienNameSearchField.sendKeys(clientName);
+		Thread.sleep(2000);
+		clienNameSearchField.sendKeys(Keys.ARROW_DOWN,Keys.ENTER);
+		Thread.sleep(9000);
+		agreementNumber.sendKeys(agreementNumberStringValue,Keys.ENTER);
+		quotationDetails.sendKeys(quotationDetailsStringValue,Keys.ENTER);
+		selectVisibleText(contactPersonTitle, title);
+		contactPersonFirstName.sendKeys(firstName,Keys.ENTER);
+		contactNumber.sendKeys(number,Keys.ENTER);
+		emailID.sendKeys(emailIDStringValue,Keys.ENTER);
+		totalProbableNumberOfInsured.click();
+		totalProbableNumberOfInsured.sendKeys(numberOfInsured,Keys.ENTER);
+		totalSumAssured.sendKeys(totalSumAssuredStringValue,Keys.ENTER);
+		agentCode.sendKeys(agentCodeValue,Keys.ENTER);
+		brokerageUpdation.clear();
+		brokerageUpdation.sendKeys(brokerageUpdationValue,Keys.ENTER);
+		selectVisibleText(variantDropDown, varient);
+		Thread.sleep(3000);
+		inceptionDate.sendKeys(inceptionDateValue,Keys.ENTER);
+		specialConditions.sendKeys(conditionsValue,Keys.ENTER);
+		Thread.sleep(3000);
+		selectVisibleText(benefitTypeDropDown, benefitType);
+		Thread.sleep(3000);
+		windowPeriodForMemberAddition.sendKeys(windowPeriodValue,Keys.ENTER);
+		selectVisibleText(zoneDropDown, zone);
+		Thread.sleep(3000);
+		underwritingMinimumAge.sendKeys(minimumAge,Keys.ENTER);
+		underwritingMaximumAge.sendKeys(maximumAge,Keys.ENTER);
+		minimumTenure.sendKeys(minimumTenureValue);
+		maximumTenure.sendKeys(maximumTenureValue);
+		maturityAge.sendKeys(maturityAgeValue);
+		selectVisibleText(reInsurerDropDown, reinsurerValue);
+		Thread.sleep(3000);
+		//Unit Details
+				if(unitAddress.equals("No")) {
+					unitAddressNoButton.click();
+				}else {
+					unitAddressYesButton.click();
+					//need to write the code for new unit address
+				} 
+				if(addressDetails.equals("No"))
+				{
+					addressNoButton.click();
+				}else {
+					addressYesButton.click();
+					//need to write the code for new address
+				}
+		selectVisibleText(benefitsDropDown, benefits);
+		selectVisibleText(variantTypeDropDown, varientType);
+		wait.until(ExpectedConditions.elementToBeClickable(minimumCap));
+		freeCoverLimit.sendKeys(freeCoverLimitValue,Keys.ENTER);
+		minimumCap.sendKeys(minimumCapValue,Keys.ENTER);
+		maximumCap.sendKeys(maximumCapValue,Keys.ENTER);
+		addRidersButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		okButtonInPopMessage.click();
+		sentToCheckerButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		String popMsgTextValue = popMessageText.getText();
+		System.out.println("Popup Message: " + popMsgTextValue);
+		okButtonInPopMessage.click();
+	}
 }

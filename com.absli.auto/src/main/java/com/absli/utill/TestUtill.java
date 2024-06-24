@@ -21,9 +21,9 @@ import com.absli.base.AbsliBase;
 
 public class TestUtill extends AbsliBase {
 	
-	public static long Implicitly_Wait = 3000;
-	public static long pageLoad_Timeout = 5000;
-	public static long Explicitly_Wait = 20;
+	public static long Implicitly_Wait = 30;
+	public static long pageLoad_Timeout = 30;
+	public static long Explicitly_Wait = 5;
 
 	public static void takeScreenshotAtEndOfTest(String name) throws IOException
 	{

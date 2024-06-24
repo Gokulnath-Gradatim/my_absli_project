@@ -1,4 +1,4 @@
-package com.absli.testCases;
+package com.absli.logout.testcases;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;

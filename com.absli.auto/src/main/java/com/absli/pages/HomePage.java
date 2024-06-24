@@ -47,6 +47,13 @@ public class HomePage extends AbsliBase {
 	@FindBy(id = "li_2005")
 	WebElement gpsUWDecision;
 	
+	@FindBy(id = "liAccount")
+	WebElement myAccount;
+	
+	@FindBy(linkText = "Change Product")
+	WebElement changeProduct;
+	 
+	
 	public HomePage()
 	{
 		PageFactory.initElements(driver, this);
@@ -103,5 +110,11 @@ public class HomePage extends AbsliBase {
 	{
 		endorsement.click();
 		gpsUWDecision.click();
+	}
+	
+	public void changeProduct()
+	{
+		myAccount.click();
+		changeProduct.click();
 	}
 }

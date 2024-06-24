@@ -93,7 +93,6 @@ public class ClientOrganizationPage extends AbsliBase {
 		PageFactory.initElements(driver, this);
 	}
 
-	
 	//TC_CO_001 - Verify user able to create the Client Organization by providing only the Mandatory fields & without GST
 	public void passTheValueToMandatoryFieldsWithoutGST(String cName, String occup, String title, String Fname, String typeofClient, 
 			String Pan, String gstType, String changePasswordAccessValue, String servicingBranchDropDown, String marketingOfficerCodeNum, String adds1, String adds2, String zipCode, 
@@ -119,7 +118,7 @@ public class ClientOrganizationPage extends AbsliBase {
 		pinCode.sendKeys(zipCode);
 		selectVisibleText(countryDropDown, county);
 		selectVisibleText(stateDropDown, state);
-		Thread.sleep(9000);
+		Thread.sleep(6000);
 		selectVisibleText(districtDropDown, district);
 		Thread.sleep(4000);
 		addAddressButton.click();
