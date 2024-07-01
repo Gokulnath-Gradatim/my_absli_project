@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="com.absli.gps.master.policy.maker.page.testcases.TC_MPM_005_MasterPolicyMakerWithGPSBaseBenefitAndFutureServiceGratuityAmount"/>
+      <class name="com.absli.gps.master.policy.maker.page.testcases.TC_MPM_006_MasterPolicyMakerWithGPSBaseBenefitAndCustomerDefinedSAWithRider"/>
+      <class name="com.absli.gps.master.policy.maker.page.testcases.TC_MPM_004_MasterPolicyMakerWithGPSBaseBenefitAndGradedCover"/>
+      <class name="com.absli.gps.master.policy.maker.page.testcases.ErrorPopupMessage"/>
+      <class name="com.absli.gps.master.policy.maker.page.testcases.TC_MPM_002_MasterPolicyMakerWithGPSBaseBenefitAndFlatSumAssured"/>
+      <class name="com.absli.gps.master.policy.maker.page.testcases.TC_MPM_007_MasterPolicyMakerWithGPSBaseBenefitAndGradedCoverSalaryMultiple"/>
+      <class name="com.absli.gps.master.policy.maker.page.testcases.TC_MPM_003_MasterPolicyMakerWithGPSBaseBenefitAndMultipleOfSalary"/>
+      <class name="com.absli.gps.master.policy.maker.page.testcases.MasterPolicyMakerFunctionalityTest"/>
+      <class name="com.absli.gps.master.policy.maker.page.testcases.TC_MPM_001_MasterPolicyMakerWithGPSBaseBenefitAndCustomerDefinedSA"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
