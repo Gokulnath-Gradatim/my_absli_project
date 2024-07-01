@@ -1,4 +1,4 @@
-package com.absli.pages;
+package com.absli.pages.clientmaster;
 import java.time.Duration;
 
 import org.openqa.selenium.Keys;
@@ -155,6 +155,7 @@ public class ClientOrganizationPage extends AbsliBase {
 		selectVisibleText(servicingBranch, servicingBranchDropDown);
 		Thread.sleep(3000);
 		marketingOfficerCode.sendKeys(marketingOfficerCodeNum);
+		Thread.sleep(3000);
 		address1.sendKeys(adds1);
 		address2.sendKeys(adds2);
 		pinCode.sendKeys(zipCode);
@@ -247,6 +248,7 @@ public class ClientOrganizationPage extends AbsliBase {
 		selectVisibleText(servicingBranch, servicingBranchDropDown);
 		Thread.sleep(3000);
 		marketingOfficerCode.sendKeys(marketingOfficerCodeNum);
+		Thread.sleep(3000);
 		String gradeString = gradeValue;
 		int  gradeInt= Integer.valueOf(gradeString);
 		for (int i=1; i<=gradeInt; i++)

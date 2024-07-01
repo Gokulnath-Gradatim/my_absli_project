@@ -1,5 +1,6 @@
-package com.absli.pages;
+package com.absli.pages.clientmaster;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.Iterator;
 import java.util.List;
@@ -59,6 +60,15 @@ public class MasterPolicyMakerPage extends AbsliBase {
 
 	@FindBy(id = "ContentPlaceHolder1_txtBrokerageUpdation")
 	WebElement brokerageUpdation;
+	
+	@FindBy(id = "ContentPlaceHolder1_rbIsChannelDiscountApplicable_0")
+	WebElement isChannelDiscountApplicableYesButton;
+	
+	@FindBy(id = "ContentPlaceHolder1_rbIsChannelDiscountApplicable_1")
+	WebElement isChannelDiscountApplicableNoButton;
+	
+	@FindBy(id = "ContentPlaceHolder1_ddlChannelType")
+	WebElement channelTypeDropDown;
 
 	@FindBy(id = "ContentPlaceHolder1_ddlProduct")
 	WebElement variantDropDown;
@@ -113,7 +123,28 @@ public class MasterPolicyMakerPage extends AbsliBase {
 
 	@FindBy(id="ContentPlaceHolder1_ddlReinsurer")
 	WebElement reInsurerDropDown;
-
+	
+	@FindBy(id="ContentPlaceHolder1_ddlInstitutionType")
+	WebElement institutionTypeDropDown;
+	
+	@FindBy(id="ContentPlaceHolder1_chkLevelCover")
+	WebElement levelCoverCheckBox;
+	
+	@FindBy(id="ContentPlaceHolder1_chkVariableCover")
+	WebElement reducingCoverCheckBox;
+	
+	@FindBy(id="ContentPlaceHolder1_chkIncreasingCover")
+	WebElement increasingCoverCheckBox;
+	
+	@FindBy(id="ContentPlaceHolder1_txtIncreasePercentage")
+	WebElement increasePercentage;
+	
+	@FindBy(id="ContentPlaceHolder1_txtincreasemaxLimit")
+	WebElement increasingCoverMaxLimit;
+	
+	@FindBy(css="#ContentPlaceHolder1_ChkbxLoanTypeList label")
+	List<WebElement> loanTypeReinsurerLabels;
+	
 	@FindBy(id="ContentPlaceHolder1_rbUnitAddress_1")
 	WebElement unitAddressNoButton;
 
@@ -165,6 +196,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	@FindBy(xpath = "//button[@type=\"button\"][@class=\"ui-button ui-corner-all ui-widget\"]")
 	WebElement okButtonInPopMessage;
 	
+	@FindBy(xpath = "//div[@id=\"ContentPlaceHolder1_UpdatePanel3\"]//input[@id=\"ContentPlaceHolder1_fuLogo\"]")
+	WebElement chooseFile;
+	
+	@FindBy(id="ContentPlaceHolder1_btnupload")
+	WebElement fileUploadButton;
+	
 	@FindBy(id = "ContentPlaceHolder1_btnSendToApprover")
 	WebElement sentToCheckerButton;
 	
@@ -177,6 +214,23 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	public MasterPolicyMakerPage()
 	{
 		PageFactory.initElements(driver, this);
+	}
+	
+	
+	public void popupMsgVerification(String popupSuccessfullMsgTextValue) throws Throwable
+	{
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		String popMsgTextValue = popMessageText.getText();
+		if(popMsgTextValue.equals(popupSuccessfullMsgTextValue))
+		{
+			System.out.println("Popup Message: " + popMsgTextValue);
+		}
+		else
+		{
+			System.out.println("Popup Message: " + popMsgTextValue);
+			TestUtill.takeScreenshotAtEndOfTest(popMsgTextValue);
+		}
+		okButtonInPopMessage.click();
 	}
 	
 	//common steps  - GPS
@@ -594,10 +648,6 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		okButtonInPopMessage.click();
 	}
 	
-	
-	
-	
-	
 	//Product - GBY
 	
 	/*  TC_GBY_MPM_001 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 
@@ -673,4 +723,98 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		System.out.println("Popup Message: " + popMsgTextValue);
 		okButtonInPopMessage.click();
 	}
+	
+	//Product - GSS - Group Smart Select
+	public void createMasterPolicyMaker() throws Throwable
+	{
+		String isChannelDiscountApplicableValue= "Yes";
+		String coverType= "Level Cover";
+		String unitAddress= "No";
+		String addressDetails= "No";
+		
+		clienNameSearchField.sendKeys("Absli-Auto-001");
+		Thread.sleep(2000);
+		clienNameSearchField.sendKeys(Keys.ARROW_DOWN,Keys.ENTER);
+		Thread.sleep(9000);
+		agreementNumber.sendKeys("896745");
+		quotationDetails.sendKeys("NA");
+		selectVisibleText(contactPersonTitle, "Mr");
+		contactPersonFirstName.sendKeys("Gokul");
+		contactNumber.sendKeys("9867864523",Keys.ENTER);
+		emailID.sendKeys("absli@gmail.com",Keys.ENTER);
+		totalProbableNumberOfInsured.sendKeys("100",Keys.ENTER);
+		totalSumAssured.sendKeys("1000000",Keys.ENTER);
+		agentCode.sendKeys("132430",Keys.ENTER);
+		brokerageUpdation.sendKeys("10");
+		if(isChannelDiscountApplicableValue.equals("Yes"))
+		{
+			isChannelDiscountApplicableYesButton.click();
+			wait.until(ExpectedConditions.elementToBeClickable(channelTypeDropDown));
+			selectVisibleText(channelTypeDropDown, "Direct");
+		}
+		else {
+			isChannelDiscountApplicableNoButton.click();
+		}
+		selectVisibleText(variantDropDown, "GSS Benefit and Rider");
+		Thread.sleep(3000);
+		inceptionDate.sendKeys("1/1/2024");
+		specialConditions.sendKeys("xxyz");
+		Thread.sleep(3000);
+		selectVisibleText(zoneDropDown, "Jayanagar");
+		underwritingMinimumAge.sendKeys("18",Keys.ENTER);
+		underwritingMaximumAge.sendKeys("70",Keys.ENTER);
+		selectVisibleText(reInsurerDropDown, "test");
+		Thread.sleep(3000);
+		selectVisibleText(institutionTypeDropDown, "B1");
+		if(coverType.equals("Level Cover"))
+		{
+			levelCoverCheckBox.click();
+		}else if (coverType.equals("Reducing Cover")) 
+		{
+			reducingCoverCheckBox.click();
+		}else if (coverType.equals("Increasing Cover"))
+		{
+			increasingCoverCheckBox.click();
+			increasePercentage.sendKeys("30");
+			increasingCoverMaxLimit.sendKeys("100000");
+		}else {
+			System.out.println("The cover type is not available. Please check the cover type");
+		}
+		for (WebElement loanTypeReinsurerlabel : loanTypeReinsurerLabels) 
+		{
+			if(loanTypeReinsurerlabel.getText().equals("Testing"))
+			{
+				WebElement checkBox = loanTypeReinsurerlabel.findElement(By.xpath("preceding-sibling::input[@type='checkbox']"));
+				if (!checkBox.isSelected()) 
+				{
+					checkBox.click();
+				}
+				break;
+			}
+		}
+		//Unit Details
+		if(unitAddress.equals("No")) {
+			unitAddressNoButton.click();
+		}else {
+			unitAddressYesButton.click();
+			//need to write the code for new unit address
+		} 
+		if(addressDetails.equals("No"))
+		{
+			addressNoButton.click();
+		}else {
+			addressYesButton.click();
+			//need to write the code for new address
+		}
+		selectVisibleText(benefitsDropDown, "Death Benefit");
+		wait.until(ExpectedConditions.elementToBeClickable(addRidersButton));
+		addRidersButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		okButtonInPopMessage.click();
+		chooseFile.sendKeys("C:\\Users\\Gokulnath\\Desktop\\ABSLI\\GSS\\New folder\\GSS Premium Rate Sheet-Auto-01.xlsx");
+		wait.until(ExpectedConditions.elementToBeClickable(fileUploadButton));
+		fileUploadButton.click();
+		
+	}
+	
 }

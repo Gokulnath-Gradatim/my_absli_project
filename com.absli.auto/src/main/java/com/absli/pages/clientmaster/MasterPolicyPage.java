@@ -1,4 +1,4 @@
-package com.absli.pages;
+package com.absli.pages.clientmaster;
 
 import java.awt.Robot;
 import java.awt.event.KeyEvent;

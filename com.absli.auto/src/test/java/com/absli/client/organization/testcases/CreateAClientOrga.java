@@ -9,9 +9,9 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.absli.base.AbsliBase;
-import com.absli.pages.ClientOrganizationPage;
 import com.absli.pages.HomePage;
 import com.absli.pages.LoginPage;
+import com.absli.pages.clientmaster.ClientOrganizationPage;
 import com.absli.utill.MyITestListener;
 import com.absli.utill.MySuiteListener;
 import com.absli.utill.TestUtill;

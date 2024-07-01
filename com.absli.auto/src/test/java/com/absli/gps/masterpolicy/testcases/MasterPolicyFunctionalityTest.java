@@ -1,4 +1,4 @@
-package com.absli.gps.master.policy.testcases;
+package com.absli.gps.masterpolicy.testcases;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import com.absli.base.AbsliBase;
 import com.absli.pages.HomePage;
 import com.absli.pages.LoginPage;
-import com.absli.pages.MasterPolicyPage;
+import com.absli.pages.clientmaster.MasterPolicyPage;
 import com.absli.utill.MyITestListener;
 import com.absli.utill.MySuiteListener;
 import com.absli.utill.TestUtill;
