@@ -233,7 +233,7 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		okButtonInPopMessage.click();
 	}
 	
-	//common steps  - GPS
+	//common steps - GPS
 	public void mandatoryFields(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
 			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
 			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, 
@@ -305,10 +305,140 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		}
 	}
 	
+	//Customer Defined SA
+	public void customerDefinedSA(String freeCoverLimitValue)
+	{
+		wait.until(ExpectedConditions.elementToBeClickable(freeCoverLimit));
+		freeCoverLimit.sendKeys(freeCoverLimitValue,Keys.ENTER);
+	}
+	//Flat Sum Assured
+	public void flatSumAssured(String sumAssuredValue, String freeCoverLimitValue)
+	{
+		wait.until(ExpectedConditions.elementToBeClickable(sumAssured));
+		sumAssured.sendKeys(sumAssuredValue,Keys.ENTER);
+		freeCoverLimit.sendKeys(freeCoverLimitValue,Keys.ENTER);
+	}
+	//Multiple Of Salary
+	public void multipleOfSalary(String multiplesOfSalaryValue, String freeCoverLimitValue, String minimumCapValue, String maximumCapValue)
+	{
+		wait.until(ExpectedConditions.elementToBeClickable(multiplesOfSalary));
+		multiplesOfSalary.sendKeys(multiplesOfSalaryValue,Keys.ENTER);
+		freeCoverLimit.sendKeys(freeCoverLimitValue,Keys.ENTER);
+		minimumCap.sendKeys(minimumCapValue,Keys.ENTER);
+		maximumCap.sendKeys(maximumCapValue,Keys.ENTER);
+	}
+	
+	//Graded Cover - Grade 1
+	public void gradedCoverGrade1(String gradeValue1, String sumAssuredValue1, String freeCoverLimitValue1, 
+			String minimumCapValue1, String maximumCapValue1)
+	{
+		wait.until(ExpectedConditions.elementToBeClickable(sumAssured));
+		selectVisibleText(gradeDropDown, gradeValue1);
+		sumAssured.sendKeys(sumAssuredValue1,Keys.ENTER);
+		freeCoverLimit.sendKeys(freeCoverLimitValue1,Keys.ENTER);
+		minimumCap.sendKeys(minimumCapValue1,Keys.ENTER);
+		maximumCap.sendKeys(maximumCapValue1,Keys.ENTER);	
+	}
+	
+	//Graded Cover - Grade 2
+	public void gradedCoverGrade2(String gradeValue2, String sumAssuredValue2, String freeCoverLimitValue2, 
+			String minimumCapValue2, String maximumCapValue2)
+	{
+		wait.until(ExpectedConditions.elementToBeClickable(sumAssured));
+		selectVisibleText(gradeDropDown, gradeValue2);
+		sumAssured.sendKeys(sumAssuredValue2,Keys.ENTER);
+		freeCoverLimit.sendKeys(freeCoverLimitValue2,Keys.ENTER);
+		minimumCap.sendKeys(minimumCapValue2,Keys.ENTER);
+		maximumCap.sendKeys(maximumCapValue2,Keys.ENTER);
+	}
+	
+	//Graded Cover - Grade 3
+		public void gradedCoverGrade3(String gradeValue3, String sumAssuredValue3, String freeCoverLimitValue3, 
+				String minimumCapValue3, String maximumCapValue3)
+		{
+			wait.until(ExpectedConditions.elementToBeClickable(sumAssured));
+			selectVisibleText(gradeDropDown, gradeValue3);
+			sumAssured.sendKeys(sumAssuredValue3,Keys.ENTER);
+			freeCoverLimit.sendKeys(freeCoverLimitValue3,Keys.ENTER);
+			minimumCap.sendKeys(minimumCapValue3,Keys.ENTER);
+			maximumCap.sendKeys(maximumCapValue3,Keys.ENTER);
+		}
+		
+	//Future Service Gratuity Amount
+		public void futureServiceGratuityAmount(String retirementAgeValueInVariantType, String maxSumAssuredValue, 
+				String freeCoverLimitValue, String minimumCapValue, String maximumCapValue)
+		{
+			wait.until(ExpectedConditions.elementToBeClickable(retirementAgeInVariantType));
+			retirementAgeInVariantType.sendKeys(retirementAgeValueInVariantType,Keys.ENTER);
+			maxSumAssured.sendKeys(maxSumAssuredValue,Keys.ENTER);
+			freeCoverLimit.sendKeys(freeCoverLimitValue,Keys.ENTER);
+			minimumCap.sendKeys(minimumCapValue,Keys.ENTER);
+			maximumCap.sendKeys(maximumCapValue,Keys.ENTER);
+		}
+	//Rider
+		public void rider(String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, String minimumCapValue,
+				String maximumCapValue)
+		{
+			wait.until(ExpectedConditions.elementToBeClickable(percentageOfBaseBenefit));
+			percentageOfBaseBenefit.sendKeys(percentageofBaseBenefitValue,Keys.ENTER);
+			freeCoverLimit.sendKeys(freeCoverLimitValueForRider);
+			minimumCap.sendKeys(minimumCapValue,Keys.ENTER);
+			maximumCap.sendKeys(maximumCapValue,Keys.ENTER);
+		}
+	//Graded Cover Salary Multiple - Grade 1
+		public void gradedCoverSalaryMultipleGrade1(String gradeValue1, String multiplesOfSalaryValue1, String freeCoverLimitValue1,
+				String minimumCapValue1, String maximumCapValue1)
+		{
+			wait.until(ExpectedConditions.elementToBeClickable(gradeDropDown));
+			selectVisibleText(gradeDropDown, gradeValue1);
+			multiplesOfSalary.sendKeys(multiplesOfSalaryValue1,Keys.ENTER);
+			freeCoverLimit.sendKeys(freeCoverLimitValue1,Keys.ENTER);
+			minimumCap.sendKeys(minimumCapValue1,Keys.ENTER);
+			maximumCap.sendKeys(maximumCapValue1,Keys.ENTER);
+		}
+	//Graded Cover Salary Multiple - Grade 3
+		public void gradedCoverSalaryMultipleGrade2(String gradeValue2, String multiplesOfSalaryValue2, String freeCoverLimitValue2,
+					String minimumCapValue2, String maximumCapValue2)
+		{
+			wait.until(ExpectedConditions.elementToBeClickable(gradeDropDown));
+			selectVisibleText(gradeDropDown, gradeValue2);
+			multiplesOfSalary.sendKeys(multiplesOfSalaryValue2,Keys.ENTER);
+			freeCoverLimit.sendKeys(freeCoverLimitValue2,Keys.ENTER);
+			minimumCap.sendKeys(minimumCapValue2,Keys.ENTER);
+			maximumCap.sendKeys(maximumCapValue2,Keys.ENTER);
+		}
+	//Graded Cover Salary Multiple - Grade 3
+		public void gradedCoverSalaryMultipleGrade3(String gradeValue3, String multiplesOfSalaryValue3, String freeCoverLimitValue3,
+					String minimumCapValue3, String maximumCapValue3)
+		{
+			wait.until(ExpectedConditions.elementToBeClickable(gradeDropDown));
+			selectVisibleText(gradeDropDown, gradeValue3);
+			multiplesOfSalary.sendKeys(multiplesOfSalaryValue3,Keys.ENTER);
+			freeCoverLimit.sendKeys(freeCoverLimitValue3,Keys.ENTER);
+			minimumCap.sendKeys(minimumCapValue3,Keys.ENTER);
+			maximumCap.sendKeys(maximumCapValue3,Keys.ENTER);
+		}
+	//Accept the popup message and click the 'Ok' button
+		public void acceptPopupMsg()
+		{
+			wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+			okButtonInPopMessage.click();
+		}
+	//Capture the popup message and Click on 'Ok' button
+		public void acceptPopupMsgAndCaptureTheMsg()
+		{
+			wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+			String popMsgTextValue = popMessageText.getText();
+			System.out.println("Popup Message: " + popMsgTextValue);
+			okButtonInPopMessage.click();
+		}
+		
+		
+		
 	//Product - GPS
 	
-	/* TestDataFromTC_MPM_001 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 'GPS Base Benefit' & 
-	 * variant type as 'Customer Defined SA'.
+	/* TC_MPM_001 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 'GPS Base Benefit' & 
+	 * 				variant type as 'Customer Defined SA'.
 	 */
 	public void masterPolicyWithMandatoryFieldsAndCustomerDefinedSA(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
 			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
@@ -325,8 +455,7 @@ public class MasterPolicyMakerPage extends AbsliBase {
 
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
-		wait.until(ExpectedConditions.elementToBeClickable(freeCoverLimit));
-		freeCoverLimit.sendKeys(freeCoverLimitValue,Keys.ENTER);
+		customerDefinedSA(freeCoverLimitValue);
 		addRidersButton.click();
 		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
 		okButtonInPopMessage.click();
@@ -339,8 +468,8 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		
 	}
 	
-	/* TestDataFromTC_MPM_002 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 'GPS Base Benefit' & 
-	 * variant type as 'Flat Sum Assured'.
+	/* TC_MPM_002 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 'GPS Base Benefit' & 
+	 * 				variant type as 'Flat Sum Assured'.
 	 */
 
 	public void masterPolicyWithMandatoryFieldsAndFlatSumAssured(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
@@ -358,9 +487,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
-		wait.until(ExpectedConditions.elementToBeClickable(sumAssured));
-		sumAssured.sendKeys(sumAssuredValue,Keys.ENTER);
-		freeCoverLimit.sendKeys(freeCoverLimitValue,Keys.ENTER);
+		flatSumAssured(sumAssuredValue, freeCoverLimitValue);
+//		wait.until(ExpectedConditions.elementToBeClickable(sumAssured));
+//		sumAssured.sendKeys(sumAssuredValue,Keys.ENTER);
+//		freeCoverLimit.sendKeys(freeCoverLimitValue,Keys.ENTER);
 		addRidersButton.click();
 		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
 		okButtonInPopMessage.click();
@@ -371,8 +501,8 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		okButtonInPopMessage.click();
 	}
 	
-	/* TestDataFromTC_MPM_003 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 'GPS Base Benefit' & 
-	 * variant type as 'Multiple Of Salary'.
+	/* TC_MPM_003 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 'GPS Base Benefit' & 
+	 * 				variant type as 'Multiple Of Salary'.
 	 */
 	public void masterPolicyWithMandatoryFieldsAndMultipleOfSalary(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
 			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
@@ -390,10 +520,11 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
 		wait.until(ExpectedConditions.elementToBeClickable(multiplesOfSalary));
-		multiplesOfSalary.sendKeys(multiplesOfSalaryValue,Keys.ENTER);
-		freeCoverLimit.sendKeys(freeCoverLimitValue,Keys.ENTER);
-		minimumCap.sendKeys(minimumCapValue,Keys.ENTER);
-		maximumCap.sendKeys(maximumCapValue,Keys.ENTER);
+		multipleOfSalary(multiplesOfSalaryValue, freeCoverLimitValue, minimumCapValue, maximumCapValue);
+//		multiplesOfSalary.sendKeys(multiplesOfSalaryValue,Keys.ENTER);
+//		freeCoverLimit.sendKeys(freeCoverLimitValue,Keys.ENTER);
+//		minimumCap.sendKeys(minimumCapValue,Keys.ENTER);
+//		maximumCap.sendKeys(maximumCapValue,Keys.ENTER);
 		addRidersButton.click();
 		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
 		okButtonInPopMessage.click();
@@ -404,8 +535,8 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		okButtonInPopMessage.click();
 	}
 
-	/* TestDataFromTC_MPM_004 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 'GPS Base Benefit' & 
-	 * variant type as 'Graded Cover'.
+	/* TC_MPM_004 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 'GPS Base Benefit' & 
+	 * 				variant type as 'Graded Cover'.
 	 */
 	public void masterPolicyWithMandatoryFieldsAndGradedCover(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
 			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
@@ -425,36 +556,39 @@ public class MasterPolicyMakerPage extends AbsliBase {
 
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
-		wait.until(ExpectedConditions.elementToBeClickable(sumAssured));
-		selectVisibleText(gradeDropDown, gradeValue1);
-		sumAssured.sendKeys(sumAssuredValue1,Keys.ENTER);
-		freeCoverLimit.sendKeys(freeCoverLimitValue1,Keys.ENTER);
-		minimumCap.sendKeys(minimumCapValue1,Keys.ENTER);
-		maximumCap.sendKeys(maximumCapValue1,Keys.ENTER);
+		gradedCoverGrade1(gradeValue1, sumAssuredValue1, freeCoverLimitValue1, minimumCapValue1, maximumCapValue1);
+//		wait.until(ExpectedConditions.elementToBeClickable(sumAssured));
+//		selectVisibleText(gradeDropDown, gradeValue1);
+//		sumAssured.sendKeys(sumAssuredValue1,Keys.ENTER);
+//		freeCoverLimit.sendKeys(freeCoverLimitValue1,Keys.ENTER);
+//		minimumCap.sendKeys(minimumCapValue1,Keys.ENTER);
+//		maximumCap.sendKeys(maximumCapValue1,Keys.ENTER);
 		addRidersButton.click();
 		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
 		okButtonInPopMessage.click();
 		
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
-		wait.until(ExpectedConditions.elementToBeClickable(sumAssured));
-		selectVisibleText(gradeDropDown, gradeValue2);
-		sumAssured.sendKeys(sumAssuredValue2,Keys.ENTER);
-		freeCoverLimit.sendKeys(freeCoverLimitValue2,Keys.ENTER);
-		minimumCap.sendKeys(minimumCapValue2,Keys.ENTER);
-		maximumCap.sendKeys(maximumCapValue2,Keys.ENTER);
+		gradedCoverGrade2(gradeValue2, sumAssuredValue2, freeCoverLimitValue2, minimumCapValue2, maximumCapValue2);
+//		wait.until(ExpectedConditions.elementToBeClickable(sumAssured));
+//		selectVisibleText(gradeDropDown, gradeValue2);
+//		sumAssured.sendKeys(sumAssuredValue2,Keys.ENTER);
+//		freeCoverLimit.sendKeys(freeCoverLimitValue2,Keys.ENTER);
+//		minimumCap.sendKeys(minimumCapValue2,Keys.ENTER);
+//		maximumCap.sendKeys(maximumCapValue2,Keys.ENTER);
 		addRidersButton.click();
 		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
 		okButtonInPopMessage.click();
 		
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
-		wait.until(ExpectedConditions.elementToBeClickable(sumAssured));
-		selectVisibleText(gradeDropDown, gradeValue3);
-		sumAssured.sendKeys(sumAssuredValue3,Keys.ENTER);
-		freeCoverLimit.sendKeys(freeCoverLimitValue3,Keys.ENTER);
-		minimumCap.sendKeys(minimumCapValue3,Keys.ENTER);
-		maximumCap.sendKeys(maximumCapValue3,Keys.ENTER);
+		gradedCoverGrade3(gradeValue3, sumAssuredValue3, freeCoverLimitValue3, minimumCapValue3, maximumCapValue3);
+//		wait.until(ExpectedConditions.elementToBeClickable(sumAssured));
+//		selectVisibleText(gradeDropDown, gradeValue3);
+//		sumAssured.sendKeys(sumAssuredValue3,Keys.ENTER);
+//		freeCoverLimit.sendKeys(freeCoverLimitValue3,Keys.ENTER);
+//		minimumCap.sendKeys(minimumCapValue3,Keys.ENTER);
+//		maximumCap.sendKeys(maximumCapValue3,Keys.ENTER);
 		addRidersButton.click();
 		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
 		okButtonInPopMessage.click();
@@ -467,8 +601,8 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		
 	}
 
-	/* TestDataFromTC_MPM_005 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 'GPS Base Benefit' & 
-	 * variant type as 'Future Service Gratuity Amount'.
+	/* TC_MPM_005 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 'GPS Base Benefit' & 
+	 * 				variant type as 'Future Service Gratuity Amount'.
 	 */
 	public void masterPolicyWithMandatoryFieldsAndFutureServiceGratuityAmount(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
 			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
@@ -488,11 +622,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
-		retirementAgeInVariantType.sendKeys(retirementAgeValueInVariantType,Keys.ENTER);
-		maxSumAssured.sendKeys(maxSumAssuredValue,Keys.ENTER);
-		freeCoverLimit.sendKeys(freeCoverLimitValue,Keys.ENTER);
-		minimumCap.sendKeys(minimumCapValue,Keys.ENTER);
-		maximumCap.sendKeys(maximumCapValue,Keys.ENTER);
+		futureServiceGratuityAmount(retirementAgeValueInVariantType, maxSumAssuredValue, freeCoverLimitValue, minimumCapValue, maximumCapValue);
+//		retirementAgeInVariantType.sendKeys(retirementAgeValueInVariantType,Keys.ENTER);
+//		maxSumAssured.sendKeys(maxSumAssuredValue,Keys.ENTER);
+//		freeCoverLimit.sendKeys(freeCoverLimitValue,Keys.ENTER);
+//		minimumCap.sendKeys(minimumCapValue,Keys.ENTER);
+//		maximumCap.sendKeys(maximumCapValue,Keys.ENTER);
 		addRidersButton.click();
 		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
 		okButtonInPopMessage.click();
@@ -503,9 +638,9 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		okButtonInPopMessage.click();
 	}
 	
-	/* TestDataFromTC_MPM_006 - Verify user able to create the Master Policy by providing only the Mandatory fields with 
-	 * Benefit as 'GPS Base Benefit' & variant type as 'Customer Defined SA' and Benefit as 'GPS Rider - Accelerated Terminal 
-	 * Illness Rider' & variant type as 'Rider'.
+	/* TC_MPM_006 - Verify user able to create the Master Policy by providing only the Mandatory fields with 
+	 *				Benefit as 'GPS Base Benefit' & variant type as 'Customer Defined SA' and 
+	 *				Benefit as 'GPS Rider - Accelerated Terminal Illness Rider' & variant type as 'Rider'.
 	 */
 	
 	public void masterPolicyWithMandatoryFieldsAndRider(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
@@ -525,8 +660,9 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		//Base Benefit
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
-		wait.until(ExpectedConditions.elementToBeClickable(freeCoverLimit));
-		freeCoverLimit.sendKeys(freeCoverLimitValueForBaseBenefit,Keys.ENTER);
+		customerDefinedSA(freeCoverLimitValueForRider);
+//		wait.until(ExpectedConditions.elementToBeClickable(freeCoverLimit));
+//		freeCoverLimit.sendKeys(freeCoverLimitValueForBaseBenefit,Keys.ENTER);
 		addRidersButton.click();
 		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
 		okButtonInPopMessage.click();
@@ -534,11 +670,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		//Additional Rider
 		selectVisibleText(benefitsDropDown, benefits2);
 		selectVisibleText(variantTypeDropDown, varientType2);
-		wait.until(ExpectedConditions.elementToBeClickable(percentageOfBaseBenefit));
-		percentageOfBaseBenefit.sendKeys(percentageofBaseBenefitValue,Keys.ENTER);
-		freeCoverLimit.sendKeys(freeCoverLimitValueForRider);
-		minimumCap.sendKeys(minimumCapValue,Keys.ENTER);
-		maximumCap.sendKeys(maximumCapValue,Keys.ENTER);
+		rider(percentageofBaseBenefitValue, freeCoverLimitValueForRider, minimumCapValue, maximumCapValue);
+//		wait.until(ExpectedConditions.elementToBeClickable(percentageOfBaseBenefit));
+//		percentageOfBaseBenefit.sendKeys(percentageofBaseBenefitValue,Keys.ENTER);
+//		freeCoverLimit.sendKeys(freeCoverLimitValueForRider);
+//		minimumCap.sendKeys(minimumCapValue,Keys.ENTER);
+//		maximumCap.sendKeys(maximumCapValue,Keys.ENTER);
 		addRidersButton.click();
 		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
 		okButtonInPopMessage.click();
@@ -549,8 +686,8 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		okButtonInPopMessage.click();
 	}
 	
-	/* TestDataFromTC_MPM_007 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 
-	 * 'GPS Base Benefit' & variant type as 'Graded Cover Salary Multiple'.
+	/* TC_MPM_007 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 
+	 * 			  	'GPS Base Benefit' & variant type as 'Graded Cover Salary Multiple'.
 	 */
 	public void masterPolicyWithMandatoryFieldsAndGradedCoverSalaryMultiple(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
 			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
@@ -570,36 +707,39 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		//Grade 1
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
-		wait.until(ExpectedConditions.elementToBeClickable(gradeDropDown));
-		selectVisibleText(gradeDropDown, gradeValue1);
-		multiplesOfSalary.sendKeys(multiplesOfSalaryValue1,Keys.ENTER);
-		freeCoverLimit.sendKeys(freeCoverLimitValue1,Keys.ENTER);
-		minimumCap.sendKeys(minimumCapValue1,Keys.ENTER);
-		maximumCap.sendKeys(maximumCapValue1,Keys.ENTER);
+		gradedCoverSalaryMultipleGrade1(gradeValue1, multiplesOfSalaryValue1, freeCoverLimitValue1, minimumCapValue1, maximumCapValue1);
+//		wait.until(ExpectedConditions.elementToBeClickable(gradeDropDown));
+//		selectVisibleText(gradeDropDown, gradeValue1);
+//		multiplesOfSalary.sendKeys(multiplesOfSalaryValue1,Keys.ENTER);
+//		freeCoverLimit.sendKeys(freeCoverLimitValue1,Keys.ENTER);
+//		minimumCap.sendKeys(minimumCapValue1,Keys.ENTER);
+//		maximumCap.sendKeys(maximumCapValue1,Keys.ENTER);
 		addRidersButton.click();
 		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
 		okButtonInPopMessage.click();
 		//Grade 2
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
-		wait.until(ExpectedConditions.elementToBeClickable(gradeDropDown));
-		selectVisibleText(gradeDropDown, gradeValue2);
-		multiplesOfSalary.sendKeys(multiplesOfSalaryValue2,Keys.ENTER);
-		freeCoverLimit.sendKeys(freeCoverLimitValue2,Keys.ENTER);
-		minimumCap.sendKeys(minimumCapValue2,Keys.ENTER);
-		maximumCap.sendKeys(maximumCapValue2,Keys.ENTER);
+		gradedCoverSalaryMultipleGrade2(gradeValue2, multiplesOfSalaryValue2, freeCoverLimitValue2, minimumCapValue2, maximumCapValue2);
+//		wait.until(ExpectedConditions.elementToBeClickable(gradeDropDown));
+//		selectVisibleText(gradeDropDown, gradeValue2);
+//		multiplesOfSalary.sendKeys(multiplesOfSalaryValue2,Keys.ENTER);
+//		freeCoverLimit.sendKeys(freeCoverLimitValue2,Keys.ENTER);
+//		minimumCap.sendKeys(minimumCapValue2,Keys.ENTER);
+//		maximumCap.sendKeys(maximumCapValue2,Keys.ENTER);
 		addRidersButton.click();
 		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
 		okButtonInPopMessage.click();
 		//Grade 3
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
-		wait.until(ExpectedConditions.elementToBeClickable(gradeDropDown));
-		selectVisibleText(gradeDropDown, gradeValue3);
-		multiplesOfSalary.sendKeys(multiplesOfSalaryValue3,Keys.ENTER);
-		freeCoverLimit.sendKeys(freeCoverLimitValue3,Keys.ENTER);
-		minimumCap.sendKeys(minimumCapValue3,Keys.ENTER);
-		maximumCap.sendKeys(maximumCapValue3,Keys.ENTER);
+		gradedCoverSalaryMultipleGrade3(gradeValue3, multiplesOfSalaryValue3, freeCoverLimitValue3, minimumCapValue3, maximumCapValue3);
+//		wait.until(ExpectedConditions.elementToBeClickable(gradeDropDown));
+//		selectVisibleText(gradeDropDown, gradeValue3);
+//		multiplesOfSalary.sendKeys(multiplesOfSalaryValue3,Keys.ENTER);
+//		freeCoverLimit.sendKeys(freeCoverLimitValue3,Keys.ENTER);
+//		minimumCap.sendKeys(minimumCapValue3,Keys.ENTER);
+//		maximumCap.sendKeys(maximumCapValue3,Keys.ENTER);
 		addRidersButton.click();
 		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
 		okButtonInPopMessage.click();
@@ -609,7 +749,245 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		System.out.println("Popup Message: " + popMsgTextValue);
 		okButtonInPopMessage.click();
 	}
+	
+	
+	/*	TC_MPM_008 - Verify user able to create the Master Policy by providing only the Mandatory fields with 
+	 * 				 Benefit as 'GPS Base Benefit' & variant type as 'Customer Defined SA' and 
+	 * 				 Riders as 'GPS Rider - Terminal illness Premier (In-Built)' & variant type as 'Rider'
+	 */
 
+	public void masterPolicyWithMandatoryFieldsAndCustomerDefinedSAWithInBuiltRider(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
+			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
+			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
+			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
+			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String UnitAddress, String addressDetails,
+			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, 
+			String minimumCapValue, String maximumCapValue) throws Throwable
+	{
+		mandatoryFields(clientName, agreementNumberStringValue, 
+				quotationDetailsStringValue, title, firstName, number, emailIDStringValue, numberOfInsured, 
+				totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, retirementAgeValue, 
+				nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
+				UnitAddress, addressDetails);
+		selectVisibleText(benefitsDropDown, benefits1);
+		selectVisibleText(variantTypeDropDown, varientType1);
+		customerDefinedSA(freeCoverLimitValueForRider);
+		addRidersButton.click();
+		acceptPopupMsg();
+		selectVisibleText(benefitsDropDown, benefits2);
+		selectVisibleText(variantTypeDropDown, varientType2);
+		rider(percentageofBaseBenefitValue, freeCoverLimitValueForRider, minimumCapValue, maximumCapValue);
+		addRidersButton.click();
+		acceptPopupMsg();
+		sentToCheckerButton.click();
+		acceptPopupMsgAndCaptureTheMsg();
+	}
+	
+	/*	TC_MPM_009 - Verify user able to create the Master Policy by providing only the Mandatory fields with 
+	 * 				 Benefit as 'GPS Base Benefit' & variant type as 'Flat Sum Assured' and 
+	 * 				 Riders as 'GPS Rider - Terminal illness Premier (In-Built)' & variant type as 'Rider'
+	 */
+	
+	public void masterPolicyWithMandatoryFieldsAndFlatSumAssuredWithInBuiltRider(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
+			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
+			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
+			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
+			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String UnitAddress, String addressDetails,
+			String benefits1, String varientType1, String sumAssuredValue, String freeCoverLimitValueForBaseBenefit, String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, 
+			String minimumCapValue, String maximumCapValue) throws Throwable
+	{
+		mandatoryFields(clientName, agreementNumberStringValue, 
+				quotationDetailsStringValue, title, firstName, number, emailIDStringValue, numberOfInsured, 
+				totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, retirementAgeValue, 
+				nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
+				UnitAddress, addressDetails);
+		selectVisibleText(benefitsDropDown, benefits1);
+		selectVisibleText(variantTypeDropDown, varientType1);
+		flatSumAssured(totalSumAssuredStringValue, freeCoverLimitValueForBaseBenefit);
+		addRidersButton.click();
+		acceptPopupMsg();
+		selectVisibleText(benefitsDropDown, benefits2);
+		selectVisibleText(variantTypeDropDown, varientType2);
+		rider(percentageofBaseBenefitValue, freeCoverLimitValueForRider, minimumCapValue, maximumCapValue);
+		addRidersButton.click();
+		acceptPopupMsg();
+		sentToCheckerButton.click();
+		acceptPopupMsgAndCaptureTheMsg();
+	}
+	
+	/* TC_MPM_010 - Verify user able to create the Master Policy by providing only the Mandatory fields with 
+	 * 				Benefit as 'GPS Base Benefit' & variant type as 'Multiple Of Salary' and 
+	 * 				Riders as 'GPS Rider - Terminal illness Premier (In-Built)' & variant type as 'Rider'
+	 */
+	public void masterPolicyWithMandatoryFieldsAndMultipleOfSalaryWithInBuiltRider(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
+			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, 
+			String totalSumAssuredStringValue, String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, 
+			String varient, String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
+			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
+			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,String benefits1, 
+			String varientType1, String multiplesOfSalaryValue, String freeCoverLimitValueForBaseBenefit, 
+			String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
+			String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, 
+			String minimumCapValueForRider, String maximumCapValueForRider) throws Throwable
+	{
+		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
+				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, 
+				nraLetterReceived, retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge,
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
+		selectVisibleText(benefitsDropDown, benefits1);
+		selectVisibleText(variantTypeDropDown, varientType1);
+		multipleOfSalary(multiplesOfSalaryValue, freeCoverLimitValueForBaseBenefit, minimumCapValueForBaseBenefit, maximumCapValueForBaseBenefit);
+		addRidersButton.click();
+		acceptPopupMsg();
+		selectVisibleText(benefitsDropDown, benefits2);
+		selectVisibleText(variantTypeDropDown, varientType2);	
+		rider(percentageofBaseBenefitValue, freeCoverLimitValueForRider, minimumCapValueForRider, maximumCapValueForRider);
+		addRidersButton.click();
+		acceptPopupMsg();
+		sentToCheckerButton.click();
+		acceptPopupMsgAndCaptureTheMsg();
+		
+		
+	}
+	
+	/* TC_MPM_011 - Verify user able to create the Master Policy by providing only the Mandatory fields with 
+	 * 				Benefit as 'GPS Base Benefit' & variant type as 'Graded Cover' and 
+	 * 				Riders as 'GPS Rider - Terminal illness Premier (In-Built)' & variant type as 'Rider'
+	 */
+	public void masterPolicyWithMandatoryFieldsAndGradedCoverWithInBuiltRider(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
+			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
+			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
+			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
+			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,String benefits1, 
+			String varientType1, String noOfGrade, String gradeValue1, String sumAssuredValue1,String freeCoverLimitValue1, String minimumCapValue1, 
+			String maximumCapValue1, String gradeValue2, String sumAssuredValue2,String freeCoverLimitValue2, String minimumCapValue2, 
+			String maximumCapValue2, String gradeValue3, String sumAssuredValue3,String freeCoverLimitValue3, String minimumCapValue3, 
+			String maximumCapValue3, String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, 
+			String minimumCapValueForRider, String maximumCapValueForRider) throws Throwable
+	{
+		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
+				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, 
+				nraLetterReceived, retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, 
+				minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails);
+		selectVisibleText(benefitsDropDown, benefits1);
+		selectVisibleText(variantTypeDropDown, varientType1);
+		gradedCoverGrade1(gradeValue1, sumAssuredValue1, freeCoverLimitValue1, minimumCapValue1, maximumCapValue1);
+		addRidersButton.click();
+		acceptPopupMsg();
+		
+		selectVisibleText(benefitsDropDown, benefits1);
+		selectVisibleText(variantTypeDropDown, varientType1);
+		gradedCoverGrade2(gradeValue2, sumAssuredValue2, freeCoverLimitValue2, minimumCapValue2, maximumCapValue2);
+		addRidersButton.click();
+		acceptPopupMsg();
+		
+		selectVisibleText(benefitsDropDown, benefits1);
+		selectVisibleText(variantTypeDropDown, varientType1);
+		gradedCoverGrade3(gradeValue3, sumAssuredValue3, freeCoverLimitValue3, minimumCapValue3, maximumCapValue3);
+		addRidersButton.click();
+		acceptPopupMsg();
+		
+		selectVisibleText(benefitsDropDown, benefits2);
+		selectVisibleText(variantTypeDropDown, varientType2);
+		rider(percentageofBaseBenefitValue, freeCoverLimitValueForRider, minimumCapValueForRider, maximumCapValueForRider);
+		addRidersButton.click();
+		acceptPopupMsg();
+		
+		sentToCheckerButton.click();
+		acceptPopupMsgAndCaptureTheMsg();
+	}
+	
+	/* TC_MPM_012 - Verify user able to create the Master Policy by providing only the Mandatory fields with 
+	 * 				Benefit as 'GPS Base Benefit' & variant type as 'Future Service Gratuity Amount' and 
+	 * 				Riders as 'GPS Rider - Terminal illness Premier (In-Built)' & variant type as 'Rider'
+	 */
+	public void masterPolicyWithMandatoryFieldsAndFutureServiceGratuityAmountWithInBuiltRider(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
+			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
+			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, 
+			String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
+			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
+			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
+			String unitAddress, String addressDetails, String benefits1,String varientType1, 
+			String retirementAgeValueInVariantType, String maxSumAssuredValueString, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, 
+			String maximumCapValueForBaseBenefit, String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, 
+			String minimumCapValueForRider, String maximumCapValueForRider) throws Throwable
+	{
+		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
+				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, 
+				nraLetterReceived, retirementAgeValueInVariantType, nraLetterReceivedDateValue, typeOfClient, frequency, 
+				zone, minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails);
+		selectVisibleText(benefitsDropDown, benefits1);
+		selectVisibleText(variantTypeDropDown, varientType1);
+		futureServiceGratuityAmount(retirementAgeValueInVariantType, maxSumAssuredValueString, freeCoverLimitValueForBaseBenefit, 
+				minimumCapValueForBaseBenefit, maximumCapValueForBaseBenefit);
+		addRidersButton.click();
+		acceptPopupMsg();
+		
+		selectVisibleText(benefitsDropDown, benefits2);
+		selectVisibleText(variantTypeDropDown, varientType2);
+		rider(percentageofBaseBenefitValue, freeCoverLimitValueForRider, minimumCapValueForRider, maximumCapValueForRider);
+		addRidersButton.click();
+		acceptPopupMsg();
+		
+		sentToCheckerButton.click();
+		acceptPopupMsgAndCaptureTheMsg();
+	}
+	
+	/* TC_MPM_013 - Verify user able to create the Master Policy by providing only the Mandatory fields with 
+	 * 				Benefit as 'GPS Base Benefit' & variant type as 'Graded Cover Salary Multiple' and 
+	 * 				Riders as 'GPS Rider - Terminal illness Premier (In-Built)' & variant type as 'Rider'
+	 */
+	public void masterPolicyWithMandatoryFieldsAndGradedCoverSalaryMultipleWithInBuiltRider(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
+			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
+			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
+			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
+			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,String benefits1, 
+			String varientType1, String noOfGrade, String gradeValue1, String multiplesOfSalaryValue1,String freeCoverLimitValue1, String minimumCapValue1, 
+			String maximumCapValue1, String gradeValue2, String multiplesOfSalaryValue2, String freeCoverLimitValue2, String minimumCapValue2, 
+			String maximumCapValue2, String gradeValue3, String multiplesOfSalaryValue3, String freeCoverLimitValue3, String minimumCapValue3, 
+			String maximumCapValue3, String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, 
+			String minimumCapValueForRider, String maximumCapValueForRider) throws Throwable
+	{
+		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
+				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, 
+				nraLetterReceived, retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
+		
+		selectVisibleText(benefitsDropDown, benefits1);
+		selectVisibleText(variantTypeDropDown, varientType1);
+		gradedCoverSalaryMultipleGrade1(gradeValue1, multiplesOfSalaryValue1, freeCoverLimitValue1, minimumCapValue1, maximumCapValue1);
+		addRidersButton.click();
+		acceptPopupMsg();
+		
+		selectVisibleText(benefitsDropDown, benefits1);
+		selectVisibleText(variantTypeDropDown, varientType1);
+		gradedCoverSalaryMultipleGrade2(gradeValue2, multiplesOfSalaryValue2, freeCoverLimitValue2, minimumCapValue2, maximumCapValue2);
+		addRidersButton.click();
+		acceptPopupMsg();
+		
+		selectVisibleText(benefitsDropDown, benefits1);
+		selectVisibleText(variantTypeDropDown, varientType1);
+		gradedCoverSalaryMultipleGrade3(gradeValue3, multiplesOfSalaryValue3, freeCoverLimitValue3, minimumCapValue3, maximumCapValue3);
+		addRidersButton.click();
+		acceptPopupMsg();
+		
+		selectVisibleText(benefitsDropDown, benefits2);
+		selectVisibleText(variantTypeDropDown, varientType2);
+		rider(percentageofBaseBenefitValue, freeCoverLimitValueForRider, minimumCapValueForRider, maximumCapValueForRider);
+		addRidersButton.click();
+		acceptPopupMsg();
+		
+		sentToCheckerButton.click();
+		acceptPopupMsgAndCaptureTheMsg();
+	}
+	
 	
 	//Verify able to capture the Error popup message & screenshot
 	
@@ -628,8 +1006,9 @@ public class MasterPolicyMakerPage extends AbsliBase {
 
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
-		wait.until(ExpectedConditions.elementToBeClickable(freeCoverLimit));
-		freeCoverLimit.sendKeys(freeCoverLimitValue,Keys.ENTER);
+		customerDefinedSA(freeCoverLimitValue);
+//		wait.until(ExpectedConditions.elementToBeClickable(freeCoverLimit));
+//		freeCoverLimit.sendKeys(freeCoverLimitValue,Keys.ENTER);
 		addRidersButton.click();
 		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
 		okButtonInPopMessage.click();
