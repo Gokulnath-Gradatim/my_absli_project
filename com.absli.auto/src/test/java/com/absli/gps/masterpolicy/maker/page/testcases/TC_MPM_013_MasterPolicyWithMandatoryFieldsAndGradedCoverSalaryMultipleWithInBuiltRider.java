@@ -37,7 +37,7 @@ public class TC_MPM_013_MasterPolicyWithMandatoryFieldsAndGradedCoverSalaryMulti
 		return arrobj;			
 	}
 	
-	@Test(priority = 9,dataProvider = "TestDataFromTC_MPM_013", dataProviderClass = TC_MPM_013_MasterPolicyWithMandatoryFieldsAndGradedCoverSalaryMultipleWithInBuiltRider.class)
+	@Test(priority = 12,dataProvider = "TestDataFromTC_MPM_013", dataProviderClass = TC_MPM_013_MasterPolicyWithMandatoryFieldsAndGradedCoverSalaryMultipleWithInBuiltRider.class)
 	public void createAMasterPolicyWithMandatoryFieldsAndGradedCoverSalaryMultipleWithInBuiltRider(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
 			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
 			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 

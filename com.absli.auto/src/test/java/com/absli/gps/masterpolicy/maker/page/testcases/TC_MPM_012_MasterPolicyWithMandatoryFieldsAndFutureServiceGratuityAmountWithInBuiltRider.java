@@ -37,7 +37,7 @@ public class TC_MPM_012_MasterPolicyWithMandatoryFieldsAndFutureServiceGratuityA
 		return arrobj;			
 	}
 	
-	@Test(priority = 9,dataProvider = "TestDataFromTC_MPM_012", dataProviderClass = TC_MPM_012_MasterPolicyWithMandatoryFieldsAndFutureServiceGratuityAmountWithInBuiltRider.class)
+	@Test(priority = 11,dataProvider = "TestDataFromTC_MPM_012", dataProviderClass = TC_MPM_012_MasterPolicyWithMandatoryFieldsAndFutureServiceGratuityAmountWithInBuiltRider.class)
 	public void createAMasterPolicyWithMandatoryFieldsAndFutureServiceGratuityAmountWithInBuiltRider(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
 			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
 			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, 

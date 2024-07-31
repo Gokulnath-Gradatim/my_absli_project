@@ -3,13 +3,7 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="com.absli.gps.master.policy.maker.page.testcases.TC_MPM_005_MasterPolicyMakerWithGPSBaseBenefitAndFutureServiceGratuityAmount"/>
-      <class name="com.absli.gps.master.policy.maker.page.testcases.TC_MPM_006_MasterPolicyMakerWithGPSBaseBenefitAndCustomerDefinedSAWithRider"/>
-      <class name="com.absli.gps.master.policy.maker.page.testcases.TC_MPM_004_MasterPolicyMakerWithGPSBaseBenefitAndGradedCover"/>
-      <class name="com.absli.gps.master.policy.maker.page.testcases.TC_MPM_002_MasterPolicyMakerWithGPSBaseBenefitAndFlatSumAssured"/>
-      <class name="com.absli.gps.master.policy.maker.page.testcases.TC_MPM_007_MasterPolicyMakerWithGPSBaseBenefitAndGradedCoverSalaryMultiple"/>
-      <class name="com.absli.gps.master.policy.maker.page.testcases.TC_MPM_003_MasterPolicyMakerWithGPSBaseBenefitAndMultipleOfSalary"/>
-      <class name="com.absli.gps.master.policy.maker.page.testcases.TC_MPM_001_MasterPolicyMakerWithGPSBaseBenefitAndCustomerDefinedSA"/>
+      <class name="com.absli.gps.masterpolicy.maker.page.testcases.TC_MPM_024_MasterPolicyWith5BenefitsAndRidersWithVariantTypeAsCRRRC"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -38,7 +38,7 @@ public class TC_MPM_011_MasterPolicyWithMandatoryFieldsAndGradedCoverWithInBuilt
 				
 	}
 	
-	@Test(priority = 9,dataProvider = "TestDataFromTC_MPM_011", dataProviderClass = TC_MPM_011_MasterPolicyWithMandatoryFieldsAndGradedCoverWithInBuiltRider.class)
+	@Test(priority = 10,dataProvider = "TestDataFromTC_MPM_011", dataProviderClass = TC_MPM_011_MasterPolicyWithMandatoryFieldsAndGradedCoverWithInBuiltRider.class)
 	public void createAMasterPolicyWithMandatoryFieldsAndGradedCoverWithInBuiltRider(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
 			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
 			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 

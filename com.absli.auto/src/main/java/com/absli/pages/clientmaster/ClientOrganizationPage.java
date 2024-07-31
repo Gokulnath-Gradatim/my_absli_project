@@ -196,7 +196,6 @@ public class ClientOrganizationPage extends AbsliBase {
 		}
 		selectVisibleText(servicingBranch, servicingBranchDropDown);
 		marketingOfficerCode.sendKeys(marketingOfficerCodeNum);
-		Thread.sleep(3000);
 		String gradeString = gradeValue;
 		int  gradeInt= Integer.valueOf(gradeString);
 		for (int i=1; i<=gradeInt; i++)

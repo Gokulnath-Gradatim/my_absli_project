@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-07-02T18:07:29 IST" name="Default suite" finished-at="2024-07-02T18:08:33 IST" duration-ms="63417">
+  <suite started-at="2024-07-31T17:19:02 IST" name="Default suite" finished-at="2024-07-31T17:20:31 IST" duration-ms="88898">
     <groups>
     </groups>
-    <test started-at="2024-07-02T18:07:29 IST" name="Default test" finished-at="2024-07-02T18:08:33 IST" duration-ms="63417">
-      <class name="com.absli.gps.masterpolicy.maker.page.testcases.TC_MPM_013_MasterPolicyWithMandatoryFieldsAndGradedCoverSalaryMultipleWithInBuiltRider">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.absli.gps.masterpolicy.maker.page.testcases.TC_MPM_013_MasterPolicyWithMandatoryFieldsAndGradedCoverSalaryMultipleWithInBuiltRider@35841320]" started-at="2024-07-02T18:07:31 IST" name="setUp" finished-at="2024-07-02T18:07:37 IST" duration-ms="5930" status="PASS">
+    <test started-at="2024-07-31T17:19:02 IST" name="Default test" finished-at="2024-07-31T17:20:31 IST" duration-ms="88898">
+      <class name="com.absli.gps.masterpolicy.maker.page.testcases.TC_MPM_104_MasterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcRRGcR">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.absli.gps.masterpolicy.maker.page.testcases.TC_MPM_104_MasterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcRRGcR@1040be71]" started-at="2024-07-31T17:19:04 IST" name="setUp" finished-at="2024-07-31T17:19:17 IST" duration-ms="12425" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="createAMasterPolicyWithMandatoryFieldsAndGradedCoverSalaryMultipleWithInBuiltRider(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:9, instance:com.absli.gps.masterpolicy.maker.page.testcases.TC_MPM_013_MasterPolicyWithMandatoryFieldsAndGradedCoverSalaryMultipleWithInBuiltRider@35841320]" started-at="2024-07-02T18:07:37 IST" name="createAMasterPolicyWithMandatoryFieldsAndGradedCoverSalaryMultipleWithInBuiltRider" data-provider="TestDataFromTC_MPM_013" finished-at="2024-07-02T18:08:33 IST" duration-ms="55397" status="PASS">
+        <test-method signature="createAMasterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcRRGcR(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:103, instance:com.absli.gps.masterpolicy.maker.page.testcases.TC_MPM_104_MasterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcRRGcR@1040be71]" started-at="2024-07-31T17:19:17 IST" name="createAMasterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcRRGcR" data-provider="TestDataFromTC_MPM_104" finished-at="2024-07-31T17:20:28 IST" duration-ms="71213" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -20,7 +20,7 @@
             </param>
             <param index="1">
               <value>
-                <![CDATA[700001.0]]>
+                <![CDATA[400001.0]]>
               </value>
             </param>
             <param index="2">
@@ -50,7 +50,7 @@
             </param>
             <param index="7">
               <value>
-                <![CDATA[150]]>
+                <![CDATA[200]]>
               </value>
             </param>
             <param index="8">
@@ -75,7 +75,7 @@
             </param>
             <param index="12">
               <value>
-                <![CDATA[GPS OYRT_V08]]>
+                <![CDATA[GPS OYRT_V09]]>
               </value>
             </param>
             <param index="13">
@@ -160,115 +160,255 @@
             </param>
             <param index="29">
               <value>
-                <![CDATA[Graded Cover Salary Multiple]]>
+                <![CDATA[Graded Cover]]>
               </value>
             </param>
             <param index="30">
               <value>
-                <![CDATA[3]]>
+                <![CDATA[Grade 1]]>
               </value>
             </param>
             <param index="31">
               <value>
-                <![CDATA[Grade 1]]>
+                <![CDATA[1000000]]>
               </value>
             </param>
             <param index="32">
               <value>
-                <![CDATA[5]]>
+                <![CDATA[5000000]]>
               </value>
             </param>
             <param index="33">
               <value>
-                <![CDATA[50000]]>
+                <![CDATA[1000]]>
               </value>
             </param>
             <param index="34">
               <value>
-                <![CDATA[1000]]>
+                <![CDATA[10000000]]>
               </value>
             </param>
             <param index="35">
               <value>
-                <![CDATA[100000]]>
+                <![CDATA[Grade 2]]>
               </value>
             </param>
             <param index="36">
               <value>
-                <![CDATA[Grade 2]]>
+                <![CDATA[2000000]]>
               </value>
             </param>
             <param index="37">
               <value>
-                <![CDATA[10]]>
+                <![CDATA[5000000]]>
               </value>
             </param>
             <param index="38">
               <value>
-                <![CDATA[150000]]>
+                <![CDATA[1000]]>
               </value>
             </param>
             <param index="39">
               <value>
-                <![CDATA[100000]]>
+                <![CDATA[10000000]]>
               </value>
             </param>
             <param index="40">
               <value>
-                <![CDATA[2000000]]>
+                <![CDATA[Grade 3]]>
               </value>
             </param>
             <param index="41">
               <value>
-                <![CDATA[Grade 3]]>
+                <![CDATA[3000000]]>
               </value>
             </param>
             <param index="42">
               <value>
-                <![CDATA[15]]>
+                <![CDATA[5000000]]>
               </value>
             </param>
             <param index="43">
               <value>
-                <![CDATA[2000000]]>
+                <![CDATA[1000]]>
               </value>
             </param>
             <param index="44">
               <value>
-                <![CDATA[100000]]>
+                <![CDATA[10000000]]>
               </value>
             </param>
             <param index="45">
               <value>
-                <![CDATA[2000000]]>
+                <![CDATA[GPS V09-Rider - Terminal illness Premier (In-Built)]]>
               </value>
             </param>
             <param index="46">
               <value>
-                <![CDATA[GPS Rider - Terminal illness Premier (In-Built)]]>
+                <![CDATA[Rider]]>
               </value>
             </param>
             <param index="47">
               <value>
-                <![CDATA[Rider]]>
+                <![CDATA[25]]>
               </value>
             </param>
             <param index="48">
               <value>
-                <![CDATA[25]]>
+                <![CDATA[50000]]>
               </value>
             </param>
             <param index="49">
               <value>
-                <![CDATA[50000]]>
+                <![CDATA[1000]]>
               </value>
             </param>
             <param index="50">
               <value>
-                <![CDATA[1000]]>
+                <![CDATA[1000000]]>
               </value>
             </param>
             <param index="51">
+              <value>
+                <![CDATA[GPS Rider - Critical Illness (CI13)]]>
+              </value>
+            </param>
+            <param index="52">
+              <value>
+                <![CDATA[Rider]]>
+              </value>
+            </param>
+            <param index="53">
+              <value>
+                <![CDATA[21]]>
+              </value>
+            </param>
+            <param index="54">
+              <value>
+                <![CDATA[50000]]>
+              </value>
+            </param>
+            <param index="55">
+              <value>
+                <![CDATA[1000]]>
+              </value>
+            </param>
+            <param index="56">
+              <value>
+                <![CDATA[1000000]]>
+              </value>
+            </param>
+            <param index="57">
+              <value>
+                <![CDATA[GPS V09-Rider - Accidental Death]]>
+              </value>
+            </param>
+            <param index="58">
+              <value>
+                <![CDATA[Graded Cover]]>
+              </value>
+            </param>
+            <param index="59">
+              <value>
+                <![CDATA[Grade 1]]>
+              </value>
+            </param>
+            <param index="60">
+              <value>
+                <![CDATA[120000]]>
+              </value>
+            </param>
+            <param index="61">
+              <value>
+                <![CDATA[100000]]>
+              </value>
+            </param>
+            <param index="62">
+              <value>
+                <![CDATA[1000]]>
+              </value>
+            </param>
+            <param index="63">
+              <value>
+                <![CDATA[100000]]>
+              </value>
+            </param>
+            <param index="64">
+              <value>
+                <![CDATA[Grade 2]]>
+              </value>
+            </param>
+            <param index="65">
+              <value>
+                <![CDATA[220000]]>
+              </value>
+            </param>
+            <param index="66">
+              <value>
+                <![CDATA[200000]]>
+              </value>
+            </param>
+            <param index="67">
+              <value>
+                <![CDATA[1000]]>
+              </value>
+            </param>
+            <param index="68">
+              <value>
+                <![CDATA[220000]]>
+              </value>
+            </param>
+            <param index="69">
+              <value>
+                <![CDATA[Grade 3]]>
+              </value>
+            </param>
+            <param index="70">
+              <value>
+                <![CDATA[3000000]]>
+              </value>
+            </param>
+            <param index="71">
+              <value>
+                <![CDATA[5000000]]>
+              </value>
+            </param>
+            <param index="72">
+              <value>
+                <![CDATA[1000]]>
+              </value>
+            </param>
+            <param index="73">
+              <value>
+                <![CDATA[10000000]]>
+              </value>
+            </param>
+            <param index="74">
+              <value>
+                <![CDATA[GPS Rider - Total Permanent Disability]]>
+              </value>
+            </param>
+            <param index="75">
+              <value>
+                <![CDATA[Rider]]>
+              </value>
+            </param>
+            <param index="76">
+              <value>
+                <![CDATA[19]]>
+              </value>
+            </param>
+            <param index="77">
+              <value>
+                <![CDATA[50000]]>
+              </value>
+            </param>
+            <param index="78">
+              <value>
+                <![CDATA[1000]]>
+              </value>
+            </param>
+            <param index="79">
               <value>
                 <![CDATA[1000000]]>
               </value>
@@ -276,8 +416,12 @@
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- createAMasterPolicyWithMandatoryFieldsAndGradedCoverSalaryMultipleWithInBuiltRider -->
-      </class> <!-- com.absli.gps.masterpolicy.maker.page.testcases.TC_MPM_013_MasterPolicyWithMandatoryFieldsAndGradedCoverSalaryMultipleWithInBuiltRider -->
+        </test-method> <!-- createAMasterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcRRGcR -->
+        <test-method is-config="true" signature="endUp()[pri:0, instance:com.absli.gps.masterpolicy.maker.page.testcases.TC_MPM_104_MasterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcRRGcR@1040be71]" started-at="2024-07-31T17:20:28 IST" name="endUp" finished-at="2024-07-31T17:20:31 IST" duration-ms="2935" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endUp -->
+      </class> <!-- com.absli.gps.masterpolicy.maker.page.testcases.TC_MPM_104_MasterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcRRGcR -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
