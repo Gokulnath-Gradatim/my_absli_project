@@ -3,13 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.absli.gps.masterpolicy.maker.page.testcases.TC_MPM_082_MasterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcsmRGcsmGcsm">
+      <class name="com.absli.gps.masterpolicy.maker.page.testcases.TC_MPM_118_MasterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcsmRGcsmGcsmGcsm">
         <methods>
+          <include name="createAMasterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcsmRGcsmGcsmGcsm"/>
           <include name="setUp"/>
-          <include name="endUp"/>
-          <include name="createAMasterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcsmRGcsmGcsm" invocation-numbers="0"/>
         </methods>
-      </class> <!-- com.absli.gps.masterpolicy.maker.page.testcases.TC_MPM_082_MasterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcsmRGcsmGcsm -->
+      </class> <!-- com.absli.gps.masterpolicy.maker.page.testcases.TC_MPM_118_MasterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcsmRGcsmGcsmGcsm -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
