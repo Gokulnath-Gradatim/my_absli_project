@@ -289,7 +289,7 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	}
 	
 	
-	private void popupMsgVerification(String popupSuccessfullMsgTextValue) throws Throwable
+	public void popupMsgVerification(String popupSuccessfullMsgTextValue) throws Throwable
 	{
 		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
 		String popMsgTextValue = popMessageText.getText();
@@ -656,6 +656,473 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		
 		
 	//Product - GPS
+	
+	public String popupMessageText() throws Throwable
+	{
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		String popUpTextMessage = popMessageText.getText();
+		System.out.println("Popup Message: " + popUpTextMessage);
+	//	TestUtill.takeScreenshotAtEndOfTest(popUpTextMessage);
+		okButtonInPopMessage.click();
+		return popUpTextMessage;
+	}
+	
+	public void demo() throws Throwable
+	{
+		wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+		sentToCheckerButton.click();
+		String popUpMessageTextValue = popupMessageText();
+		while(true) {		
+			switch (popUpMessageTextValue) {
+			case "Please enter the Agreement Number.": 
+				agreementNumber.sendKeys("1234",Keys.ENTER);
+				sentToCheckerButton.click();
+				popUpMessageTextValue = popupMessageText();
+				break;
+			case "Please enter 6 digit Agreement Number":
+				agreementNumber.clear();
+				agreementNumber.sendKeys("234567",Keys.ENTER);
+				sentToCheckerButton.click();
+				popUpMessageTextValue = popupMessageText();
+				break;
+			case "Please enter the Quotation Details.":
+				quotationDetails.sendKeys("NA",Keys.ENTER);
+				Thread.sleep(2000);
+				sentToCheckerButton.click();
+				popUpMessageTextValue = popupMessageText();
+				break;
+			case "Please enter the Client Name.":
+				clienNameSearchField.sendKeys("Absli-Grade-001");
+				Thread.sleep(2000);
+				clienNameSearchField.sendKeys(Keys.ARROW_DOWN,Keys.ENTER);
+				Thread.sleep(6000);
+				agreementNumber.sendKeys("234567",Keys.ENTER);
+				quotationDetails.sendKeys("NA",Keys.ENTER);
+				Thread.sleep(2000);
+				sentToCheckerButton.click();
+				popUpMessageTextValue = popupMessageText();
+				break;
+			case "Please select the Contact Person Salutation.":
+				selectVisibleText(contactPersonTitle, "Mr");
+				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+				sentToCheckerButton.click();
+				popUpMessageTextValue = popupMessageText();
+				break;
+			case "Please enter the Contact Person First Name.":
+				contactPersonFirstName.sendKeys("Gokul");
+				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+				sentToCheckerButton.click();
+				popUpMessageTextValue = popupMessageText();
+				break;
+			case "Please enter the Contact Number.":
+				contactNumber.sendKeys("9089674511");
+				contactNumber.sendKeys(Keys.BACK_SPACE);
+				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+				sentToCheckerButton.click();
+				popUpMessageTextValue = popupMessageText();
+				break;
+			case "Contact Number should not be less than 10 digits":
+				contactNumber.clear();
+				contactNumber.sendKeys("9089674512");
+				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+				sentToCheckerButton.click();
+				popUpMessageTextValue = popupMessageText();
+				break;
+			case "Please enter the Email ID.":
+				emailID.sendKeys("absli.com");
+				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+				sentToCheckerButton.click();
+				popUpMessageTextValue = driver.switchTo().alert().getText();
+				System.out.println("Popup Message: " + popUpMessageTextValue);
+				break;
+			case "Please provide a valid email address":
+				driver.switchTo().alert().accept();
+				wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+				okButtonInPopMessage.click();
+				emailID.sendKeys("absli@gmail.com");
+				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+				sentToCheckerButton.click();
+				popUpMessageTextValue = popupMessageText();
+				break;
+					
+			default:
+				System.out.println("successfully tested");
+				return;
+			}
+		}
+	}
+	//Verify the error pop-up message
+	public void verifyTheErrorPopUpMessagesInMasterPolicyMakerPage() throws Throwable
+	{
+			
+		wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+		sentToCheckerButton.click();
+		//Agreement Number - 1
+		String popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please enter the Agreement Number.")) {
+			agreementNumber.sendKeys("1234",Keys.ENTER);
+			sentToCheckerButton.click();
+		}
+		else {
+			System.out.println("Agreement Number popup message is Wrong or Not Present");
+		}
+		//Agreement Number - 2
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please enter 6 digit Agreement Number")) {
+			agreementNumber.clear();
+			agreementNumber.sendKeys("234567",Keys.ENTER);
+			sentToCheckerButton.click();
+		}
+		else {
+			System.out.println("Agreement Number popup message is Wrong or Not Present");
+		}
+		
+		//Quotation Details
+		popUpMessageTextValue = popupMessageText();
+		if(popUpMessageTextValue.equals("Please enter the Quotation Details.")) {
+			quotationDetails.sendKeys("NA",Keys.ENTER);
+			Thread.sleep(2000);
+			sentToCheckerButton.click();
+		}
+		else{
+			System.out.println("Quotation Details popup message is Wrong or Not Present");
+		}
+		//Client Name
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please enter the Client Name.")) {
+			clienNameSearchField.sendKeys("Absli-Grade-001");
+			Thread.sleep(2000);
+			clienNameSearchField.sendKeys(Keys.ARROW_DOWN,Keys.ENTER);
+			Thread.sleep(6000);
+			agreementNumber.sendKeys("234567",Keys.ENTER);
+			quotationDetails.sendKeys("NA",Keys.ENTER);
+			Thread.sleep(2000);
+			sentToCheckerButton.click();
+		}
+		else {
+			System.out.println("Client Name popup message is Wrong or Not Present");
+		}
+		// Contact Person Salutation
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please select the Contact Person Salutation.")) {
+			selectVisibleText(contactPersonTitle, "Mr");
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+		}
+		else {
+			System.out.println("Contact Person Salutation popup message is Wrong or Not Present");
+		}
+		//Contact Person First Name
+		popUpMessageTextValue = popupMessageText();
+		if(popUpMessageTextValue.equals("Please enter the Contact Person First Name.")) {
+			contactPersonFirstName.sendKeys("Gokul");
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+		}
+		else {
+			System.out.println("Contact Person First Name popup message is Wrong or Not Present");
+		}
+		//Contact Number
+		popUpMessageTextValue = popupMessageText();
+		if(popUpMessageTextValue.equals("Please enter the Contact Number.")) {
+			contactNumber.sendKeys("9089674511");
+			contactNumber.sendKeys(Keys.BACK_SPACE);
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+			if (popUpMessageTextValue.equals("Contact Number should not be less than 10 digits")) {
+				contactNumber.clear();
+				contactNumber.sendKeys("9089674512");
+				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+				sentToCheckerButton.click();
+			}else {
+				System.out.println("Contact Number popup message is Wrong or Not Present");
+			}
+		
+		}else {
+			System.out.println("Contact Number popup message is Wrong or Not Present");
+		}
+		//Email ID
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please enter the Email ID.")) {
+			emailID.sendKeys("absli.com");
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			String alertTextValue = driver.switchTo().alert().getText();
+			System.out.println("Popup Message: " + alertTextValue);
+			if (alertTextValue.equals("Please provide a valid email address")) {
+				driver.switchTo().alert().accept();
+				emailID.sendKeys("absli@gmail.com");
+				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+				sentToCheckerButton.click();
+			}else {
+				System.out.println("Email ID entered popup message is Wrong or Not Present");
+			}
+			
+		}else {
+			System.out.println("Email ID popup message is Wrong or Not Present");
+		}
+		//Total Probable Number of Insured
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please enter the Total Probable Number of Insured.")) {
+			totalProbableNumberOfInsured.sendKeys("101");
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+		}
+		else {
+			System.out.println("Total Probable Number of Insured popup message is Wrong or Not Present");
+		}
+		//Total Sum Assured at the time of Inception policy
+		popUpMessageTextValue = popupMessageText();
+		if(popUpMessageTextValue.equals("Please enter the Total Sum Assured at the time of Inception policy.")) {
+			totalSumAssured.sendKeys("1000001");
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+		}
+		else {
+			System.out.println("Total Sum Assured at the time of Inception policy popup message is Wrong or Not Present");
+		}
+		//Master Policy Inception Date.
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please enter the Master Policy Inception Date.")) {
+			inceptionDate.sendKeys("01/01/2024");
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			
+		} else {
+			System.out.println("Master Policy Inception Date popup message is Wrong or Not Present");
+		}
+		//Agent Code
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please enter the Agent Code.")) {
+			agentCode.sendKeys("132430",Keys.ENTER);
+			Thread.sleep(2000);
+			sentToCheckerButton.click();
+		} else {
+			System.out.println("Agent Code popup message is Wrong or Not Present");
+		}
+		//Brokerage Updation
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please enter the Brokerage Updation.")) {
+			brokerageUpdation.sendKeys("10");
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+		} else {
+			System.out.println("Brokerage Updation popup message is Wrong or Not Present");
+		}
+		//Variant
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please select the Variant.")) {
+			selectVisibleText(variantDropDown, "GPS OYRT_V08");
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+		} else {
+			System.out.println("Variant popup message is Wrong or Not Present");
+		}
+		//Benefit Type
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please select the Benefit Type.")) {
+			selectVisibleText(benefitTypeDropDown, "Employer Employee");
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+		} else {
+			System.out.println("Benefit Type popup message is Wrong or Not Present");
+		}
+		//Type of Renewal
+		String typeOfRenewal = "Scheme Level";
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please Select atleast one Type of Renewal.")) {
+			if (typeOfRenewal.equals("Scheme Level")) {
+				schemeLevelButton.click();
+			} else {
+				memberLevelButton.click();
+			}
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+		} else {
+			System.out.println("Type of Renewal popup message is Wrong or Not Present");
+		}
+		//Window Period for Member Addition
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please enter the Window Period for Member Addition.")) {
+			windowPeriodForMemberAddition.sendKeys("30",Keys.ENTER);
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+		} else {
+			System.out.println("Window Period for Member Addition popup message is Wrong or Not Present");
+		}
+		//Frequency
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please select the Frequency.")) {
+			selectVisibleText(frequencyDropDown, "Annual");
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+		} else {
+			System.out.println("Frequency popup message is Wrong or Not Present");
+		}
+		//Zone
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please select the Zone.")) {
+			selectVisibleText(zoneDropDown, "Jayanagar");
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+		} else {
+			System.out.println("Zone popup message is Wrong or Not Present");
+		}
+		//Reinsurer
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please select the Reinsurer.")) {
+			selectVisibleText(reInsurerDropDown, "test");
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+		} else {
+			System.out.println("Reinsurer is selected");
+		}
+		//Underwriting Minimum Age
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please Enter the Underwriting Minimum Age")) {
+			underwritingMinimumAge.sendKeys("16");
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+		} else {
+			System.out.println("Underwriting Minimum popup message is Wrong or Not Present");
+		}
+		//Underwriting Maximum Age.
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please enter the Underwriting Maximum Age.")) {
+			underwritingMaximumAge.sendKeys("65");
+		//	unitAddressNoButton.click();
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+		} else {
+			System.out.println("Underwriting Maximum Age popup message is Wrong or Not Present");
+		}
+		//Unit Details
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please add atleast one Unit Details")) {
+			Actions actions = new Actions(driver);
+			actions.scrollByAmount(0, -1500).perform();
+//			JavascriptExecutor js=(JavascriptExecutor)driver;
+//			js.executeScript("window.scrollBy(0, 80)");
+//			System.out.println("1");
+			unitAddressNoButton.click();
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+		} else {
+			System.out.println("Unit Details popup message is Wrong or Not Present");
+		}
+		//Address Details
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please select the Is Master Policy Address different from Client Organization Address? .")) {
+			addressNoButton.click();
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+		} else {
+			System.out.println("Address Details popup message is Wrong or Not Present");
+		}
+		//Add - Benefits/Riders
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please Add atleast one Benefits/Riders")) {
+			addRidersButton.click();
+		
+		} else {
+			System.out.println("Add - Benefits/Riders popup message is Wrong or Not Present");
+		}
+		//Benefits/Riders
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please select the Benefits/Riders.")) {
+			selectVisibleText(benefitsDropDown, "GPS Base Benefit");
+			addRidersButton.click();
+			
+		} else {
+			System.out.println("Benefits/Riders popup message is Wrong or Not Present");
+		}
+		//Variant Type
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please select the Variant Type.")) {
+			selectVisibleText(variantTypeDropDown, "Flat Sum Assured");
+			wait.until(ExpectedConditions.elementToBeClickable(sumAssured));
+			addRidersButton.click();
+		} else {
+			System.out.println("Variant Type popup message is Wrong or Not Present");
+		}
+		//Sum Assured
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please enter the Sum Assured.")) {
+			sumAssured.sendKeys("1000000");
+			addRidersButton.click();
+		} else {
+			System.out.println("Sum Assured popup message is Wrong or Not Present");
+		}
+		//Free Cover Limit
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please enter the Free Cover Limit (Sum Assured).")) {
+			freeCoverLimit.sendKeys("100000");
+			addRidersButton.click();
+		} else {
+			System.out.println("Free Cover Limit popup message is Wrong or Not Present");
+		}
+		//Benefits/Riders Added Successfully
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Benefits/Riders Added Successfully")) {
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+		} else {
+			System.out.println("Benefits/Riders Added Successfully popup message is Wrong or Not Present");
+		}
+		//In-Built Coverage
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please Add the In-Built Coverage")) {
+			selectVisibleText(benefitsDropDown, "GPS Rider - Terminal illness Premier (In-Built)");
+			selectVisibleText(variantTypeDropDown, "Rider");
+			wait.until(ExpectedConditions.elementToBeClickable(percentageOfBaseBenefit));
+			addRidersButton.click();
+		} else {
+			System.out.println("In-Built Coverage popup message is Wrong or Not Present");
+		}
+		//Percentage of Base Benefit
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please enter the Percentage of Base Benefit.")) {
+			percentageOfBaseBenefit.sendKeys("20");
+			addRidersButton.click();
+		} else {
+			System.out.println("Percentage of Base Benefit popup message is Wrong or Not Present");
+		}
+		//Minimum Cap
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please enter the Minimum Cap.")) {
+			minimumCap.sendKeys("18");
+			addRidersButton.click();			
+		} else {
+			System.out.println("Minimum Cap popup message is Wrong or Not Present");
+		}
+		//Maximum Cap
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please enter the Maximum Cap.")) {
+			maximumCap.sendKeys("1000000");
+			addRidersButton.click();		
+		} else {
+			System.out.println("Maximum Cap popup message is Wrong or Not Present");
+		}
+		//Free Cover Limit
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please enter the Free Cover Limit (Sum Assured).")) {
+			freeCoverLimit.sendKeys("100000");
+			addRidersButton.click();
+		} else {
+			System.out.println("Free Cover Limit popup message is Wrong or Not Present");
+		}
+		//Benefits/Riders Added Successfully
+		popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Benefits/Riders Added Successfully")) {
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+		} else {
+			System.out.println("Benefits/Riders Added Successfully popup message is Wrong or Not Present");
+		}
+		
+	}
+	
 	
 	/* TC_MPM_001 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 'GPS Base Benefit' & 
 	 * 				variant type as 'Customer Defined SA'.
@@ -8275,363 +8742,6 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		acceptPopupMsgAndCaptureTheMsg();
 	}
 	
-	
-	
-	public String popupMessageText() throws Throwable
-	{
-		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-		String popUpTextMessage = popMessageText.getText();
-		System.out.println("Popup Message: " + popUpTextMessage);
-		//TestUtill.takeScreenshotAtEndOfTest(popUpTextMessage);
-		okButtonInPopMessage.click();
-		return popUpTextMessage;
-	}
-	
-	public void demo() throws Throwable
-	{
-		wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-		sentToCheckerButton.click();
-		String popUpMessageTextValue = popupMessageText();
-		while(true) {		
-			switch (popUpMessageTextValue) {
-			case "Please enter the Agreement Number.": 
-				agreementNumber.sendKeys("1234",Keys.ENTER);
-				sentToCheckerButton.click();
-				popUpMessageTextValue = popupMessageText();
-				break;
-			case "Please enter 6 digit Agreement Number":
-				agreementNumber.clear();
-				agreementNumber.sendKeys("234567",Keys.ENTER);
-				sentToCheckerButton.click();
-				popUpMessageTextValue = popupMessageText();
-				break;
-			case "Please enter the Quotation Details.":
-				quotationDetails.sendKeys("NA",Keys.ENTER);
-				Thread.sleep(2000);
-				sentToCheckerButton.click();
-				popUpMessageTextValue = popupMessageText();
-				break;
-			case "Please enter the Client Name.":
-				clienNameSearchField.sendKeys("Absli-Grade-001");
-				Thread.sleep(2000);
-				clienNameSearchField.sendKeys(Keys.ARROW_DOWN,Keys.ENTER);
-				Thread.sleep(6000);
-				agreementNumber.sendKeys("234567",Keys.ENTER);
-				quotationDetails.sendKeys("NA",Keys.ENTER);
-				Thread.sleep(2000);
-				sentToCheckerButton.click();
-				popUpMessageTextValue = popupMessageText();
-				break;
-			case "Please select the Contact Person Salutation.":
-				selectVisibleText(contactPersonTitle, "Mr");
-				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-				sentToCheckerButton.click();
-				popUpMessageTextValue = popupMessageText();
-				break;
-			case "Please enter the Contact Person First Name.":
-				contactPersonFirstName.sendKeys("Gokul");
-				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-				sentToCheckerButton.click();
-				popUpMessageTextValue = popupMessageText();
-				break;
-			case "Please enter the Contact Number.":
-				contactNumber.sendKeys("9089674511");
-				contactNumber.sendKeys(Keys.BACK_SPACE);
-				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-				sentToCheckerButton.click();
-				popUpMessageTextValue = popupMessageText();
-				break;
-			case "Contact Number should not be less than 10 digits":
-				contactNumber.clear();
-				contactNumber.sendKeys("9089674512");
-				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-				sentToCheckerButton.click();
-				popUpMessageTextValue = popupMessageText();
-				break;
-			case "Please enter the Email ID.":
-				emailID.sendKeys("absli.com");
-				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-				sentToCheckerButton.click();
-				popUpMessageTextValue = driver.switchTo().alert().getText();
-				System.out.println("Popup Message: " + popUpMessageTextValue);
-				break;
-			case "Please provide a valid email address":
-				driver.switchTo().alert().accept();
-				wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-				okButtonInPopMessage.click();
-				emailID.sendKeys("absli@gmail.com");
-				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-				sentToCheckerButton.click();
-				popUpMessageTextValue = popupMessageText();
-				break;
-					
-			default:
-				System.out.println("successfully tested");
-				return;
-			}
-		}
-	}
-	//Verify the error pop-up message
-	public void verifyTheErrorPopUpMessagesInMasterPolicyMakerPage() throws Throwable
-	{
-			
-		wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-		sentToCheckerButton.click();
-		//Agreement Number
-		String popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter the Agreement Number.")) {
-			agreementNumber.sendKeys("1234",Keys.ENTER);
-			sentToCheckerButton.click();
-			popUpMessageTextValue = popupMessageText();
-			if (popUpMessageTextValue.equals("Please enter 6 digit Agreement Number")) {
-				agreementNumber.clear();
-				agreementNumber.sendKeys("234567",Keys.ENTER);
-				sentToCheckerButton.click();
-			}
-			else {
-				System.out.println("Agreement Number entered correctly");
-			}
-		}
-		else {
-			System.out.println("Agreement Number entered");
-		}
-		
-		//Quotation Details
-		popUpMessageTextValue = popupMessageText();
-		if(popUpMessageTextValue.equals("Please enter the Quotation Details.")) {
-			quotationDetails.sendKeys("NA",Keys.ENTER);
-			Thread.sleep(2000);
-			sentToCheckerButton.click();
-		}
-		else{
-			System.out.println("Quotation Details entered");
-		}
-		//Client Name
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter the Client Name.")) {
-			clienNameSearchField.sendKeys("Absli-Grade-001");
-			Thread.sleep(2000);
-			clienNameSearchField.sendKeys(Keys.ARROW_DOWN,Keys.ENTER);
-			Thread.sleep(6000);
-			agreementNumber.sendKeys("234567",Keys.ENTER);
-			quotationDetails.sendKeys("NA",Keys.ENTER);
-			Thread.sleep(2000);
-			sentToCheckerButton.click();
-		}
-		else {
-			System.out.println("Client Name entered");
-		}
-		// Contact Person Salutation
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please select the Contact Person Salutation.")) {
-			selectVisibleText(contactPersonTitle, "Mr");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		}
-		else {
-			System.out.println("Contact Person Salutation entered");
-		}
-		//Contact Person First Name
-		popUpMessageTextValue = popupMessageText();
-		if(popUpMessageTextValue.equals("Please enter the Contact Person First Name.")) {
-			contactPersonFirstName.sendKeys("Gokul");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		}
-		else {
-			System.out.println("Contact Person First Name entered");
-		}
-		//Contact Number
-		popUpMessageTextValue = popupMessageText();
-		if(popUpMessageTextValue.equals("Please enter the Contact Number.")) {
-			contactNumber.sendKeys("9089674511");
-			contactNumber.sendKeys(Keys.BACK_SPACE);
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-			popUpMessageTextValue = popupMessageText();
-			if (popUpMessageTextValue.equals("Contact Number should not be less than 10 digits")) {
-				contactNumber.clear();
-				contactNumber.sendKeys("9089674512");
-				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-				sentToCheckerButton.click();
-			}else {
-				System.out.println("Contact Number entered correctly");
-			}
-		
-		}else {
-			System.out.println("Contact Number entered");
-		}
-		//Email ID
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter the Email ID.")) {
-			emailID.sendKeys("absli.com");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-			String alertTextValue = driver.switchTo().alert().getText();
-			System.out.println("Popup Message: " + alertTextValue);
-			if (alertTextValue.equals("Please provide a valid email address")) {
-				driver.switchTo().alert().accept();
-				emailID.sendKeys("absli@gmail.com");
-				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-				sentToCheckerButton.click();
-			}else {
-				System.out.println("Email ID entered correctly");
-			}
-			
-		}else {
-			System.out.println("Email ID entered");
-		}
-		//Total Probable Number of Insured
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter the Total Probable Number of Insured.")) {
-			totalProbableNumberOfInsured.sendKeys("101");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		}
-		else {
-			System.out.println("Total Probable Number of Insured entered");
-		}
-		//Total Sum Assured at the time of Inception policy
-		popUpMessageTextValue = popupMessageText();
-		if(popUpMessageTextValue.equals("Please enter the Total Sum Assured at the time of Inception policy.")) {
-			totalSumAssured.sendKeys("1000001");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		}
-		else {
-			System.out.println("Total Sum Assured at the time of Inception policy entered");
-		}
-		//Master Policy Inception Date.
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter the Master Policy Inception Date.")) {
-			inceptionDate.sendKeys("01/01/2024");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-			
-		} else {
-			System.out.println("Master Policy Inception Date entered");
-		}
-		//Agent Code
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter the Agent Code.")) {
-			agentCode.sendKeys("132430",Keys.ENTER);
-			Thread.sleep(2000);
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Agent Code entered");
-		}
-		//Brokerage Updation
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter the Brokerage Updation.")) {
-			brokerageUpdation.sendKeys("10");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Brokerage Updation is entered");
-		}
-		//Variant
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please select the Variant.")) {
-			selectVisibleText(variantDropDown, "GPS OYRT_V08");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Variant is selected");
-		}
-		//Benefit Type
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please select the Benefit Type.")) {
-			selectVisibleText(benefitTypeDropDown, "Employer Employee");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Benefit Type selected");
-		}
-		//Type of Renewal
-		String typeOfRenewal = "Scheme Level";
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please Select atleast one Type of Renewal.")) {
-			if (typeOfRenewal.equals("Scheme Level")) {
-				schemeLevelButton.click();
-			} else {
-				memberLevelButton.click();
-			}
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Type of Renewal is selected");
-		}
-		//Window Period for Member Addition
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter the Window Period for Member Addition.")) {
-			windowPeriodForMemberAddition.sendKeys("30",Keys.ENTER);
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Window Period for Member Addition in entered");
-		}
-		//Frequency
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please select the Frequency.")) {
-			selectVisibleText(frequencyDropDown, "Annual");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Frequency is selected");
-		}
-		//Zone
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please select the Zone.")) {
-			selectVisibleText(zoneDropDown, "Jayanagar");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Zone is selected");
-		}
-		//Reinsurer
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please select the Reinsurer.")) {
-			selectVisibleText(reInsurerDropDown, "test");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Reinsurer is selected");
-		}
-		//Underwriting Minimum Age
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please Enter the Underwriting Minimum Age")) {
-			underwritingMinimumAge.sendKeys("16");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Underwriting Minimum Age is entered");
-		}
-		//Underwriting Maximum Age.
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter the Underwriting Maximum Age.")) {
-			underwritingMaximumAge.sendKeys("65");
-			unitAddressNoButton.click();
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Underwriting Maximum Age is entered");
-		}
-		//Unit Details
-//		popUpMessageTextValue = popupMessageText();
-		
-//		if (popUpMessageTextValue.equals("Please add atleast one Unit Details")) {
-//			Actions actions = new Actions(driver);
-//			actions.scrollByAmount(0, 80).perform();
-//			JavascriptExecutor js=(JavascriptExecutor)driver;
-//			js.executeScript("window.scrollBy(0, 80)");
-//			System.out.println("1");
-//			unitAddressNoButton.click();
-//			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-//			sentToCheckerButton.click();
-//		} else {
-//
-//		}
-	}
 	
 	
 	

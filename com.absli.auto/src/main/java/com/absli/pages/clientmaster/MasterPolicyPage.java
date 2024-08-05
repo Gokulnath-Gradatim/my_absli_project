@@ -21,130 +21,130 @@ import com.google.gson.annotations.Until;
 public class MasterPolicyPage extends AbsliBase {
 
 	@FindBy(id = "ContentPlaceHolder1_txtSearchCompany")
-	WebElement clienNameSearchField;
+	private WebElement clienNameSearchField;
 
 	@FindBy(id="ContentPlaceHolder1_txtInsurerMasterAgreementNo")
-	WebElement agreementNumber;
+	private WebElement agreementNumber;
 
 	@FindBy(id="ContentPlaceHolder1_txtQuotationDesc")
-	WebElement quotationDetails;
+	private WebElement quotationDetails;
 
 	@FindBy(id = "ContentPlaceHolder1_ddlSalutation")
-	WebElement contactPersonTitle;
+	private WebElement contactPersonTitle;
 
 	@FindBy(id = "ContentPlaceHolder1_txtContactPersonFirstName")
-	WebElement contactPersonFirstName;
+	private WebElement contactPersonFirstName;
 
 	@FindBy(id = "ContentPlaceHolder1_txtContactNumber")
-	WebElement contactNumber;
+	private WebElement contactNumber;
 
 	@FindBy(id = "ContentPlaceHolder1_txtEmailID")
-	WebElement emailID;
+	private WebElement emailID;
 
 	@FindBy(id = "ContentPlaceHolder1_txtTotalMembers")
-	WebElement totalProbableNumberOfInsured;
+	private WebElement totalProbableNumberOfInsured;
 
 	@FindBy(id = "ContentPlaceHolder1_txtSumInsured")
-	WebElement totalSumAssured;
+	private WebElement totalSumAssured;
 
 	@FindBy(id = "ContentPlaceHolder1_txtAgreementStart")
-	WebElement inceptionDate;
+	private WebElement inceptionDate;
 
 	@FindBy(id = "ContentPlaceHolder1_txtIntermediaryCode")
-	WebElement marketingOfficerCode;
+	private WebElement marketingOfficerCode;
 
 	@FindBy(id = "ContentPlaceHolder1_txtAgentCode")
-	WebElement agentCode;
+	private WebElement agentCode;
 
 	@FindBy(id = "ContentPlaceHolder1_txtBrokerageUpdation")
-	WebElement brokerageUpdation;
+	private WebElement brokerageUpdation;
 
 	@FindBy(id = "ContentPlaceHolder1_ddlProduct")
-	WebElement variantDropDown;
+	private WebElement variantDropDown;
 
 	@FindBy(id = "ContentPlaceHolder1_txtComments")
-	WebElement specialConditions;
+	private WebElement specialConditions;
 
 	@FindBy(id = "ContentPlaceHolder1_ddlBenefitType")
-	WebElement benefitTypeDropDown;
+	private WebElement benefitTypeDropDown;
 
 	@FindBy(id="ContentPlaceHolder1_chkIsEmployee")
-	WebElement schemeLevelButton;
+	private WebElement schemeLevelButton;
 
 	@FindBy(id="ContentPlaceHolder1_chkIsEmployee")
-	WebElement memberLevelButton;
+	private WebElement memberLevelButton;
 
 	@FindBy(id="ContentPlaceHolder1_txtWindowPeriod")
-	WebElement windowPeriodForMemberAddition;
+	private WebElement windowPeriodForMemberAddition;
 
 	@FindBy(id="ContentPlaceHolder1_rbtNRIIsNRILetterReceivedYes")
-	WebElement IsNRALetterReceivedYesButton;
+	private WebElement IsNRALetterReceivedYesButton;
 
 	@FindBy(id="ContentPlaceHolder1_rbtNRIIsNRILetterReceivedNo")
-	WebElement IsNRALetterReceivedNoButton;
+	private WebElement IsNRALetterReceivedNoButton;
 
 	@FindBy(id = "ContentPlaceHolder1_txtNormalRetirementAge")
-	WebElement RetirementAge;
+	private WebElement RetirementAge;
 
 	@FindBy(id="ContentPlaceHolder1_txtNRILetterReceivedDate")
-	WebElement NRALetterReceivedDate;
+	private WebElement NRALetterReceivedDate;
 
 	@FindBy(id="ContentPlaceHolder1_ddlFrequency")
-	WebElement frequencyDropDown;
+	private WebElement frequencyDropDown;
 
 	@FindBy(id="ContentPlaceHolder1_ddlZonal")
-	WebElement zoneDropDown;
+	private WebElement zoneDropDown;
 
 	@FindBy(id="ContentPlaceHolder1_txtUnderwritingMinimumAge")
-	WebElement underwritingMinimumAge;
+	private WebElement underwritingMinimumAge;
 
 	@FindBy(id="ContentPlaceHolder1_txtUnderwritingMaximumAge")
-	WebElement underwritingMaximumAge;
+	private WebElement underwritingMaximumAge;
 
 	@FindBy(id="ContentPlaceHolder1_ddlReinsurer")
-	WebElement reInsurerDropDown;
+	private WebElement reInsurerDropDown;
 
 	@FindBy(id="ContentPlaceHolder1_rbUnitAddress_1")
-	WebElement unitAddressNoButton;
+	private WebElement unitAddressNoButton;
 
 	@FindBy(id="ContentPlaceHolder1_rbUnitAddress_0")
-	WebElement unitAddressYesButton;
+	private WebElement unitAddressYesButton;
 	
 	@FindBy(id="ContentPlaceHolder1_rbAddress_1")
-	WebElement addressNoButton;
+	private WebElement addressNoButton;
 
 	@FindBy(id="ContentPlaceHolder1_rbAddress_0")
-	WebElement addressYesButton;
+	private WebElement addressYesButton;
 
 	@FindBy(id="ContentPlaceHolder1_ddlCoverage")
-	WebElement benefitsDropDown;
+	private WebElement benefitsDropDown;
 
 	@FindBy(id="ContentPlaceHolder1_ddlVariantType")
-	WebElement variantTypeDropDown;
+	private WebElement variantTypeDropDown;
 	
 	@FindBy(id="ContentPlaceHolder1_txtSumAssured")
-	WebElement sumAssured;
+	private WebElement sumAssured;
 
 	@FindBy(id = "ContentPlaceHolder1_txtCoverageSumInsured")
-	WebElement freeCoverLimit;
+	private WebElement freeCoverLimit;
 	
 	@FindBy(id = "ContentPlaceHolder1_txtMultiplesOfSalary")
-	WebElement multiplesOfSalary;
+	private WebElement multiplesOfSalary;
 	
 	@FindBy(id = "ContentPlaceHolder1_txtMinimumSACap")
-	WebElement minimumCap;
+	private WebElement minimumCap;
 	
 	@FindBy(id = "ContentPlaceHolder1_txtMaximumSACap")
-	WebElement maximumCap;
+	private WebElement maximumCap;
 	
 	@FindBy(id="ContentPlaceHolder1_btnAddCoverage")
-	WebElement addRidersButton;
+	private WebElement addRidersButton;
 
 	@FindBy(xpath = "//button[@type=\"button\"][@class=\"ui-button ui-corner-all ui-widget\"]")
-	WebElement popUpMsgOkButton;
+	private WebElement popUpMsgOkButton;
 
 	@FindBy(id = "ContentPlaceHolder1_btnSave")
-	WebElement saveButton;
+	private WebElement saveButton;
 
 	public MasterPolicyPage()
 	{

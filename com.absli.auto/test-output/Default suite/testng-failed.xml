@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.absli.gps.masterpolicy.maker.page.testcases.TC_MPM_118_MasterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcsmRGcsmGcsmGcsm">
+      <class name="com.absli.gps.masterpolicy.maker.page.testcases.VerifyTheErrorPopUpMessagesInMasterPolicyMakerPage">
         <methods>
-          <include name="createAMasterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcsmRGcsmGcsmGcsm"/>
+          <include name="verifyErrorPopUpMessagesInMasterPolicyMakerPage"/>
           <include name="setUp"/>
         </methods>
-      </class> <!-- com.absli.gps.masterpolicy.maker.page.testcases.TC_MPM_118_MasterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcsmRGcsmGcsmGcsm -->
+      </class> <!-- com.absli.gps.masterpolicy.maker.page.testcases.VerifyTheErrorPopUpMessagesInMasterPolicyMakerPage -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -13,31 +13,31 @@ import com.google.gson.annotations.Until;
 public class MasterPolicyCheckerPage extends AbsliBase {
 	
 	@FindBy(id = "ContentPlaceHolder1_txtSearchCompany")
-	WebElement clienNameSearchField;
+	private WebElement clienNameSearchField;
 	
 	@FindBy(id="ContentPlaceHolder1_txtAgreementNumber")
-	WebElement agreementNumberSearchField;
+	private WebElement agreementNumberSearchField;
 	
 	@FindBy(xpath = "//i[@title='Edit']")
-	WebElement editElement;
+	private WebElement editElement;
 	
 	@FindBy(id="ContentPlaceHolder1_txtInsurerMasterAgreementNo")
-	WebElement agreementNumberTestFiled;
+	private WebElement agreementNumberTestFiled;
 	
 	@FindBy(id = "ContentPlaceHolder1_txtRemarks")
-	WebElement remarksField;
+	private WebElement remarksField;
 	
 	@FindBy(id="ContentPlaceHolder1_btnApprove")
-	WebElement approveButton;
+	private WebElement approveButton;
 	
 	@FindBy(id="ContentPlaceHolder1_btnSendBackToMaker")
-	WebElement sendBackToMaker;
+	private WebElement sendBackToMaker;
 	
 	@FindBy(xpath = "//button[text()='Ok']")
-	WebElement okButtonInPopMessage;
+	private WebElement okButtonInPopMessage;
 	
 	@FindBy(id = "ContentPlaceHolder1_Messagebox_lblMsg")
-	WebElement popMessageText;
+	private WebElement popMessageText;
 	
 	public MasterPolicyCheckerPage()
 	{
@@ -45,13 +45,13 @@ public class MasterPolicyCheckerPage extends AbsliBase {
 	}
 
 	//Capture the popup message and Click on 'Ok' button
-			public void acceptPopupMsgAndCaptureTheMsg()
-			{
-				wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-				String popMsgTextValue = popMessageText.getText();
-				System.out.println("Popup Message: " + popMsgTextValue);
-				okButtonInPopMessage.click();
-			}
+	private void acceptPopupMsgAndCaptureTheMsg()
+	{
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		String popMsgTextValue = popMessageText.getText();
+		System.out.println("Popup Message: " + popMsgTextValue);
+		okButtonInPopMessage.click();
+	}
 			
 	/*TC_MPC_001 & TC_GBY_MPC_001 - Verify user able to approve the Master Policy
 	 */

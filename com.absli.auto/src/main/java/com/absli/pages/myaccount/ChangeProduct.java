@@ -9,7 +9,7 @@ import com.absli.base.AbsliBase;
 public class ChangeProduct extends AbsliBase {
 	
 	@FindBy(id = "ContentPlaceHolder1_ddlPlan")
-	WebElement productDropDown;
+	private  WebElement productDropDown;
 	
 	
 	public ChangeProduct()

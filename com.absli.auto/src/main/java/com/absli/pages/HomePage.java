@@ -9,49 +9,49 @@ import com.absli.base.AbsliBase;
 public class HomePage extends AbsliBase {
 	
 	@FindBy(xpath = "//a[text()=\"Logout\"]")
-	WebElement logoutButton;
+	private WebElement logoutButton;
 	
 	@FindBy(id = "imgUserPhotos")
-	WebElement userPhoto;
+	private WebElement userPhoto;
 	
 	@FindBy(id = "liClient")
-	WebElement clientMaster;
+	private WebElement clientMaster;
 	
 	@FindBy(id="li_501")
-	WebElement clientOrganization;
+	private WebElement clientOrganization;
 	
 	@FindBy(xpath = "//a[text()=\"Master Policy \"]")
-	WebElement masterPolicy;
+	private WebElement masterPolicy;
 	
 	@FindBy(xpath = "//a[text()=\"Master Policy - Maker\"]")
-	WebElement masterPolicyMaker;
+	private WebElement masterPolicyMaker;
 	
 	@FindBy(xpath = "//a[text()='Master Policy - Checker']")
-	WebElement masterPloicyChecker;
+	private WebElement masterPloicyChecker;
 	
 	@FindBy(id = "liUnderwriting")
-	WebElement underWriting;
+	private WebElement underWriting;
 	
 	@FindBy(id="li_2001")
-	WebElement underWritingMedicalTest;
+	private WebElement underWritingMedicalTest;
 	
 	@FindBy(id="li_2002")
-	WebElement underWritingDetailst;
+	private WebElement underWritingDetailst;
 	
 	@FindBy(id="li_2003")
-	WebElement coreUnderWriting;
+	private WebElement coreUnderWriting;
 	
 	@FindBy(id = "liEndorsement")
-	WebElement endorsement;
+	private WebElement endorsement;
 	
 	@FindBy(id = "li_2005")
-	WebElement gpsUWDecision;
+	private WebElement gpsUWDecision;
 	
 	@FindBy(id = "liAccount")
-	WebElement myAccount;
+	private WebElement myAccount;
 	
 	@FindBy(linkText = "Change Product")
-	WebElement changeProduct;
+	private WebElement changeProduct;
 	 
 	
 	public HomePage()

@@ -11,16 +11,16 @@ public class LoginPage extends AbsliBase {
 	//Object-Repo
 	
 	@FindBy(xpath = "//span[contains(text(),'Login')]")
-	WebElement logInText;
+	private WebElement logInText;
 	
 	@FindBy(xpath = "//input[@id=\"ContentPlaceHolder1_txtUserName\"]")
-	WebElement usernameTextField;
+	private WebElement usernameTextField;
 	
 	@FindBy(id = "ContentPlaceHolder1_txtPassword")
-	WebElement passwordTextField;
+	private WebElement passwordTextField;
 	
 	@FindBy(id = "ContentPlaceHolder1_btnSubmit")
-	WebElement loginButton;
+	private WebElement loginButton;
 	
 	
 	

@@ -38,10 +38,10 @@ public class VerifyTheErrorPopUpMessagesInMasterPolicyMakerPage extends AbsliBas
 		
 	}
 	
-//	@AfterMethod
-//	public void endUp()
-//	{
-//		homePage.logoutFunction();
-//		end();
-//	}
+	@AfterMethod
+	public void endUp()
+	{
+		homePage.logoutFunction();
+		end();
+	}
 }

@@ -20,73 +20,73 @@ public class ClientOrganizationPage extends AbsliBase {
 	//Add - Client Organization
 
 	@FindBy(id="ContentPlaceHolder1_ucGroupParty_txtOrgName")
-	WebElement clientNameAdd;
+	private WebElement clientNameAdd;
 
 	@FindBy(id="ContentPlaceHolder1_ucGroupParty_txtCoreBusiness")
-	WebElement occuption;
+	private WebElement occuption;
 
 	@FindBy(id="ContentPlaceHolder1_ucGroupParty_ddlSalutation")
-	WebElement titleDropdown;
+	private WebElement titleDropdown;
 
 	@FindBy(id="ContentPlaceHolder1_ucGroupParty_txtContactPersonFirstName")
-	WebElement firstName;
+	private WebElement firstName;
 
 	@FindBy(id="ContentPlaceHolder1_ucGroupParty_ddlTypeOfClient")
-	WebElement typeOfClientDropDown;
+	private WebElement typeOfClientDropDown;
 
 	@FindBy(id="ContentPlaceHolder1_ucGroupParty_txtPANNo")
-	WebElement panNumber;
+	private WebElement panNumber;
 	
 	@FindBy(id = "ContentPlaceHolder1_ucGroupParty_ddlChangePassword")
-	WebElement changePasswordAccessRequiredAtclaimPortalDropDown;
+	private WebElement changePasswordAccessRequiredAtclaimPortalDropDown;
 
 	@FindBy(xpath = "//select[@id='ContentPlaceHolder1_ucGroupParty_ddlGSTType']")
-	WebElement gstTypeForRegular;
+	private WebElement gstTypeForRegular;
 
 	@FindBy(id="ContentPlaceHolder1_ucGroupParty_txtGSTNo")
-	WebElement gstNumber;
+	private WebElement gstNumber;
 
 	@FindBy(id = "ContentPlaceHolder1_ddlBranch")
-	WebElement servicingBranch;
+	private WebElement servicingBranch;
 
 	@FindBy(id = "ContentPlaceHolder1_txtAgentCode")
-	WebElement marketingOfficerCode; 
+	private WebElement marketingOfficerCode; 
 	
 	@FindBy(id="ContentPlaceHolder1_txtGrade")
-	WebElement gradeField;
+	private WebElement gradeField;
 	
 	@FindBy(id = "ContentPlaceHolder1_btnGradeSave")
-	WebElement saveGradeButton;
+	private WebElement saveGradeButton;
 
 	@FindBy(id = "ContentPlaceHolder1_ucPartyAddress_txtAddress1")
-	WebElement address1;
+	private WebElement address1;
 
 	@FindBy(id="ContentPlaceHolder1_ucPartyAddress_txtAddress2")
-	WebElement  address2;
+	private WebElement  address2;
 
 	@FindBy(id = "ContentPlaceHolder1_ucPartyAddress_txtZipCode")
-	WebElement pinCode;
+	private WebElement pinCode;
 
 	@FindBy(id = "ContentPlaceHolder1_ucPartyAddress_ddlCountry")
-	WebElement countryDropDown;
+	private WebElement countryDropDown;
 
 	@FindBy(id = "ContentPlaceHolder1_ucPartyAddress_ddlState")
-	WebElement stateDropDown;
+	private WebElement stateDropDown;
 
 	@FindBy(id = "ContentPlaceHolder1_ucPartyAddress_ddlDistrict")
-	WebElement districtDropDown;
+	private WebElement districtDropDown;
 
 	@FindBy(id = "ContentPlaceHolder1_ucPartyAddress_btnAddress")
-	WebElement addAddressButton;
+	private WebElement addAddressButton;
 
 	@FindBy(xpath = "//button[text()='Ok']")
-	WebElement okButtonInPopMessage;
+	private WebElement okButtonInPopMessage;
 
 	@FindBy(id = "ContentPlaceHolder1_btnAddParty")
-	WebElement addClientButton;
+	private WebElement addClientButton;
 	
 	@FindBy(id = "ContentPlaceHolder1_MessageBox_lblMsg")
-	WebElement popMsgText;
+	private WebElement popMsgText;
 
 	public ClientOrganizationPage()
 	{
@@ -94,9 +94,10 @@ public class ClientOrganizationPage extends AbsliBase {
 	}
 
 	//TC_CO_001 - Verify user able to create the Client Organization by providing only the Mandatory fields & without GST
+	
 	public void passTheValueToMandatoryFieldsWithoutGST(String cName, String occup, String title, String Fname, String typeofClient, 
 			String Pan, String gstType, String changePasswordAccessValue, String servicingBranchDropDown, String marketingOfficerCodeNum, String adds1, String adds2, String zipCode, 
-			String county, String state, String district) throws Exception  {
+			String county, String state, String district) throws Throwable  {
 		clientNameAdd.sendKeys(cName);
 		occuption.sendKeys(occup);
 		selectVisibleText(titleDropdown, title);

@@ -12,58 +12,58 @@ import com.absli.base.AbsliBase;
 public class GPSUWDecisionPage extends AbsliBase{
 	
 	@FindBy(id = "ContentPlaceHolder1_txtFromDate")
-	WebElement fromDate;
+	private WebElement fromDate;
 	
 	@FindBy(id = "ContentPlaceHolder1_txtToDate")
-	WebElement toDate;
+	private WebElement toDate;
 	
 	@FindBy(id = "ContentPlaceHolder1_txtCompanyName")
-	WebElement clienNameSearchField;
+	private WebElement clienNameSearchField;
 	
 	@FindBy(id = "ContentPlaceHolder1_ddlMasterPolicyNo")
-	WebElement masterPolicyNumberDropDwon;	
+	private WebElement masterPolicyNumberDropDwon;	
 	
 	@FindBy(id = "ContentPlaceHolder1_ddlAgreementNo")
-	WebElement agreementNumberDropDwon;
+	private WebElement agreementNumberDropDwon;
 	
 	@FindBy(id = "ContentPlaceHolder1_txtSearchMemberName")
-	WebElement memberName;
+	private WebElement memberName;
 	
 	@FindBy(id = "ContentPlaceHolder1_TxtEmpId")
-	WebElement memberEmployeeID;
+	private WebElement memberEmployeeID;
 	
 	@FindBy(id = "ContentPlaceHolder1_txtPolicyNumber")
-	WebElement certificateNumber;
+	private WebElement certificateNumber;
 	
 	@FindBy(id = "ContentPlaceHolder1_txtMemberId")
-	WebElement memberID;
+	private WebElement memberID;
 	
 	@FindBy(id="ContentPlaceHolder1_btnSearch")
-	WebElement  searchButton;
+	private WebElement  searchButton;
 	
 	@FindBy(id="ContentPlaceHolder1_btnSearchClear")
-	WebElement clearButton;
+	private WebElement clearButton;
 	
 	@FindBy(id="ContentPlaceHolder1_gvUnderwritingPayment_gvchkIsPayment_0")
-	WebElement checkBox;
+	private WebElement checkBox;
 	
 	@FindBy(id="ContentPlaceHolder1_gvUnderwritingPayment_txtDecisionEffdDate_0")
-	WebElement underwritingDecisionEffectiveDate;
+	private WebElement underwritingDecisionEffectiveDate;
 	
 	@FindBy(id="ContentPlaceHolder1_gvUnderwritingPayment_txtCaseReceivedDate_0")
-	WebElement consentReceivedDate;
+	private WebElement consentReceivedDate;
 	
 	@FindBy(id="ContentPlaceHolder1_gvUnderwritingPayment_txtRemarks_0")
-	WebElement remarks;
+	private WebElement remarks;
 	
 	@FindBy(id="ContentPlaceHolder1_btnSave")
-	WebElement submitButton;
+	private WebElement submitButton;
 	
 	@FindBy(id="ContentPlaceHolder1_Messagebox_lblMsg")
-	WebElement popMessageText;
+	private WebElement popMessageText;
 	
 	@FindBy(xpath = "//button[@type=\"button\"][@class=\"ui-button ui-corner-all ui-widget\"]")
-	WebElement okButtonInPopMessage;
+	private WebElement okButtonInPopMessage;
 	
 	public GPSUWDecisionPage()
 	{
