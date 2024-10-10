@@ -31,7 +31,7 @@ public class TC_CO_003_ClientOrganizationWithGradeAndWithOutGST extends AbsliBas
 	
 	@DataProvider(name = "DataFromTC_CO_003")
 	public Object[][] getTestDataFromTC_CO_003() {
-		Object arrobj[][] = TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\git\\com.absli.auto\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\clientOrganization\\Test Data For TC_CO_003.xlsx","TC_CO_003");
+		Object arrobj[][] = TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\git\\com.absli.auto\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\client\\organization\\Test Data For TC_CO_003.xlsx","TC_CO_003");
 		return arrobj;
 	}
 	
