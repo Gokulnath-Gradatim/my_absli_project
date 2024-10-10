@@ -29,13 +29,13 @@ public class TC_CO_001_ClientOrganizationWithOutGST extends AbsliBase {
 		homePage=new HomePage();
 	}
 	
-	@DataProvider(name = "DataFromTC_CO_01")
+	@DataProvider(name = "DataFromTC_CO_001")
 	public Object[][] getTestDataFromTC_CO_001() {
 		Object arrobj[][] = TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\git\\com.absli.auto\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\clientOrganization\\Test Data For TC_CO_001.xlsx", "TC_CO_001");
 		return arrobj;
 	}
 	
-	@Test(priority = 0, dataProvider = "DataFromTC_CO_01", dataProviderClass = CreateAClientOrga.class)
+	@Test(priority = 0, dataProvider = "DataFromTC_CO_001", dataProviderClass = CreateAClientOrga.class)
 	public void createClientWithMandatoryFieldsAndWithoutGST (String clientName, String occupation, String title, String firstName, String typeOfClient, String pan, String gstType, 
 			String changePasswordAccessValue, String servicingBranchDropDown, String marketingOfficerCode, String address1, String address2,  String zipCode, String county, String state, String district) throws Throwable 
 	{
