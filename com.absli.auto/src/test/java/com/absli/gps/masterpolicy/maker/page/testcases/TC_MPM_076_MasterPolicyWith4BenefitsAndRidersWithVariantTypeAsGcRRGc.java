@@ -39,11 +39,12 @@ public class TC_MPM_076_MasterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcRRG
 	}
 	
 	@Test(priority = 75,dataProvider = "TestDataFromTC_MPM_076", dataProviderClass = TC_MPM_076_MasterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcRRGc.class)
-	public void createAMasterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcRRGc(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void createAMasterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcRRGc(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1,  
 			 	String gradeValueValueForBaseBenefit1, String sumAssuredValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 			 	String gradeValueValueForBaseBenefit2, String sumAssuredValueForBaseBenefit2,String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -56,10 +57,9 @@ public class TC_MPM_076_MasterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcRRG
 				String gradeValueForFourthRider3, String sumAssuredValueForFourthRider3,String freeCoverLimitValueForFourthRider3, String minimumCapValueForFourthRider3, String maximumCapValueForFourthRider3) throws Throwable	{
 		homePage.masterPolicyMakerPage();
 		masterPolicyMakerPage= new MasterPolicyMakerPage();
-		masterPolicyMakerPage.masterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcRRGc(clientName, agreementNumberStringValue, 
-				quotationDetailsStringValue, title, firstName, number, emailIDStringValue, numberOfInsured, 
-				totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, conditionsValue, 
-				benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, retirementAgeValue, nraLetterReceivedDateValue, 
+		masterPolicyMakerPage.masterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcRRGc(clientName, agreementNumberValue, 
+				quotationDetailsValue, title, firstName, number, emailIDStringValue, numberOfInsured, totalSumAssuredValue, 
+				inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, benefitType, typeOfRenewal, windowPeriodValue,  
 				typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails, benefits1, 
 				varientType1, gradeValueValueForBaseBenefit1, sumAssuredValueForBaseBenefit1, freeCoverLimitValueForBaseBenefit1, 
 				minimumCapValueForBaseBenefit1, maximumCapValueForBaseBenefit1, gradeValueValueForBaseBenefit2, 

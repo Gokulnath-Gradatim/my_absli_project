@@ -34,21 +34,20 @@ public class ErrorPopupMessage extends AbsliBase  {
 	}
 
 	@Test(priority = 0, dataProvider = "TestDataFromErrorPopupMsg", dataProviderClass = ErrorPopupMessage.class)
-	public void captureTheErrorPopupMessage(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
-			String benefits, String varientType, String freeCoverLimitValue) throws Throwable {
+	public void captureTheErrorPopupMessage(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,String benefits, 
+			String varientType, String freeCoverLimitValue) throws Throwable {
 		
 		homePage.masterPolicyMakerPage();
 		masterPolicyMakerPage= new MasterPolicyMakerPage();
-		masterPolicyMakerPage.captureAErrorPopupMessage(clientName, agreementNumberStringValue, 
-				quotationDetailsStringValue, title, firstName, number, emailIDStringValue, numberOfInsured, 
-				totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
-				conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, 
-				maximumAge, reinsurerValue, unitAddress, addressDetails, benefits, varientType, freeCoverLimitValue);
+		masterPolicyMakerPage.captureAErrorPopupMessage(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, 
+				number, emailIDStringValue, numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, 
+				minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails, benefits, varientType, freeCoverLimitValue);
 	}
 	
 	@AfterMethod

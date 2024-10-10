@@ -39,12 +39,12 @@ public class TC_MPM_032_MasterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRCCC
 	}
 	
 	@Test(priority = 31,dataProvider = "TestDataFromTC_MPM_032", dataProviderClass = TC_MPM_032_MasterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRCCCR.class)
-	public void createAMasterPolicyWith4BenefitsAndRidersWithVariantTypeAsCRCCCR (String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, 
-			String nraLetterReceivedDateValue,String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
-			String reinsurerValue, String UnitAddress, String addressDetails, 
+	public void createAMasterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRCCCR (String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails, 
 			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider,	String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, 
 			String benefits3, String varientType3, String freeCoverLimitValueForAdditionalRider, 
@@ -54,17 +54,15 @@ public class TC_MPM_032_MasterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRCCC
 	{
 		homePage.masterPolicyMakerPage();
 		masterPolicyMakerPage= new MasterPolicyMakerPage();
-		masterPolicyMakerPage.masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRCCCR(clientName, 
-				agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, emailIDStringValue, 
-				numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, 
-				varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, UnitAddress, addressDetails, benefits1, varientType1, freeCoverLimitValueForBaseBenefit, 
-				benefits2, varientType2, percentageofBaseBenefitValueForInbuildRider, freeCoverLimitValueForInbuildRider, 
-				minimumCapValueForInbuildRider, maximumCapValueForInbuildRider, benefits3, varientType3, 
-				freeCoverLimitValueForAdditionalRider, benefits4, varientType4, freeCoverLimitValue4, benefits5, 
-				varientType5, freeCoverLimitValue5, benefits6, varientType6, percentageofBaseBenefitValue6, 
-				freeCoverLimitValue6, minimumCapValue6, maximumCapValue6);
+		masterPolicyMakerPage.masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRCCCR(clientName, agreementNumberValue, 
+				quotationDetailsValue, title, firstName, number, emailIDStringValue, numberOfInsured, totalSumAssuredValue, 
+				inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, benefitType, typeOfRenewal, windowPeriodValue, 
+				typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails, benefits1, 
+				varientType1, freeCoverLimitValueForBaseBenefit, benefits2, varientType2, percentageofBaseBenefitValueForInbuildRider, 
+				freeCoverLimitValueForInbuildRider, minimumCapValueForInbuildRider, maximumCapValueForInbuildRider, benefits3, 
+				varientType3, freeCoverLimitValueForAdditionalRider, benefits4, varientType4, freeCoverLimitValue4, benefits5, 
+				varientType5, freeCoverLimitValue5, benefits6, varientType6, percentageofBaseBenefitValue6, freeCoverLimitValue6, 
+				minimumCapValue6, maximumCapValue6);
 	}
 	
 	@AfterMethod

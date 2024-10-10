@@ -288,7 +288,6 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		PageFactory.initElements(driver, this);
 	}
 	
-	
 	public void popupMsgVerification(String popupSuccessfullMsgTextValue) throws Throwable
 	{
 		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
@@ -445,11 +444,9 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	//common Fields for Employer Employee
 	private void mandatoryFields(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
 			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, 
-			String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
-			String unitAddress, String addressDetails) throws Throwable
+			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String benefitType, 
+			String typeOfRenewal, String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, 
+			String maximumAge, String reinsurerValue, String unitAddress, String addressDetails) throws Throwable
 	{
 		clienNameSearchField.sendKeys(clientName);
 		Thread.sleep(2000);
@@ -464,13 +461,14 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		totalProbableNumberOfInsured.click();
 		totalProbableNumberOfInsured.sendKeys(numberOfInsured,Keys.ENTER);
 		totalSumAssured.sendKeys(totalSumAssuredStringValue,Keys.ENTER);
-		inceptionDate.sendKeys(inceptionDateValue,Keys.ENTER);
+		inceptionDate.sendKeys(inceptionDateValue);
+		//Thread.sleep(3000);
 		agentCode.sendKeys(agentCodeValue,Keys.ENTER);
 		brokerageUpdation.clear();
 		brokerageUpdation.sendKeys(brokerageUpdationValue,Keys.ENTER);
 		selectVisibleText(variantDropDown, varient);
-		Thread.sleep(3000);
-		specialConditions.sendKeys(conditionsValue,Keys.ENTER);
+		//Thread.sleep(3000);
+		//specialConditions.sendKeys(conditionsValue,Keys.ENTER);
 		Thread.sleep(3000);
 		selectVisibleText(benefitTypeDropDown, benefitType);
 		Thread.sleep(3000);
@@ -480,16 +478,17 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			memberLevelButton.click();
 		}
 		windowPeriodForMemberAddition.sendKeys(windowPeriodValue,Keys.ENTER);
-		if(nraLetterReceived.equals("Yes"))
-		{
-			isNRALetterReceivedYesButton.click();
-			retirementAge.sendKeys(retirementAgeValue,Keys.ENTER);
-			nraLetterReceivedDate.sendKeys(nraLetterReceivedDateValue,Keys.ENTER);
-
-		}else {
-
-			isNRALetterReceivedNoButton.click();
-		}
+		//NRA - Not mandatory field
+//		if(nraLetterReceived.equals("Yes"))
+//		{
+//			isNRALetterReceivedYesButton.click();
+//			retirementAge.sendKeys(retirementAgeValue,Keys.ENTER);
+//			nraLetterReceivedDate.sendKeys(nraLetterReceivedDateValue,Keys.ENTER);
+//
+//		}else {
+//
+//			isNRALetterReceivedNoButton.click();
+//		}
 		selectVisibleText(frequencyDropDown, frequency);
 		Thread.sleep(3000);
 		selectVisibleText(zoneDropDown, zone);
@@ -656,7 +655,7 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		
 		
 	//Product - GPS
-	
+	//Popup Messages and Screenshot
 	public String popupMessageText() throws Throwable
 	{
 		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
@@ -667,491 +666,31 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		return popUpTextMessage;
 	}
 	
-	public void demo() throws Throwable
-	{
-		wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-		sentToCheckerButton.click();
-		String popUpMessageTextValue = popupMessageText();
-		while(true) {		
-			switch (popUpMessageTextValue) {
-			case "Please enter the Agreement Number.": 
-				agreementNumber.sendKeys("1234",Keys.ENTER);
-				sentToCheckerButton.click();
-				popUpMessageTextValue = popupMessageText();
-				break;
-			case "Please enter 6 digit Agreement Number":
-				agreementNumber.clear();
-				agreementNumber.sendKeys("234567",Keys.ENTER);
-				sentToCheckerButton.click();
-				popUpMessageTextValue = popupMessageText();
-				break;
-			case "Please enter the Quotation Details.":
-				quotationDetails.sendKeys("NA",Keys.ENTER);
-				Thread.sleep(2000);
-				sentToCheckerButton.click();
-				popUpMessageTextValue = popupMessageText();
-				break;
-			case "Please enter the Client Name.":
-				clienNameSearchField.sendKeys("Absli-Grade-001");
-				Thread.sleep(2000);
-				clienNameSearchField.sendKeys(Keys.ARROW_DOWN,Keys.ENTER);
-				Thread.sleep(6000);
-				agreementNumber.sendKeys("234567",Keys.ENTER);
-				quotationDetails.sendKeys("NA",Keys.ENTER);
-				Thread.sleep(2000);
-				sentToCheckerButton.click();
-				popUpMessageTextValue = popupMessageText();
-				break;
-			case "Please select the Contact Person Salutation.":
-				selectVisibleText(contactPersonTitle, "Mr");
-				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-				sentToCheckerButton.click();
-				popUpMessageTextValue = popupMessageText();
-				break;
-			case "Please enter the Contact Person First Name.":
-				contactPersonFirstName.sendKeys("Gokul");
-				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-				sentToCheckerButton.click();
-				popUpMessageTextValue = popupMessageText();
-				break;
-			case "Please enter the Contact Number.":
-				contactNumber.sendKeys("9089674511");
-				contactNumber.sendKeys(Keys.BACK_SPACE);
-				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-				sentToCheckerButton.click();
-				popUpMessageTextValue = popupMessageText();
-				break;
-			case "Contact Number should not be less than 10 digits":
-				contactNumber.clear();
-				contactNumber.sendKeys("9089674512");
-				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-				sentToCheckerButton.click();
-				popUpMessageTextValue = popupMessageText();
-				break;
-			case "Please enter the Email ID.":
-				emailID.sendKeys("absli.com");
-				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-				sentToCheckerButton.click();
-				popUpMessageTextValue = driver.switchTo().alert().getText();
-				System.out.println("Popup Message: " + popUpMessageTextValue);
-				break;
-			case "Please provide a valid email address":
-				driver.switchTo().alert().accept();
-				wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-				okButtonInPopMessage.click();
-				emailID.sendKeys("absli@gmail.com");
-				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-				sentToCheckerButton.click();
-				popUpMessageTextValue = popupMessageText();
-				break;
-					
-			default:
-				System.out.println("successfully tested");
-				return;
-			}
-		}
-	}
-	//Verify the error pop-up message
-	public void verifyTheErrorPopUpMessagesInMasterPolicyMakerPage() throws Throwable
-	{
-			
-		wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-		sentToCheckerButton.click();
-		//Agreement Number - 1
-		String popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter the Agreement Number.")) {
-			agreementNumber.sendKeys("1234",Keys.ENTER);
-			sentToCheckerButton.click();
-		}
-		else {
-			System.out.println("Agreement Number popup message is Wrong or Not Present");
-		}
-		//Agreement Number - 2
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter 6 digit Agreement Number")) {
-			agreementNumber.clear();
-			agreementNumber.sendKeys("234567",Keys.ENTER);
-			sentToCheckerButton.click();
-		}
-		else {
-			System.out.println("Agreement Number popup message is Wrong or Not Present");
-		}
-		
-		//Quotation Details
-		popUpMessageTextValue = popupMessageText();
-		if(popUpMessageTextValue.equals("Please enter the Quotation Details.")) {
-			quotationDetails.sendKeys("NA",Keys.ENTER);
-			Thread.sleep(2000);
-			sentToCheckerButton.click();
-		}
-		else{
-			System.out.println("Quotation Details popup message is Wrong or Not Present");
-		}
-		//Client Name
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter the Client Name.")) {
-			clienNameSearchField.sendKeys("Absli-Grade-001");
-			Thread.sleep(2000);
-			clienNameSearchField.sendKeys(Keys.ARROW_DOWN,Keys.ENTER);
-			Thread.sleep(6000);
-			agreementNumber.sendKeys("234567",Keys.ENTER);
-			quotationDetails.sendKeys("NA",Keys.ENTER);
-			Thread.sleep(2000);
-			sentToCheckerButton.click();
-		}
-		else {
-			System.out.println("Client Name popup message is Wrong or Not Present");
-		}
-		// Contact Person Salutation
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please select the Contact Person Salutation.")) {
-			selectVisibleText(contactPersonTitle, "Mr");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		}
-		else {
-			System.out.println("Contact Person Salutation popup message is Wrong or Not Present");
-		}
-		//Contact Person First Name
-		popUpMessageTextValue = popupMessageText();
-		if(popUpMessageTextValue.equals("Please enter the Contact Person First Name.")) {
-			contactPersonFirstName.sendKeys("Gokul");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		}
-		else {
-			System.out.println("Contact Person First Name popup message is Wrong or Not Present");
-		}
-		//Contact Number
-		popUpMessageTextValue = popupMessageText();
-		if(popUpMessageTextValue.equals("Please enter the Contact Number.")) {
-			contactNumber.sendKeys("9089674511");
-			contactNumber.sendKeys(Keys.BACK_SPACE);
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-			popUpMessageTextValue = popupMessageText();
-			if (popUpMessageTextValue.equals("Contact Number should not be less than 10 digits")) {
-				contactNumber.clear();
-				contactNumber.sendKeys("9089674512");
-				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-				sentToCheckerButton.click();
-			}else {
-				System.out.println("Contact Number popup message is Wrong or Not Present");
-			}
-		
-		}else {
-			System.out.println("Contact Number popup message is Wrong or Not Present");
-		}
-		//Email ID
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter the Email ID.")) {
-			emailID.sendKeys("absli.com");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-			String alertTextValue = driver.switchTo().alert().getText();
-			System.out.println("Popup Message: " + alertTextValue);
-			if (alertTextValue.equals("Please provide a valid email address")) {
-				driver.switchTo().alert().accept();
-				emailID.sendKeys("absli@gmail.com");
-				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-				sentToCheckerButton.click();
-			}else {
-				System.out.println("Email ID entered popup message is Wrong or Not Present");
-			}
-			
-		}else {
-			System.out.println("Email ID popup message is Wrong or Not Present");
-		}
-		//Total Probable Number of Insured
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter the Total Probable Number of Insured.")) {
-			totalProbableNumberOfInsured.sendKeys("101");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		}
-		else {
-			System.out.println("Total Probable Number of Insured popup message is Wrong or Not Present");
-		}
-		//Total Sum Assured at the time of Inception policy
-		popUpMessageTextValue = popupMessageText();
-		if(popUpMessageTextValue.equals("Please enter the Total Sum Assured at the time of Inception policy.")) {
-			totalSumAssured.sendKeys("1000001");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		}
-		else {
-			System.out.println("Total Sum Assured at the time of Inception policy popup message is Wrong or Not Present");
-		}
-		//Master Policy Inception Date.
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter the Master Policy Inception Date.")) {
-			inceptionDate.sendKeys("01/01/2024");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-			
-		} else {
-			System.out.println("Master Policy Inception Date popup message is Wrong or Not Present");
-		}
-		//Agent Code
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter the Agent Code.")) {
-			agentCode.sendKeys("132430",Keys.ENTER);
-			Thread.sleep(2000);
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Agent Code popup message is Wrong or Not Present");
-		}
-		//Brokerage Updation
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter the Brokerage Updation.")) {
-			brokerageUpdation.sendKeys("10");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Brokerage Updation popup message is Wrong or Not Present");
-		}
-		//Variant
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please select the Variant.")) {
-			selectVisibleText(variantDropDown, "GPS OYRT_V08");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Variant popup message is Wrong or Not Present");
-		}
-		//Benefit Type
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please select the Benefit Type.")) {
-			selectVisibleText(benefitTypeDropDown, "Employer Employee");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Benefit Type popup message is Wrong or Not Present");
-		}
-		//Type of Renewal
-		String typeOfRenewal = "Scheme Level";
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please Select atleast one Type of Renewal.")) {
-			if (typeOfRenewal.equals("Scheme Level")) {
-				schemeLevelButton.click();
-			} else {
-				memberLevelButton.click();
-			}
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Type of Renewal popup message is Wrong or Not Present");
-		}
-		//Window Period for Member Addition
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter the Window Period for Member Addition.")) {
-			windowPeriodForMemberAddition.sendKeys("30",Keys.ENTER);
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Window Period for Member Addition popup message is Wrong or Not Present");
-		}
-		//Frequency
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please select the Frequency.")) {
-			selectVisibleText(frequencyDropDown, "Annual");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Frequency popup message is Wrong or Not Present");
-		}
-		//Zone
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please select the Zone.")) {
-			selectVisibleText(zoneDropDown, "Jayanagar");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Zone popup message is Wrong or Not Present");
-		}
-		//Reinsurer
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please select the Reinsurer.")) {
-			selectVisibleText(reInsurerDropDown, "test");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Reinsurer is selected");
-		}
-		//Underwriting Minimum Age
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please Enter the Underwriting Minimum Age")) {
-			underwritingMinimumAge.sendKeys("16");
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Underwriting Minimum popup message is Wrong or Not Present");
-		}
-		//Underwriting Maximum Age.
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter the Underwriting Maximum Age.")) {
-			underwritingMaximumAge.sendKeys("65");
-		//	unitAddressNoButton.click();
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Underwriting Maximum Age popup message is Wrong or Not Present");
-		}
-		//Unit Details
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please add atleast one Unit Details")) {
-			Actions actions = new Actions(driver);
-			actions.scrollByAmount(0, -1500).perform();
-//			JavascriptExecutor js=(JavascriptExecutor)driver;
-//			js.executeScript("window.scrollBy(0, 80)");
-//			System.out.println("1");
-			unitAddressNoButton.click();
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Unit Details popup message is Wrong or Not Present");
-		}
-		//Address Details
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please select the Is Master Policy Address different from Client Organization Address? .")) {
-			addressNoButton.click();
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Address Details popup message is Wrong or Not Present");
-		}
-		//Add - Benefits/Riders
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please Add atleast one Benefits/Riders")) {
-			addRidersButton.click();
-		
-		} else {
-			System.out.println("Add - Benefits/Riders popup message is Wrong or Not Present");
-		}
-		//Benefits/Riders
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please select the Benefits/Riders.")) {
-			selectVisibleText(benefitsDropDown, "GPS Base Benefit");
-			addRidersButton.click();
-			
-		} else {
-			System.out.println("Benefits/Riders popup message is Wrong or Not Present");
-		}
-		//Variant Type
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please select the Variant Type.")) {
-			selectVisibleText(variantTypeDropDown, "Flat Sum Assured");
-			wait.until(ExpectedConditions.elementToBeClickable(sumAssured));
-			addRidersButton.click();
-		} else {
-			System.out.println("Variant Type popup message is Wrong or Not Present");
-		}
-		//Sum Assured
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter the Sum Assured.")) {
-			sumAssured.sendKeys("1000000");
-			addRidersButton.click();
-		} else {
-			System.out.println("Sum Assured popup message is Wrong or Not Present");
-		}
-		//Free Cover Limit
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter the Free Cover Limit (Sum Assured).")) {
-			freeCoverLimit.sendKeys("100000");
-			addRidersButton.click();
-		} else {
-			System.out.println("Free Cover Limit popup message is Wrong or Not Present");
-		}
-		//Benefits/Riders Added Successfully
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Benefits/Riders Added Successfully")) {
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Benefits/Riders Added Successfully popup message is Wrong or Not Present");
-		}
-		//In-Built Coverage
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please Add the In-Built Coverage")) {
-			selectVisibleText(benefitsDropDown, "GPS Rider - Terminal illness Premier (In-Built)");
-			selectVisibleText(variantTypeDropDown, "Rider");
-			wait.until(ExpectedConditions.elementToBeClickable(percentageOfBaseBenefit));
-			addRidersButton.click();
-		} else {
-			System.out.println("In-Built Coverage popup message is Wrong or Not Present");
-		}
-		//Percentage of Base Benefit
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter the Percentage of Base Benefit.")) {
-			percentageOfBaseBenefit.sendKeys("20");
-			addRidersButton.click();
-		} else {
-			System.out.println("Percentage of Base Benefit popup message is Wrong or Not Present");
-		}
-		//Minimum Cap
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter the Minimum Cap.")) {
-			minimumCap.sendKeys("18");
-			addRidersButton.click();			
-		} else {
-			System.out.println("Minimum Cap popup message is Wrong or Not Present");
-		}
-		//Maximum Cap
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter the Maximum Cap.")) {
-			maximumCap.sendKeys("1000000");
-			addRidersButton.click();		
-		} else {
-			System.out.println("Maximum Cap popup message is Wrong or Not Present");
-		}
-		//Free Cover Limit
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Please enter the Free Cover Limit (Sum Assured).")) {
-			freeCoverLimit.sendKeys("100000");
-			addRidersButton.click();
-		} else {
-			System.out.println("Free Cover Limit popup message is Wrong or Not Present");
-		}
-		//Benefits/Riders Added Successfully
-		popUpMessageTextValue = popupMessageText();
-		if (popUpMessageTextValue.equals("Benefits/Riders Added Successfully")) {
-			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
-			sentToCheckerButton.click();
-		} else {
-			System.out.println("Benefits/Riders Added Successfully popup message is Wrong or Not Present");
-		}
-		
-	}
-	
 	
 	/* TC_MPM_001 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 'GPS Base Benefit' & 
 	 * 				variant type as 'Customer Defined SA'.
 	 */
-	public void masterPolicyWithMandatoryFieldsAndCustomerDefinedSA(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,String benefits, 
-			String varientType, String freeCoverLimitValue) throws Throwable 
+	public void masterPolicyWithMandatoryFieldsAndCustomerDefinedSA(String clientName, String agreementNumberValue, 
+			String quotationDetailsValue, String title, String firstName, String number, String emailIDStringValue, 
+			String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, String agentCodeValue, 
+			String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, String windowPeriodValue, 
+			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
+			String unitAddress, String addressDetails, 
+			String benefits, String varientType, String freeCoverLimitValue) throws Throwable 
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, 
+				emailIDStringValue, numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, 
+				frequency, zone, minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails);
 
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
 		customerDefinedSA(freeCoverLimitValue);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-		okButtonInPopMessage.click();
+		acceptPopupMsg();
+		
 		sentToCheckerButton.click();
-		//saveButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-		String popMsgTextValue = popMessageText.getText();
-		System.out.println("Popup Message: " + popMsgTextValue);
-		okButtonInPopMessage.click();
+		acceptPopupMsgAndCaptureTheMsg();
 		
 	}
 	
@@ -1159,140 +698,124 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	 * 				variant type as 'Flat Sum Assured'.
 	 */
 
-	public void masterPolicyWithMandatoryFieldsAndFlatSumAssured(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,String benefits, 
-			String varientType, String sumAssuredValue, String freeCoverLimitValue) throws Throwable 
+	public void masterPolicyWithMandatoryFieldsAndFlatSumAssured(String clientName, String agreementNumberValue, 
+			String quotationDetailsValue, String title, String firstName, String number, String emailIDStringValue, 
+			String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, String agentCodeValue, 
+			String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, String windowPeriodValue, 
+			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
+			String unitAddress, String addressDetails,
+			String benefits, String varientType, String sumAssuredValue, String freeCoverLimitValue) throws Throwable 
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, 
+				emailIDStringValue, numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, 
+				frequency, zone, minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
 		flatSumAssured(sumAssuredValue, freeCoverLimitValue);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-		okButtonInPopMessage.click();
+		acceptPopupMsg();
+
 		sentToCheckerButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-		String popMsgTextValue = popMessageText.getText();
-		System.out.println("Popup Message: " + popMsgTextValue);
-		okButtonInPopMessage.click();
+		acceptPopupMsgAndCaptureTheMsg();
 	}
 	
 	/* TC_MPM_003 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 'GPS Base Benefit' & 
 	 * 				variant type as 'Multiple Of Salary'.
 	 */
-	public void masterPolicyWithMandatoryFieldsAndMultipleOfSalary(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,String benefits, 
-			String varientType, String multiplesOfSalaryValue, String freeCoverLimitValue, String minimumCapValue, String maximumCapValue) throws Throwable 
+	public void masterPolicyWithMandatoryFieldsAndMultipleOfSalary(String clientName, String agreementNumberValue, 
+			String quotationDetailsValue, String title, String firstName, String number, String emailIDStringValue, 
+			String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, String agentCodeValue, 
+			String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, String windowPeriodValue, 
+			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
+			String unitAddress, String addressDetails, 
+			String benefits, String varientType, String multiplesOfSalaryValue, String freeCoverLimitValue, String minimumCapValue, 
+			String maximumCapValue) throws Throwable 
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, 
+				emailIDStringValue, numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, 
+				frequency, zone, minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
 		wait.until(ExpectedConditions.elementToBeClickable(multiplesOfSalary));
 		multipleOfSalary(multiplesOfSalaryValue, freeCoverLimitValue, minimumCapValue, maximumCapValue);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-		okButtonInPopMessage.click();
+		acceptPopupMsg();
+
 		sentToCheckerButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-		String popMsgTextValue = popMessageText.getText();
-		System.out.println("Popup Message: " + popMsgTextValue);
-		okButtonInPopMessage.click();
+		acceptPopupMsgAndCaptureTheMsg();
 	}
 
 	/* TC_MPM_004 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 'GPS Base Benefit' & 
 	 * 				variant type as 'Graded Cover'.
 	 */
-	public void masterPolicyWithMandatoryFieldsAndGradedCover(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,String benefits, 
-			String varientType, String noOfGrade, String gradeValue1, String sumAssuredValue1,String freeCoverLimitValue1, String minimumCapValue1, 
-			String maximumCapValue1, String gradeValue2, String sumAssuredValue2,String freeCoverLimitValue2, String minimumCapValue2, 
-			String maximumCapValue2, String gradeValue3, String sumAssuredValue3,String freeCoverLimitValue3, String minimumCapValue3, 
-			String maximumCapValue3) throws Throwable 
+	public void masterPolicyWithMandatoryFieldsAndGradedCover(String clientName, String agreementNumberValue, 
+			String quotationDetailsValue, String title, String firstName, String number, String emailIDStringValue, 
+			String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, String agentCodeValue, 
+			String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, String windowPeriodValue, 
+			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
+			String unitAddress, String addressDetails,
+			String benefits, String varientType, 
+			String gradeValue1, String sumAssuredValue1,String freeCoverLimitValue1, String minimumCapValue1, String maximumCapValue1, 
+			String gradeValue2, String sumAssuredValue2,String freeCoverLimitValue2, String minimumCapValue2, String maximumCapValue2, 
+			String gradeValue3, String sumAssuredValue3,String freeCoverLimitValue3, String minimumCapValue3, String maximumCapValue3) throws Throwable 
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, 
+				emailIDStringValue, numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, 
+				minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails);
 
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
 		gradedCover(gradeValue1, sumAssuredValue1, freeCoverLimitValue1, minimumCapValue1, maximumCapValue1);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-		okButtonInPopMessage.click();
+		acceptPopupMsg();
 		
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
 		gradedCover(gradeValue2, sumAssuredValue2, freeCoverLimitValue2, minimumCapValue2, maximumCapValue2);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-		okButtonInPopMessage.click();
+		acceptPopupMsg();
 		
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
 		gradedCover(gradeValue3, sumAssuredValue3, freeCoverLimitValue3, minimumCapValue3, maximumCapValue3);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-		okButtonInPopMessage.click();
+		acceptPopupMsg();
 		
 		sentToCheckerButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-		String popMsgTextValue = popMessageText.getText();
-		System.out.println("Popup Message: " + popMsgTextValue);
-		okButtonInPopMessage.click();
+		acceptPopupMsgAndCaptureTheMsg();
 		
 	}
 
 	/* TC_MPM_005 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 'GPS Base Benefit' & 
 	 * 				variant type as 'Future Service Gratuity Amount'.
 	 */
-	public void masterPolicyWithMandatoryFieldsAndFutureServiceGratuityAmount(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, 
-			String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
+	public void masterPolicyWithMandatoryFieldsAndFutureServiceGratuityAmount(String clientName, String agreementNumberValue, 
+			String quotationDetailsValue, String title, String firstName, String number, String emailIDStringValue, 
+			String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, String agentCodeValue, 
+			String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, String windowPeriodValue, 
 			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
-			String unitAddress, String addressDetails, String benefits,String varientType, 
-			String retirementAgeValueInVariantType, String maxSumAssuredValue, String freeCoverLimitValue, String minimumCapValue, 
+			String unitAddress, String addressDetails,
+			String benefits,String varientType, String retirementAgeValueInVariantType, String maxSumAssuredValue, String freeCoverLimitValue, String minimumCapValue, 
 			String maximumCapValue) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, 
+				emailIDStringValue, numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, 
+				minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
 		futureServiceGratuityAmount(retirementAgeValueInVariantType, maxSumAssuredValue, freeCoverLimitValue, minimumCapValue, maximumCapValue);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-		okButtonInPopMessage.click();
+		acceptPopupMsg();
+		
 		sentToCheckerButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-		String popMsgTextValue = popMessageText.getText();
-		System.out.println("Popup Message: " + popMsgTextValue);
-		okButtonInPopMessage.click();
+		acceptPopupMsgAndCaptureTheMsg();
 	}
 	
 	/* TC_MPM_006 - Verify user able to create the Master Policy by providing only the Mandatory fields with 
@@ -1300,86 +823,81 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	 *				Benefit as 'GPS Rider - Accelerated Terminal Illness Rider' & variant type as 'Rider'.
 	 */
 	
-	public void masterPolicyWithMandatoryFieldsAndRider(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String UnitAddress, String addressDetails,
-			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, 
-			String minimumCapValue, String maximumCapValue) throws Throwable
+	public void masterPolicyWithMandatoryFieldsAndRider(String clientName, String agreementNumberValue, 
+			String quotationDetailsValue, String title, String firstName, String number, String emailIDStringValue, 
+			String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, String agentCodeValue, 
+			String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, String windowPeriodValue, 
+			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
+			String unitAddress, String addressDetails,
+			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
+			String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, String minimumCapValue, String maximumCapValue) throws Throwable
 	
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, 
-				nraLetterReceived, retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, 
-				minimumAge, maximumAge, reinsurerValue, UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, 
+				emailIDStringValue, numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, benefitType, typeOfRenewal, windowPeriodValue, 
+				typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails);
+		
 		//Base Benefit
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
 		customerDefinedSA(freeCoverLimitValueForRider);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-		okButtonInPopMessage.click();
+		acceptPopupMsg();
 		
 		//Additional Rider
 		selectVisibleText(benefitsDropDown, benefits2);
 		selectVisibleText(variantTypeDropDown, varientType2);
 		rider(percentageofBaseBenefitValue, freeCoverLimitValueForRider, minimumCapValue, maximumCapValue);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-		okButtonInPopMessage.click();
+		acceptPopupMsg();
+		
 		sentToCheckerButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-		String popMsgTextValue = popMessageText.getText();
-		System.out.println("Popup Message: " + popMsgTextValue);
-		okButtonInPopMessage.click();
+		acceptPopupMsgAndCaptureTheMsg();
 	}
 	
 	/* TC_MPM_007 - Verify user able to create the Master Policy by providing only the Mandatory fields with Benefit as 
 	 * 			  	'GPS Base Benefit' & variant type as 'Graded Cover Salary Multiple'.
 	 */
-	public void masterPolicyWithMandatoryFieldsAndGradedCoverSalaryMultiple(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,String benefits, 
-			String varientType, String noOfGrade, String gradeValue1, String multiplesOfSalaryValue1,String freeCoverLimitValue1, String minimumCapValue1, 
-			String maximumCapValue1, String gradeValue2, String multiplesOfSalaryValue2, String freeCoverLimitValue2, String minimumCapValue2, 
-			String maximumCapValue2, String gradeValue3, String multiplesOfSalaryValue3, String freeCoverLimitValue3, String minimumCapValue3, 
-			String maximumCapValue3) throws Throwable 
+	public void masterPolicyWithMandatoryFieldsAndGradedCoverSalaryMultiple(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
+			String benefits, String varientType, String gradeValue1, String multiplesOfSalaryValue1,String freeCoverLimitValue1, 
+			String minimumCapValue1, String maximumCapValue1, String gradeValue2, String multiplesOfSalaryValue2, 
+			String freeCoverLimitValue2, String minimumCapValue2, String maximumCapValue2, String gradeValue3, 
+			String multiplesOfSalaryValue3, String freeCoverLimitValue3, String minimumCapValue3, String maximumCapValue3) throws Throwable 
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, 
+				emailIDStringValue, numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, 
+				minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails);
+		
 		//Grade 1
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
 		gradedCoverSalaryMultiple(gradeValue1, multiplesOfSalaryValue1, freeCoverLimitValue1, minimumCapValue1, maximumCapValue1);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-		okButtonInPopMessage.click();
+		acceptPopupMsg();
+		
 		//Grade 2
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
 		gradedCoverSalaryMultiple(gradeValue2, multiplesOfSalaryValue2, freeCoverLimitValue2, minimumCapValue2, maximumCapValue2);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-		okButtonInPopMessage.click();
+		acceptPopupMsg();
+		
 		//Grade 3
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
 		gradedCoverSalaryMultiple(gradeValue3, multiplesOfSalaryValue3, freeCoverLimitValue3, minimumCapValue3, maximumCapValue3);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-		okButtonInPopMessage.click();
+		acceptPopupMsg();
+		
 		sentToCheckerButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-		String popMsgTextValue = popMessageText.getText();
-		System.out.println("Popup Message: " + popMsgTextValue);
-		okButtonInPopMessage.click();
+		acceptPopupMsgAndCaptureTheMsg();
 	}
 	
 	
@@ -1388,30 +906,32 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	 * 				 Riders as 'GPS Rider - Terminal illness Premier (In-Built)' & variant type as 'Rider'
 	 */
 
-	public void masterPolicyWithMandatoryFieldsAndCustomerDefinedSAWithInBuiltRider(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String UnitAddress, String addressDetails,
-			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, 
-			String minimumCapValue, String maximumCapValue) throws Throwable
+	public void masterPolicyWithMandatoryFieldsAndCustomerDefinedSAWithInBuiltRider(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
+			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
+			String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, String minimumCapValue, String maximumCapValue) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, 
-				quotationDetailsStringValue, title, firstName, number, emailIDStringValue, numberOfInsured, 
-				totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
-				conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, retirementAgeValue, 
-				nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, 
+				emailIDStringValue, numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, 
+				minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails);
+		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
 		customerDefinedSA(freeCoverLimitValueForRider);
 		addRidersButton.click();
 		acceptPopupMsg();
+		
 		selectVisibleText(benefitsDropDown, benefits2);
 		selectVisibleText(variantTypeDropDown, varientType2);
 		rider(percentageofBaseBenefitValue, freeCoverLimitValueForRider, minimumCapValue, maximumCapValue);
 		addRidersButton.click();
 		acceptPopupMsg();
+		
 		sentToCheckerButton.click();
 		acceptPopupMsgAndCaptureTheMsg();
 	}
@@ -1421,30 +941,33 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	 * 				 Riders as 'GPS Rider - Terminal illness Premier (In-Built)' & variant type as 'Rider'
 	 */
 	
-	public void masterPolicyWithMandatoryFieldsAndFlatSumAssuredWithInBuiltRider(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String UnitAddress, String addressDetails,
+	public void masterPolicyWithMandatoryFieldsAndFlatSumAssuredWithInBuiltRider(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String sumAssuredValue, String freeCoverLimitValueForBaseBenefit, String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, 
 			String minimumCapValue, String maximumCapValue) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, 
-				quotationDetailsStringValue, title, firstName, number, emailIDStringValue, numberOfInsured, 
-				totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
-				conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, retirementAgeValue, 
-				nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, 
+				quotationDetailsValue, title, firstName, number, emailIDStringValue, numberOfInsured, 
+				totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
+				reinsurerValue, unitAddress, addressDetails);
+		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
-		flatSumAssured(totalSumAssuredStringValue, freeCoverLimitValueForBaseBenefit);
+		flatSumAssured(totalSumAssuredValue, freeCoverLimitValueForBaseBenefit);
 		addRidersButton.click();
 		acceptPopupMsg();
+		
 		selectVisibleText(benefitsDropDown, benefits2);
 		selectVisibleText(variantTypeDropDown, varientType2);
 		rider(percentageofBaseBenefitValue, freeCoverLimitValueForRider, minimumCapValue, maximumCapValue);
 		addRidersButton.click();
 		acceptPopupMsg();
+		
 		sentToCheckerButton.click();
 		acceptPopupMsgAndCaptureTheMsg();
 	}
@@ -1456,8 +979,7 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	public void masterPolicyWithMandatoryFieldsAndMultipleOfSalaryWithInBuiltRider(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
 			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, 
 			String totalSumAssuredStringValue, String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, 
-			String varient, String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
+			String varient, String benefitType, String typeOfRenewal, String windowPeriodValue,	
 			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
 			String reinsurerValue, String unitAddress, String addressDetails,String benefits1, 
 			String varientType1, String multiplesOfSalaryValue, String freeCoverLimitValueForBaseBenefit, 
@@ -1467,19 +989,21 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	{
 		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
 				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, 
-				nraLetterReceived, retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge,
-				maximumAge, reinsurerValue, unitAddress, addressDetails);
+				brokerageUpdationValue, varient, benefitType, typeOfRenewal, windowPeriodValue, 
+				typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails);
+		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
 		multipleOfSalary(multiplesOfSalaryValue, freeCoverLimitValueForBaseBenefit, minimumCapValueForBaseBenefit, maximumCapValueForBaseBenefit);
 		addRidersButton.click();
 		acceptPopupMsg();
+		
 		selectVisibleText(benefitsDropDown, benefits2);
 		selectVisibleText(variantTypeDropDown, varientType2);	
 		rider(percentageofBaseBenefitValue, freeCoverLimitValueForRider, minimumCapValueForRider, maximumCapValueForRider);
 		addRidersButton.click();
 		acceptPopupMsg();
+		
 		sentToCheckerButton.click();
 		acceptPopupMsgAndCaptureTheMsg();
 		
@@ -1490,22 +1014,23 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	 * 				Benefit as 'GPS Base Benefit' & variant type as 'Graded Cover' and 
 	 * 				Riders as 'GPS Rider - Terminal illness Premier (In-Built)' & variant type as 'Rider'
 	 */
-	public void masterPolicyWithMandatoryFieldsAndGradedCoverWithInBuiltRider(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,String benefits1, 
-			String varientType1, String noOfGrade, String gradeValue1, String sumAssuredValue1,String freeCoverLimitValue1, String minimumCapValue1, 
-			String maximumCapValue1, String gradeValue2, String sumAssuredValue2,String freeCoverLimitValue2, String minimumCapValue2, 
-			String maximumCapValue2, String gradeValue3, String sumAssuredValue3,String freeCoverLimitValue3, String minimumCapValue3, 
-			String maximumCapValue3, String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, 
-			String minimumCapValueForRider, String maximumCapValueForRider) throws Throwable
+	public void masterPolicyWithMandatoryFieldsAndGradedCoverWithInBuiltRider(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails, 
+			String benefits1, String varientType1, 
+			String gradeValue1, String sumAssuredValue1,String freeCoverLimitValue1, String minimumCapValue1, String maximumCapValue1, 
+			String gradeValue2, String sumAssuredValue2,String freeCoverLimitValue2, String minimumCapValue2, String maximumCapValue2, 
+			String gradeValue3, String sumAssuredValue3,String freeCoverLimitValue3, String minimumCapValue3, String maximumCapValue3, 
+			String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, String minimumCapValueForRider, String maximumCapValueForRider) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, 
-				nraLetterReceived, retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, 
-				minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, 
+				emailIDStringValue, numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, benefitType, typeOfRenewal, windowPeriodValue, 
+				typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails);
+		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
 		gradedCover(gradeValue1, sumAssuredValue1, freeCoverLimitValue1, minimumCapValue1, maximumCapValue1);
@@ -1538,26 +1063,23 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	 * 				Benefit as 'GPS Base Benefit' & variant type as 'Future Service Gratuity Amount' and 
 	 * 				Riders as 'GPS Rider - Terminal illness Premier (In-Built)' & variant type as 'Rider'
 	 */
-	public void masterPolicyWithMandatoryFieldsAndFutureServiceGratuityAmountWithInBuiltRider(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, 
-			String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
-			String unitAddress, String addressDetails, String benefits1,String varientType1, 
-			String retirementAgeValueInVariantType, String maxSumAssuredValueString, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, 
-			String maximumCapValueForBaseBenefit, String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, 
-			String minimumCapValueForRider, String maximumCapValueForRider) throws Throwable
+	public void masterPolicyWithMandatoryFieldsAndFutureServiceGratuityAmountWithInBuiltRider(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails, 
+			String benefits1,String varientType1, String retirementAgeValueInVariantType, String maxSumAssuredValueString, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
+			String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, String minimumCapValueForRider, String maximumCapValueForRider) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, 
-				nraLetterReceived, retirementAgeValueInVariantType, nraLetterReceivedDateValue, typeOfClient, frequency, 
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, 
+				emailIDStringValue, numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, 
 				zone, minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails);
+		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
-		futureServiceGratuityAmount(retirementAgeValueInVariantType, maxSumAssuredValueString, freeCoverLimitValueForBaseBenefit, 
-				minimumCapValueForBaseBenefit, maximumCapValueForBaseBenefit);
+		futureServiceGratuityAmount(retirementAgeValueInVariantType, maxSumAssuredValueString, freeCoverLimitValueForBaseBenefit, minimumCapValueForBaseBenefit, maximumCapValueForBaseBenefit);
 		addRidersButton.click();
 		acceptPopupMsg();
 		
@@ -1575,21 +1097,21 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	 * 				Benefit as 'GPS Base Benefit' & variant type as 'Graded Cover Salary Multiple' and 
 	 * 				Riders as 'GPS Rider - Terminal illness Premier (In-Built)' & variant type as 'Rider'
 	 */
-	public void masterPolicyWithMandatoryFieldsAndGradedCoverSalaryMultipleWithInBuiltRider(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,String benefits1, 
-			String varientType1, String noOfGrade, String gradeValue1, String multiplesOfSalaryValue1,String freeCoverLimitValue1, String minimumCapValue1, 
-			String maximumCapValue1, String gradeValue2, String multiplesOfSalaryValue2, String freeCoverLimitValue2, String minimumCapValue2, 
-			String maximumCapValue2, String gradeValue3, String multiplesOfSalaryValue3, String freeCoverLimitValue3, String minimumCapValue3, 
-			String maximumCapValue3, String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, 
-			String minimumCapValueForRider, String maximumCapValueForRider) throws Throwable
+	public void masterPolicyWithMandatoryFieldsAndGradedCoverSalaryMultipleWithInBuiltRider(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails, 
+			String benefits1, String varientType1, 
+			String gradeValue1, String multiplesOfSalaryValue1,String freeCoverLimitValue1, String minimumCapValue1, String maximumCapValue1, 
+			String gradeValue2, String multiplesOfSalaryValue2, String freeCoverLimitValue2, String minimumCapValue2, String maximumCapValue2, 
+			String gradeValue3, String multiplesOfSalaryValue3, String freeCoverLimitValue3, String minimumCapValue3, String maximumCapValue3, 
+			String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, String minimumCapValueForRider, String maximumCapValueForRider) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, 
-				nraLetterReceived, retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, 
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
 				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
@@ -1628,19 +1150,20 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as 'Customer Defined SA'  
 					   (we can select any of the Critical Illness riders)
 	 */
-	public void masterPolicyWithCustomerDefinedSAWithInBuiltRiderAndAdditionalRiderAsCustomerDefinedSA(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String UnitAddress, String addressDetails,
-			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, 
-			String minimumCapValue, String maximumCapValue, String benefits3, String varientType3, String freeCoverLimitValueForAdditionalRider) throws Throwable
+	public void masterPolicyWithCustomerDefinedSAWithInBuiltRiderAndAdditionalRiderAsCustomerDefinedSA(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails, 
+			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
+			String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, String minimumCapValue, String maximumCapValue, 
+			String benefits3, String varientType3, String freeCoverLimitValueForAdditionalRider) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -1672,20 +1195,21 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					   (we can select any of the Critical Illness riders)
 	 */
 	
-	public void masterPolicyWithCustomerDefinedSAWithInBuiltRiderAndAdditionalRiderAsRider(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String UnitAddress, String addressDetails,
-			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, 
-			String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, 
-			String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider) throws Throwable
+	public void masterPolicyWithCustomerDefinedSAWithInBuiltRiderAndAdditionalRiderAsRider(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
+			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
+			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, 
+			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
+		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
 		customerDefinedSA(freeCoverLimitValueForBaseBenefit);
@@ -1715,21 +1239,21 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Customer Defined SA’ (we can select any of the Critical Illness riders)
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Customer Defined SA’ 
 	 */
-	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsCRCC(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, 
-			String nraLetterReceivedDateValue,String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
-			String reinsurerValue, String UnitAddress, String addressDetails, String benefits1, String varientType1, 
-			String freeCoverLimitValueForBaseBenefit, String benefits2, String varientType2, String percentageofBaseBenefitValue, 
-			String freeCoverLimitValueForRider, String minimumCapValue, String maximumCapValue, String benefits3, String varientType3, 
-			String freeCoverLimitValueForAdditionalRider, String benefits4, String varientType4, String freeCoverLimitValue4) throws Throwable
+	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsCRCC(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
+			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
+			String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, String minimumCapValue, String maximumCapValue, 
+			String benefits3, String varientType3, String freeCoverLimitValueForAdditionalRider, 
+			String benefits4, String varientType4, String freeCoverLimitValue4) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -1766,22 +1290,21 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Customer Defined SA’ (we can select any of the Critical Illness riders)
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’ 
 	 */
-	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsCRCR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, 
-			String nraLetterReceivedDateValue,String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
-			String reinsurerValue, String UnitAddress, String addressDetails, String benefits1, String varientType1, 
-			String freeCoverLimitValueForBaseBenefit, String benefits2, String varientType2, String percentageofBaseBenefitValue2, 
-			String freeCoverLimitValueForRider2, String minimumCapValue2, String maximumCapValue2, String benefits3, String varientType3, 
-			String freeCoverLimitValueForAdditionalRider, String benefits4, String varientType4, String percentageofBaseBenefitValue4, 
-			String freeCoverLimitValueForRider4, String minimumCapValue4, String maximumCapValue4) throws Throwable
+	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsCRCR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
+			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
+			String benefits2, String varientType2, String percentageofBaseBenefitValue2, String freeCoverLimitValueForRider2, String minimumCapValue2, String maximumCapValue2, 
+			String benefits3, String varientType3, String freeCoverLimitValueForAdditionalRider, 
+			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValueForRider4, String minimumCapValue4, String maximumCapValue4) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -1818,20 +1341,21 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Rider’ (we can select any of the Critical Illness riders)
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Customer Defined SA
 	 */
-	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsCRRC(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String UnitAddress, String addressDetails,
-			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, 
-			String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, 
-			String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider, String benefits4, String varientType4, String freeCoverLimitValue) throws Throwable
+	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsCRRC(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
+			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
+			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, 
+			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider, 
+			String benefits4, String varientType4, String freeCoverLimitValue) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -1868,24 +1392,21 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Rider’ (we can select any of the Critical Illness riders)
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’ 
 	 */
-	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsCRRR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, 
-			String retirementAgeValue, String nraLetterReceivedDateValue,String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
-			String UnitAddress, String addressDetails,String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, String benefits2, 
-			String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, 
-			String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, String benefits3, 
-			String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, 
-			String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider, 
-			String benefits4, String varientType4, String percentageofofBaseBenefitValue4, String freeCoverLimitValue4, 
-			String minimumCapValue4, String maximumCapValue4) throws Throwable
+	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsCRRR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
+			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
+			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, 
+			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider, 
+			String benefits4, String varientType4, String percentageofofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -1922,22 +1443,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Customer Defined SA’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Customer Defined SA’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsCRCCC(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, 
-			String nraLetterReceivedDateValue,String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
-			String reinsurerValue, String UnitAddress, String addressDetails, String benefits1, String varientType1, 
-			String freeCoverLimitValueForBaseBenefit, String benefits2, String varientType2, String percentageofBaseBenefitValue, 
-			String freeCoverLimitValueForRider, String minimumCapValue, String maximumCapValue, String benefits3, String varientType3, 
-			String freeCoverLimitValueForAdditionalRider, String benefits4, String varientType4, String freeCoverLimitValue4, 
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsCRCCC(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
+			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
+			String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, String minimumCapValue, String maximumCapValue, 
+			String benefits3, String varientType3, String freeCoverLimitValueForAdditionalRider, 
+			String benefits4, String varientType4, String freeCoverLimitValue4, 
 			String benefits5, String varientType5, String freeCoverLimitValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -1982,23 +1503,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Customer Defined SA’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsCRCRC(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, 
-			String nraLetterReceivedDateValue,String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
-			String reinsurerValue, String UnitAddress, String addressDetails, 
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsCRCRC(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValue2, String freeCoverLimitValue2, String minimumCapValue2, String maximumCapValue2, 
 			String benefits3, String varientType3, String freeCoverLimitValueForAdditionalRider, 
 			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4, 
 			String benefits5, String varientType5, String freeCoverLimitValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -2042,22 +1562,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Customer Defined SA’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsCRRCR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String UnitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsCRRCR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, 
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider, 
 			String benefits4, String varientType4, String freeCoverLimitValue4,
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -2101,23 +1621,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Customer Defined SA’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsCRCCR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, 
-			String nraLetterReceivedDateValue,String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
-			String reinsurerValue, String UnitAddress, String addressDetails, 
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsCRCCR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails, 
 			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, 
 			String benefits3, String varientType3, String freeCoverLimitValueForAdditionalRider, 
 			String benefits4, String varientType4, String freeCoverLimitValue4, 
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -2161,23 +1680,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Customer Defined SA’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsCRRRC(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, 
-			String nraLetterReceivedDateValue,String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
-			String reinsurerValue, String UnitAddress, String addressDetails, 
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsCRRRC(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails, 
 			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, 
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4, 
 			String benefits5, String varientType5, String freeCoverLimitValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -2221,23 +1739,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Customer Defined SA’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Customer Defined SA’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsCRRCC(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, 
-			String nraLetterReceivedDateValue,String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
-			String reinsurerValue, String UnitAddress, String addressDetails, 
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsCRRCC(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails, 
 			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, 
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String freeCoverLimitValue4, 
 			String benefits5, String varientType5, String freeCoverLimitValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -2282,23 +1799,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsCRCRR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, 
-			String nraLetterReceivedDateValue,String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
-			String reinsurerValue, String UnitAddress, String addressDetails, 
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsCRCRR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails, 
 			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, 
 			String benefits3, String varientType3, String freeCoverLimitValueForBaseBenefitForAdditionalRider,
 			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4, 
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -2342,23 +1858,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsCRRRR (String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, 
-			String nraLetterReceivedDateValue,String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
-			String reinsurerValue, String UnitAddress, String addressDetails, 
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsCRRRR (String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails, 
 			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, 
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4, 
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -2403,12 +1918,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Customer Defined SA’
 					6. Riders as ‘GPS Rider - Accidental Death and Dismemberment’ & variant type as ‘Customer Defined SA’
 	 */
-	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRCCCC(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, 
-			String nraLetterReceivedDateValue,String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
-			String reinsurerValue, String UnitAddress, String addressDetails, 
+	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRCCCC(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, 
 			String benefits3, String varientType3, String freeCoverLimitValueForAdditionalRider, 
@@ -2416,11 +1931,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits5, String varientType5, String freeCoverLimitValue5, 
 			String benefits6, String varientType6, String freeCoverLimitValue6) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -2471,12 +1985,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Customer Defined SA’
 					6. Riders as ‘GPS Rider - Accidental Death and Dismemberment’ & variant type as ‘Customer Defined SA’
 	 */
-	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRRCCC (String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, 
-			String nraLetterReceivedDateValue,String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
-			String reinsurerValue, String UnitAddress, String addressDetails, 
+	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRRCCC (String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails, 
 			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, 
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider, 
@@ -2484,11 +1998,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits5, String varientType5, String freeCoverLimitValue5, 
 			String benefits6, String varientType6, String freeCoverLimitValue6) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -2539,12 +2052,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Customer Defined SA’
 					6. Riders as ‘GPS Rider - Accidental Death and Dismemberment’ & variant type as ‘Customer Defined SA’
 	 */
-	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRCRCC (String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, 
-			String nraLetterReceivedDateValue,String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
-			String reinsurerValue, String UnitAddress, String addressDetails, 
+	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRCRCC (String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails, 
 			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String freeCoverLimitValueForAdditionalRider, 
@@ -2552,11 +2065,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits5, String varientType5, String freeCoverLimitValue5,
 			String benefits6, String varientType6, String freeCoverLimitValue6) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -2607,12 +2119,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 					6. Riders as ‘GPS Rider - Accidental Death and Dismemberment’ & variant type as ‘Customer Defined SA’
 	 */
-	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRCCRC(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, 
-			String nraLetterReceivedDateValue,String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
-			String reinsurerValue, String UnitAddress, String addressDetails, 
+	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRCCRC(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,  
 			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, 
 			String benefits3, String varientType3, String freeCoverLimitValueForAdditionalRider, 
@@ -2620,11 +2132,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5,
 			String benefits6, String varientType6, String freeCoverLimitValue6) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -2676,12 +2187,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					6. Riders as ‘GPS Rider - Accidental Death and Dismemberment’ & variant type as ‘Rider’
 	 */
 	
-	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRCCCR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, 
-			String nraLetterReceivedDateValue,String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
-			String reinsurerValue, String UnitAddress, String addressDetails, 
+	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRCCCR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,  
 			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider,	String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, 
 			String benefits3, String varientType3, String freeCoverLimitValueForAdditionalRider, 
@@ -2689,11 +2200,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits5, String varientType5, String freeCoverLimitValue5, 
 			String benefits6, String varientType6, String percentageofBaseBenefitValue6, String freeCoverLimitValue6, String minimumCapValue6, String maximumCapValue6) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -2745,12 +2255,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Customer Defined SA’
 					6. Riders as ‘GPS Rider - Accidental Death and Dismemberment’ & variant type as ‘Customer Defined SA’
 	 */
-	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRRRCC(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, 
-			String nraLetterReceivedDateValue,String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
-			String reinsurerValue, String UnitAddress, String addressDetails, 
+	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRRRCC(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,  
 			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, 
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
@@ -2758,11 +2268,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits5, String varientType5, String freeCoverLimitValue5,
 			String benefits6, String varientType6, String freeCoverLimitValue6) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -2813,12 +2322,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 					6. Riders as ‘GPS Rider - Accidental Death and Dismemberment’ & variant type as ‘Customer Defined SA’
 	 */
-	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRCRRC(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, 
-			String nraLetterReceivedDateValue,String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
-			String reinsurerValue, String UnitAddress, String addressDetails, 
+	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRCRRC(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, 
 			String benefits3, String varientType3, String freeCoverLimitValueForBaseBenefitForAdditionalRider,
@@ -2826,11 +2335,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5,
 			String benefits6, String varientType6, String freeCoverLimitValue6) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -2881,12 +2389,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 					6. Riders as ‘GPS Rider - Accidental Death and Dismemberment’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRCCRR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, 
-			String nraLetterReceivedDateValue,String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
-			String reinsurerValue, String UnitAddress, String addressDetails, 
+	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRCCRR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, 
 			String benefits3, String varientType3, String freeCoverLimitValueForAdditionalRider, 
@@ -2894,11 +2402,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5,
 			String benefits6, String varientType6, String percentageofBaseBenefitValue6, String freeCoverLimitValue6, String minimumCapValue6, String maximumCapValue6) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -2950,12 +2457,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Customer Defined SA’
 					6. Riders as ‘GPS Rider - Accidental Death and Dismemberment’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRRCCR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, 
-			String nraLetterReceivedDateValue,String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
-			String reinsurerValue, String UnitAddress, String addressDetails, 
+	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRRCCR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails, 
 			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, 
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
@@ -2963,11 +2470,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits5, String varientType5, String freeCoverLimitValue5,
 			String benefits6, String varientType6, String percentageofBaseBenefitValue6, String freeCoverLimitValue6, String minimumCapValue6, String maximumCapValue6) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -3018,12 +2524,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 					6. Riders as ‘GPS Rider - Accidental Death and Dismemberment’ & variant type as ‘Customer Defined SA’
 	 */
-	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRRRRC(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, 
-			String nraLetterReceivedDateValue,String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
-			String reinsurerValue, String UnitAddress, String addressDetails, 
+	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRRRRC(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails, 
 			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, 
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
@@ -3031,11 +2537,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5,
 			String benefits6, String varientType6, String freeCoverLimitValue6) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -3086,12 +2591,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 					6. Riders as ‘GPS Rider - Accidental Death and Dismemberment’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRCRRR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, 
-			String nraLetterReceivedDateValue,String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
-			String reinsurerValue, String UnitAddress, String addressDetails, 
+	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRCRRR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails, 
 			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, 
 			String benefits3, String varientType3, String freeCoverLimitValueForBaseBenefitForAdditionalRider,
@@ -3099,11 +2604,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5,
 			String benefits6, String varientType6, String percentageofBaseBenefitValue6, String freeCoverLimitValue6, String minimumCapValue6, String maximumCapValue6) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -3154,11 +2658,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 					6. Riders as ‘GPS Rider - Accidental Death and Dismemberment’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRRCRR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String UnitAddress, String addressDetails,
+	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRRCRR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails, 
 			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, 
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider, 
@@ -3166,11 +2671,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5,
 			String benefits6, String varientType6, String percentageofBaseBenefitValue6, String freeCoverLimitValue6, String minimumCapValue6, String maximumCapValue6) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -3221,12 +2725,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Customer Defined SA’
 					6. Riders as ‘GPS Rider - Accidental Death and Dismemberment’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRRRCR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, 
-			String nraLetterReceivedDateValue,String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
-			String reinsurerValue, String UnitAddress, String addressDetails, 
+	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRRRCR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,  
 			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, 
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
@@ -3234,11 +2738,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits5, String varientType5, String freeCoverLimitValue5,
 			String benefits6, String varientType6, String percentageofBaseBenefitValue6, String freeCoverLimitValue6, String minimumCapValue6, String maximumCapValue6) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -3289,12 +2792,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 					6. Riders as ‘GPS Rider - Accidental Death and Dismemberment’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRRRRR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, 
-			String nraLetterReceivedDateValue,String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
-			String reinsurerValue, String UnitAddress, String addressDetails, 
+	public void masterPolicyWith6BenefitsAndRidersWithVariantTypeAsCRRRRR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails, 
 			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider, 
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
@@ -3302,11 +2805,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5,
 			String benefits6, String varientType6, String percentageofBaseBenefitValue6, String freeCoverLimitValue6, String minimumCapValue6, String maximumCapValue6) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
-				UnitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -3842,21 +3344,21 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	 * 				with 1 Benefits/Riders and variant type
 					1. Benefit as 'GPS Base Benefit' & variant type as ‘Graded Cover’  
 	 */
-	public void masterPolicyWithEmployerEmployeeNischintAnd1BenefitWithVariantTypeAsGradedCover(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,String benefits, 
-			String varientType, String noOfGrade, String gradeValue1, String sumAssuredValue1,String freeCoverLimitValue1, String minimumCapValue1, 
-			String maximumCapValue1, String gradeValue2, String sumAssuredValue2,String freeCoverLimitValue2, String minimumCapValue2, 
-			String maximumCapValue2, String gradeValue3, String sumAssuredValue3,String freeCoverLimitValue3, String minimumCapValue3, 
-			String maximumCapValue3) throws Throwable 
+	public void masterPolicyWithEmployerEmployeeNischintAnd1BenefitWithVariantTypeAsGradedCover(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails, 
+			String benefits, String varientType, 
+			String gradeValue1, String sumAssuredValue1,String freeCoverLimitValue1, String minimumCapValue1, String maximumCapValue1, 
+			String gradeValue2, String sumAssuredValue2,String freeCoverLimitValue2, String minimumCapValue2, String maximumCapValue2, 
+			String gradeValue3, String sumAssuredValue3,String freeCoverLimitValue3, String minimumCapValue3, String maximumCapValue3) throws Throwable 
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
@@ -3890,22 +3392,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					1. Benefit as 'GPS Base Benefit' & variant type as ‘Graded Cover’
 					2. Benefit as ' GPS V09-Rider - Terminal illness Premier (In-Built)' & variant type as ‘Rider’ 
 	 */
-	public void masterPolicyWithEmployerEmployeeNischintAnd2BenefitAndRidersWithVariantTypeAsGradedCoverAndInBuiltRider(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,String benefits1, 
-			String varientType1, String noOfGrade, String gradeValue1, String sumAssuredValue1,String freeCoverLimitValue1, String minimumCapValue1, 
-			String maximumCapValue1, String gradeValue2, String sumAssuredValue2,String freeCoverLimitValue2, String minimumCapValue2, 
-			String maximumCapValue2, String gradeValue3, String sumAssuredValue3,String freeCoverLimitValue3, String minimumCapValue3, 
-			String maximumCapValue3, String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, 
-			String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider) throws Throwable
+	public void masterPolicyWithEmployerEmployeeNischintAnd2BenefitAndRidersWithVariantTypeAsGradedCoverAndInBuiltRider(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails, 
+			String benefits1, String varientType1,  
+			String gradeValue1, String sumAssuredValue1,String freeCoverLimitValue1, String minimumCapValue1, String maximumCapValue1, 
+			String gradeValue2, String sumAssuredValue2,String freeCoverLimitValue2, String minimumCapValue2, String maximumCapValue2, 
+			String gradeValue3, String sumAssuredValue3,String freeCoverLimitValue3, String minimumCapValue3, String maximumCapValue3, 
+			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, 
-				nraLetterReceived, retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, 
-				minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -3940,20 +3442,20 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					2. Riders as 'GPS Rider - Terminal illness Premier (In-Built)' & variant type as 'Rider'
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Flat Sum Assured’ (we can select any of the Critical Illness riders) 
 	 */
-	public void masterPolicyWith3BenefitsAndRidersWithVariantTypeAsFsaRFsa(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith3BenefitsAndRidersWithVariantTypeAsFsaRFsa(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails, 
 			String benefits1, String varientType1, String sumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String sumAssuredValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -3983,20 +3485,20 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					2. Riders as 'GPS Rider - Terminal illness Premier (In-Built)' & variant type as 'Rider'
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Rider’ (we can select any of the Critical Illness riders) 
 	 */
-	public void masterPolicyWith3BenefitsAndRidersWithVariantTypeAsFsaRR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith3BenefitsAndRidersWithVariantTypeAsFsaRR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String sumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -4026,22 +3528,20 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					2. Riders as 'GPS Rider - Terminal illness Premier (In-Built)' & variant type as 'Rider'
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Multiple Of Salary’ (we can select any of the Critical Illness riders)
 	 */
-	public void masterPolicyWith3BenefitsAndRidersWithVariantTypeAsMsRMs(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, 
-			String totalSumAssuredStringValue, String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, 
-			String varient, String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+	public void masterPolicyWith3BenefitsAndRidersWithVariantTypeAsMsRMs(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
 			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String multiplesOfSalaryValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String multiplesOfSalaryValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -4071,22 +3571,20 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					2. Riders as 'GPS Rider - Terminal illness Premier (In-Built)' & variant type as 'Rider'
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Rider’ (we can select any of the Critical Illness riders)
 	 */
-	public void masterPolicyWith3BenefitsAndRidersWithVariantTypeAsMsRR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, 
-			String totalSumAssuredStringValue, String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, 
-			String varient, String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+	public void masterPolicyWith3BenefitsAndRidersWithVariantTypeAsMsRR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
 			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String multiplesOfSalaryValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -4108,11 +3606,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					2. Riders as 'GPS Rider - Terminal illness Premier (In-Built)' & variant type as 'Rider'
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Graded Cover’ (we can select any of the Critical Illness riders)
 	 */
-	public void masterPolicyWith3BenefitsAndRidersWithVariantTypeAsGcRGc(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith3BenefitsAndRidersWithVariantTypeAsGcRGc(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1,  
 			 String gradeValue1, String sumAssuredValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 			 String gradeValue2, String sumAssuredValueForBaseBenefit2,String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -4123,11 +3622,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	         String gradeValueForAdditionalRider2, String sumAssuredValueForAdditionalRider2,String freeCoverLimitValueForAdditionalRider2, String minimumCapValueForAdditionalRider2, String maximumCapValueForAdditionalRider2, 
 	         String gradeValueForAdditionalRider3, String sumAssuredValueForAdditionalRider3,String freeCoverLimitValueForAdditionalRider3, String minimumCapValueForAdditionalRider3, String maximumCapValueForAdditionalRider3) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -4181,11 +3679,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					2. Riders as 'GPS Rider - Terminal illness Premier (In-Built)' & variant type as 'Rider'
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Rider’’ (we can select any of the Critical Illness riders)
 	 */
-	public void masterPolicyWith3BenefitsAndRidersWithVariantTypeAsGcRR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith3BenefitsAndRidersWithVariantTypeAsGcRR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1,  
 			 String gradeValue1, String sumAssuredValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 			 String gradeValue2, String sumAssuredValueForBaseBenefit2,String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -4193,11 +3692,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -4239,22 +3737,20 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					2. Riders as 'GPS Rider - Terminal illness Premier (In-Built)' & variant type as 'Rider'
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Future Service Gratuity Amount’ (we can select any of the Critical Illness riders)
 	 */
-	public void masterPolicyWith3BenefitsAndRidersWithVariantTypeAsFsgaRFsga(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, 
-			String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
-			String unitAddress, String addressDetails, 
+	public void masterPolicyWith3BenefitsAndRidersWithVariantTypeAsFsgaRFsga(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1,String varientType1, String retirementAgeValueForBaseBenefit, String maxSumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3,String varientType3, String retirementAgeValueForAdditionalRider, String maxSumAssuredValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -4284,22 +3780,20 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					2. Riders as 'GPS Rider - Terminal illness Premier (In-Built)' & variant type as 'Rider'
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Rider’ (we can select any of the Critical Illness riders)
 	 */
-	public void masterPolicyWith3BenefitsAndRidersWithVariantTypeAsFsgaRR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, 
-			String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
-			String unitAddress, String addressDetails, 
+	public void masterPolicyWith3BenefitsAndRidersWithVariantTypeAsFsgaRR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1,String varientType1, String retirementAgeValueForBaseBenefit, String maxSumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3,String varientType3,  String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		
 		selectVisibleText(benefitsDropDown, benefits1);
@@ -4330,11 +3824,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					2. Riders as 'GPS Rider - Terminal illness Premier (In-Built)' & variant type as 'Rider'
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Graded Cover Salary Multiple’ (we can select any of the Critical Illness riders)
 	 */
-	public void masterPolicyWith3BenefitsAndRidersWithVariantTypeAsGcsmRGcsm(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith3BenefitsAndRidersWithVariantTypeAsGcsmRGcsm(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, 
 				String gradeValueForBaseBenefit1, String multiplesOfSalaryValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 				String gradeValueForBaseBenefit2, String multiplesOfSalaryValueForBaseBenefit2, String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -4345,11 +3840,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 				String gradeValueForAdditionalRider2, String multiplesOfSalaryValueForAdditionalRider2,String freeCoverLimitValueForAdditionalRider2, String minimumCapValueForAdditionalRider2, String maximumCapValueForAdditionalRider2, 
 				String gradeValueForAdditionalRider3, String multiplesOfSalaryValueForAdditionalRider3,String freeCoverLimitValueForAdditionalRider3, String minimumCapValueForAdditionalRider3, String maximumCapValueForAdditionalRider3) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -4403,11 +3897,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					2. Riders as 'GPS Rider - Terminal illness Premier (In-Built)' & variant type as 'Rider'
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Rider’ (we can select any of the Critical Illness riders)
 	 */
-	public void masterPolicyWith3BenefitsAndRidersWithVariantTypeAsGcsmRR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith3BenefitsAndRidersWithVariantTypeAsGcsmRR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, 
 				String gradeValueForBaseBenefit1, String multiplesOfSalaryValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 				String gradeValueForBaseBenefit2, String multiplesOfSalaryValueForBaseBenefit2, String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -4415,11 +3910,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -4462,21 +3956,21 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Flat Sum Assured’ (we can select any of the Critical Illness riders)
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Flat Sum Assured’
 	 */
-	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsFsaRFsaFsa(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsFsaRFsaFsa(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String sumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String sumAssuredValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider,
 			String benefits4, String varientType4,  String sumAssuredValue4, String freeCoverLimitValue4) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -4513,21 +4007,21 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Flat Sum Assured’ (we can select any of the Critical Illness riders)
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’ 
 	 */
-	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsFsaRFsaR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsFsaRFsaR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String sumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String sumAssuredValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider,
 			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -4564,21 +4058,21 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Rider’ (we can select any of the Critical Illness riders)
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Flat Sum Assured’
 	 */
-	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsFsaRRFsa(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsFsaRRFsa(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String sumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider,  String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String sumAssuredValue4, String freeCoverLimitValue4) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -4615,21 +4109,21 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					3. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’ (we can select any of the Critical Illness riders)
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’ 
 	 */
-	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsFsaRRR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsFsaRRR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String sumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider,  String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -4666,23 +4160,21 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Multiple Of Salary’ (we can select any of the Critical Illness riders)
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Multiple Of Salary’
 	 */
-	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsMosRMosMos(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, 
-			String totalSumAssuredStringValue, String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, 
-			String varient, String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsMosRMosMos(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
 			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String multiplesOfSalaryValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String multiplesOfSalaryValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String multiplesOfSalaryValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -4720,12 +4212,11 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Multiple Of Salary’ (we can select any of the Critical Illness riders)
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’ 
 	 */
-	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsMosRMosR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, 
-			String totalSumAssuredStringValue, String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, 
-			String varient, String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsMosRMosR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
 			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String multiplesOfSalaryValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
@@ -4733,11 +4224,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4) throws Throwable
 	{
 
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -4774,23 +4264,21 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Rider’ (we can select any of the Critical Illness riders)
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Multiple Of Salary’
 	 */
-	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsMosRRMos(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, 
-			String totalSumAssuredStringValue, String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, 
-			String varient, String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsMosRRMos(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
 			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String multiplesOfSalaryValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String multiplesOfSalaryValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -4828,23 +4316,21 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’ 
 
 	 */
-	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsMosRRR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, 
-			String totalSumAssuredStringValue, String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, 
-			String varient, String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsMosRRR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
 			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String multiplesOfSalaryValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -4881,11 +4367,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Graded Cover’
 
 	 */
-	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcRGcGc(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcRGcGc(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1,  
 			 	String gradeValueValueForBaseBenefit1, String sumAssuredValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 			 	String gradeValueValueForBaseBenefit2, String sumAssuredValueForBaseBenefit2,String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -4900,11 +4387,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			 	String gradeValueForFourthRider2, String sumAssuredValueForFourthRider2,String freeCoverLimitValueForFourthRider2, String minimumCapValueForFourthRider2, String maximumCapValueForFourthRider2, 
 			 	String gradeValueForFourthRider3, String sumAssuredValueForFourthRider3,String freeCoverLimitValueForFourthRider3, String minimumCapValueForFourthRider3, String maximumCapValueForFourthRider3) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -4979,11 +4465,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’ 
 
 	 */
-	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcRGcR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcRGcR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1,  
 				String gradeValueValueForBaseBenefit1, String sumAssuredValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 			 	String gradeValueValueForBaseBenefit2, String sumAssuredValueForBaseBenefit2,String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -4995,11 +4482,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			 	String gradeValueForAdditionalRider3, String sumAssuredValueForAdditionalRider3,String freeCoverLimitValueForAdditionalRider3, String minimumCapValueForAdditionalRider3, String maximumCapValueForAdditionalRider3,
 	        String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -5062,11 +4548,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Graded Cover’
 
 	 */
-	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcRRGc(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcRRGc(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1,  
 			 	String gradeValueValueForBaseBenefit1, String sumAssuredValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 			 	String gradeValueValueForBaseBenefit2, String sumAssuredValueForBaseBenefit2,String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -5078,11 +4565,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 				String gradeValueForFourthRider2, String sumAssuredValueForFourthRider2,String freeCoverLimitValueForFourthRider2, String minimumCapValueForFourthRider2, String maximumCapValueForFourthRider2, 
 				String gradeValueForFourthRider3, String sumAssuredValueForFourthRider3,String freeCoverLimitValueForFourthRider3, String minimumCapValueForFourthRider3, String maximumCapValueForFourthRider3) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -5144,11 +4630,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					3. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’ (we can select any of the Critical Illness riders)
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’ 
 	 */
-	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcRRR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcRRR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1,  
 			 	String gradeValueValueForBaseBenefit1, String sumAssuredValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 			 	String gradeValueValueForBaseBenefit2, String sumAssuredValueForBaseBenefit2,String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -5157,11 +4644,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -5210,23 +4696,21 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Future Service Gratuity Amount’ (we can select any of the Critical Illness riders)
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Future Service Gratuity Amount’
 	 */
-	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsFsgaRFsgaFsga(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, 
-			String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
-			String unitAddress, String addressDetails, 
+	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsFsgaRFsgaFsga(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String retirementAgeValueForBaseBenefit, String maxSumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String retirementAgeValueForAdditionalRider, String maxSumAssuredValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String retirementAgeValue4, String maxSumAssuredValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -5263,23 +4747,21 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Future Service Gratuity Amount’ (we can select any of the Critical Illness riders)
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’ 
 	 */
-	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsFsgaRFsgaR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, 
-			String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
-			String unitAddress, String addressDetails, 
+	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsFsgaRFsgaR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails, 
 			String benefits1, String varientType1, String retirementAgeValueForBaseBenefit, String maxSumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String retirementAgeValueForAdditionalRider, String maxSumAssuredValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -5317,23 +4799,21 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Rider’ (we can select any of the Critical Illness riders)
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Future Service Gratuity Amount’ 
 	 */
-	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsFsgaRRFsga(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, 
-			String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
-			String unitAddress, String addressDetails, 
+	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsFsgaRRFsga(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,  
 			String benefits1,String varientType1, String retirementAgeValueForBaseBenefit, String maxSumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3,String varientType3,  String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String retirementAgeValue4, String maxSumAssuredValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		
 		selectVisibleText(benefitsDropDown, benefits1);
@@ -5370,23 +4850,21 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					3. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’ (we can select any of the Critical Illness riders)
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’ 
 	 */
-	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsFsgaRRR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, 
-			String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
-			String unitAddress, String addressDetails, 
+	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsFsgaRRR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails, 
 			String benefits1,String varientType1, String retirementAgeValueForBaseBenefit, String maxSumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3,String varientType3,  String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		
 		selectVisibleText(benefitsDropDown, benefits1);
@@ -5424,11 +4902,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Graded Cover Salary Multiple’ (we can select any of the Critical Illness riders)
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Graded Cover Salary Multiple’ 
 	 */
-	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcsmRGcsmGcsm(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcsmRGcsmGcsm(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, 
 				String gradeValueForBaseBenefit1, String multiplesOfSalaryValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 				String gradeValueForBaseBenefit2, String multiplesOfSalaryValueForBaseBenefit2, String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -5443,11 +4922,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 				String gradeValueForFourthRider2, String multiplesOfSalaryValueForFourthRider2,String freeCoverLimitValueForFourthRider2, String minimumCapValueForFourthRider2, String maximumCapValueForFourthRider2, 
 				String gradeValueForFourthRider3, String multiplesOfSalaryValueForFourthRider3,String freeCoverLimitValueForFourthRider3, String minimumCapValueForFourthRider3, String maximumCapValueForFourthRider3) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -5520,11 +4998,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Graded Cover Salary Multiple’ (we can select any of the Critical Illness riders)
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’ 
 	 */
-	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcsmRGcsmR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcsmRGcsmR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, 
 				String gradeValueForBaseBenefit1, String multiplesOfSalaryValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 				String gradeValueForBaseBenefit2, String multiplesOfSalaryValueForBaseBenefit2, String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -5536,11 +5015,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 				String gradeValueForAdditionalRider3, String multiplesOfSalaryValueForAdditionalRider3,String freeCoverLimitValueForAdditionalRider3, String minimumCapValueForAdditionalRider3, String maximumCapValueForAdditionalRider3,
 			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -5601,11 +5079,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					3. Riders as ‘GPS Rider - Critical Illness (CI13)’ & variant type as ‘Rider’ (we can select any of the Critical Illness riders)
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Graded Cover Salary Multiple’
 	 */
-	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcsmRRGcsm(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcsmRRGcsm(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, 
 				String gradeValueForBaseBenefit1, String multiplesOfSalaryValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 				String gradeValueForBaseBenefit2, String multiplesOfSalaryValueForBaseBenefit2, String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -5617,11 +5096,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 				String gradeValueForFourthRider2, String multiplesOfSalaryValueForFourthRider2,String freeCoverLimitValueForFourthRider2, String minimumCapValueForFourthRider2, String maximumCapValueForFourthRider2, 
 				String gradeValueForFourthRider3, String multiplesOfSalaryValueForFourthRider3,String freeCoverLimitValueForFourthRider3, String minimumCapValueForFourthRider3, String maximumCapValueForFourthRider3) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -5682,11 +5160,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					3. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’ (we can select any of the Critical Illness riders)
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’ 
 	 */
-	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcsmRRR (String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith4BenefitsAndRidersWithVariantTypeAsGcsmRRR (String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, 
 				String gradeValueForBaseBenefit1, String multiplesOfSalaryValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 				String gradeValueForBaseBenefit2, String multiplesOfSalaryValueForBaseBenefit2, String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -5695,11 +5174,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4,String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -5750,22 +5228,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Flat Sum Assured’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Flat Sum Assured’ 
 	 */	
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsaRFsaFsaFsa (String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsaRFsaFsaFsa (String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String sumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String sumAssuredValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider,
 			String benefits4, String varientType4,  String sumAssuredValue4, String freeCoverLimitValue4,
 			String benefits5, String varientType5,  String sumAssuredValue5, String freeCoverLimitValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -5809,22 +5287,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Flat Sum Assured’
 	 */	
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsaRFsaRFsa(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsaRFsaRFsa(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String sumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String sumAssuredValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider,
 			String benefits4, String varientType4,  String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4,
 			String benefits5, String varientType5,  String sumAssuredValue5, String freeCoverLimitValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -5868,22 +5346,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Flat Sum Assured’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsaRRFsaR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsaRRFsaR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String sumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider,  String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String sumAssuredValue4, String freeCoverLimitValue4,
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -5928,22 +5406,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Flat Sum Assured’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsaRFsaFsaR (String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsaRFsaFsaR (String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String sumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String sumAssuredValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider,
 			String benefits4, String varientType4,  String sumAssuredValue4, String freeCoverLimitValue4,
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -5987,22 +5465,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Flat Sum Assured’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsaRRRFsa(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsaRRRFsa(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String sumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider,  String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4,
 			String benefits5, String varientType5,  String sumAssuredValue5, String freeCoverLimitValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -6046,22 +5524,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Flat Sum Assured’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Flat Sum Assured’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsaRRFsaFsa(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsaRRFsaFsa(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String sumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider,  String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String sumAssuredValue4, String freeCoverLimitValue4,
 			String benefits5, String varientType5,  String sumAssuredValue5, String freeCoverLimitValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -6105,22 +5583,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsaRFsaRR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsaRFsaRR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String sumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String sumAssuredValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider,
 			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4,
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -6164,22 +5642,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsaRRRR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsaRRRR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String sumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider,  String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4,
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -6223,12 +5701,11 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Multiple Of Salary’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Multiple Of Salary’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsMosRMosMosMos(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, 
-			String totalSumAssuredStringValue, String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, 
-			String varient, String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsMosRMosMosMos(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
 			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String multiplesOfSalaryValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
@@ -6236,11 +5713,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits4, String varientType4, String multiplesOfSalaryValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4,
 			String benefits5, String varientType5, String multiplesOfSalaryValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -6284,12 +5760,11 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Multiple Of Salary’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsMosRMosRMos(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, 
-			String totalSumAssuredStringValue, String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, 
-			String varient, String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsMosRMosRMos(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
 			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String multiplesOfSalaryValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
@@ -6298,11 +5773,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits5, String varientType5, String multiplesOfSalaryValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
 
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -6346,12 +5820,11 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Multiple Of Salary’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsMosRRMosR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, 
-			String totalSumAssuredStringValue, String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, 
-			String varient, String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsMosRRMosR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
 			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String multiplesOfSalaryValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
@@ -6359,11 +5832,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits4, String varientType4, String multiplesOfSalaryValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4,
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -6407,12 +5879,11 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Multiple Of Salary’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsMosRMosMosR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, 
-			String totalSumAssuredStringValue, String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, 
-			String varient, String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsMosRMosMosR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
 			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String multiplesOfSalaryValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
@@ -6420,11 +5891,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits4, String varientType4, String multiplesOfSalaryValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4,
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -6468,12 +5938,11 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Multiple Of Salary’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsMosRRRMos(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, 
-			String totalSumAssuredStringValue, String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, 
-			String varient, String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsMosRRRMos(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
 			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String multiplesOfSalaryValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
@@ -6481,11 +5950,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4,
 			String benefits5, String varientType5, String multiplesOfSalaryValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -6529,12 +5997,11 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Multiple Of Salary’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Multiple Of Salary’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsMosRRMosMos (String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, 
-			String totalSumAssuredStringValue, String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, 
-			String varient, String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsMosRRMosMos (String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
 			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String multiplesOfSalaryValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
@@ -6542,11 +6009,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits4, String varientType4, String multiplesOfSalaryValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4,
 			String benefits5, String varientType5, String multiplesOfSalaryValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -6590,12 +6056,11 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsMosRMosRR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, 
-			String totalSumAssuredStringValue, String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, 
-			String varient, String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsMosRMosRR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
 			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String multiplesOfSalaryValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
@@ -6604,11 +6069,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
 
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -6652,12 +6116,11 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsMosRRRR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, 
-			String totalSumAssuredStringValue, String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, 
-			String varient, String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsMosRRRR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
 			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String multiplesOfSalaryValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
@@ -6665,11 +6128,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4,
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -6713,11 +6175,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Graded Cover’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Graded Cover’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcRGcGcGc(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcRGcGcGc(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1,  
 			 	String gradeValueValueForBaseBenefit1, String sumAssuredValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 			 	String gradeValueValueForBaseBenefit2, String sumAssuredValueForBaseBenefit2,String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -6736,11 +6199,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 				String gradeValueForFifthRider2, String sumAssuredValueForFifthRider2,String freeCoverLimitValueForFifthRider2, String minimumCapValueForFifthRider2, String maximumCapValueForFifthRider2,
 				String gradeValueForFifthRider3, String sumAssuredValueForFifthRider3,String freeCoverLimitValueForFifthRider3, String minimumCapValueForFifthRider3, String maximumCapValueForFifthRider3) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -6832,11 +6294,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Graded Cover’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcRGcRGc(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcRGcRGc(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1,  
 				String gradeValueValueForBaseBenefit1, String sumAssuredValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 			 	String gradeValueValueForBaseBenefit2, String sumAssuredValueForBaseBenefit2,String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -6852,11 +6315,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 				String gradeValueForFifthRider2, String sumAssuredValueForFifthRider2,String freeCoverLimitValueForFifthRider2, String minimumCapValueForFifthRider2, String maximumCapValueForFifthRider2,
 				String gradeValueForFifthRider3, String sumAssuredValueForFifthRider3,String freeCoverLimitValueForFifthRider3, String minimumCapValueForFifthRider3, String maximumCapValueForFifthRider3) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -6936,11 +6398,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Graded Cover’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcRRGcR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcRRGcR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1,  
 			 	String gradeValueValueForBaseBenefit1, String sumAssuredValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 			 	String gradeValueValueForBaseBenefit2, String sumAssuredValueForBaseBenefit2,String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -6953,11 +6416,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 				String gradeValueForFourthRider3, String sumAssuredValueForFourthRider3,String freeCoverLimitValueForFourthRider3, String minimumCapValueForFourthRider3, String maximumCapValueForFourthRider3,
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -7025,11 +6487,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Graded Cover’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcRGcGcR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcRGcGcR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1,  
 			 	String gradeValueValueForBaseBenefit1, String sumAssuredValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 			 	String gradeValueValueForBaseBenefit2, String sumAssuredValueForBaseBenefit2,String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -7045,11 +6508,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			 	String gradeValueForFourthRider3, String sumAssuredValueForFourthRider3,String freeCoverLimitValueForFourthRider3, String minimumCapValueForFourthRider3, String maximumCapValueForFourthRider3,
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -7129,11 +6591,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Graded Cover’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcRRRGc(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcRRRGc(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1,  
 			 	String gradeValueValueForBaseBenefit1, String sumAssuredValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 			 	String gradeValueValueForBaseBenefit2, String sumAssuredValueForBaseBenefit2,String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -7146,11 +6609,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 				String gradeValueForFifthRider2, String sumAssuredValueForFifthRider2,String freeCoverLimitValueForFifthRider2, String minimumCapValueForFifthRider2, String maximumCapValueForFifthRider2,
 				String gradeValueForFifthRider3, String sumAssuredValueForFifthRider3,String freeCoverLimitValueForFifthRider3, String minimumCapValueForFifthRider3, String maximumCapValueForFifthRider3) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -7218,11 +6680,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Graded Cover’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Graded Cover’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcRRGcGc(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcRRGcGc(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1,  
 			 	String gradeValueValueForBaseBenefit1, String sumAssuredValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 			 	String gradeValueValueForBaseBenefit2, String sumAssuredValueForBaseBenefit2,String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -7238,11 +6701,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 				String gradeValueForFifthRider2, String sumAssuredValueForFifthRider2,String freeCoverLimitValueForFifthRider2, String minimumCapValueForFifthRider2, String maximumCapValueForFifthRider2,
 				String gradeValueForFifthRider3, String sumAssuredValueForFifthRider3,String freeCoverLimitValueForFifthRider3, String minimumCapValueForFifthRider3, String maximumCapValueForFifthRider3) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -7322,11 +6784,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcRGcRR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcRGcRR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1,  
 				String gradeValueValueForBaseBenefit1, String sumAssuredValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 			 	String gradeValueValueForBaseBenefit2, String sumAssuredValueForBaseBenefit2,String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -7339,11 +6802,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 	        String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4,
 	        String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -7411,11 +6873,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcRRRR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcRRRR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1,  
 			 	String gradeValueValueForBaseBenefit1, String sumAssuredValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 			 	String gradeValueValueForBaseBenefit2, String sumAssuredValueForBaseBenefit2,String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -7425,11 +6888,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4,
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -7485,24 +6947,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Future Service Gratuity Amount’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Future Service Gratuity Amount’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsgaRFsgaFsgaFsga(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, 
-			String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
-			String unitAddress, String addressDetails, 
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsgaRFsgaFsgaFsga(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String retirementAgeValueForBaseBenefit, String maxSumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String retirementAgeValueForAdditionalRider, String maxSumAssuredValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String retirementAgeValue4, String maxSumAssuredValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4,
 			String benefits5, String varientType5, String retirementAgeValue5, String maxSumAssuredValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -7546,24 +7006,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Future Service Gratuity Amount’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsgaRFsgaRFsga (String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, 
-			String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
-			String unitAddress, String addressDetails, 
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsgaRFsgaRFsga (String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String retirementAgeValueForBaseBenefit, String maxSumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String retirementAgeValueForAdditionalRider, String maxSumAssuredValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4,
 			String benefits5, String varientType5, String retirementAgeValue5, String maxSumAssuredValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -7607,25 +7065,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Future Service Gratuity Amount’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsgaRRFsgaR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, 
-			String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
-			String unitAddress, String addressDetails, 
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsgaRRFsgaR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1,String varientType1, String retirementAgeValueForBaseBenefit, String maxSumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3,String varientType3,  String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String retirementAgeValue4, String maxSumAssuredValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4,
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
-		
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);		
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -7669,24 +7124,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Future Service Gratuity Amount’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsgaRFsgaFsgaR (String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, 
-			String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
-			String unitAddress, String addressDetails, 
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsgaRFsgaFsgaR (String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String retirementAgeValueForBaseBenefit, String maxSumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String retirementAgeValueForAdditionalRider, String maxSumAssuredValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String retirementAgeValue4, String maxSumAssuredValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4,
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -7730,24 +7183,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Future Service Gratuity Amount’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsgaRRRFsga (String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, 
-			String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
-			String unitAddress, String addressDetails, 
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsgaRRRFsga (String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1,String varientType1, String retirementAgeValueForBaseBenefit, String maxSumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3,String varientType3,  String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4,
 			String benefits5, String varientType5, String retirementAgeValue5, String maxSumAssuredValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		
 		selectVisibleText(benefitsDropDown, benefits1);
@@ -7792,25 +7243,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Future Service Gratuity Amount’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Future Service Gratuity Amount’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsgaRRFsgaFsga (String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, 
-			String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
-			String unitAddress, String addressDetails, 
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsgaRRFsgaFsga (String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1,String varientType1, String retirementAgeValueForBaseBenefit, String maxSumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3,String varientType3,  String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String retirementAgeValue4, String maxSumAssuredValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4,
 			String benefits5, String varientType5, String retirementAgeValue5, String maxSumAssuredValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
-		
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);		
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -7854,24 +7302,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsgaRFsgaRR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, 
-			String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
-			String unitAddress, String addressDetails, 
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsgaRFsgaRR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String retirementAgeValueForBaseBenefit, String maxSumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String retirementAgeValueForAdditionalRider, String maxSumAssuredValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4,
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -7916,24 +7362,22 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsgaRRRR(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, 
-			String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
-			String unitAddress, String addressDetails, 
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsgaRRRR(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1,String varientType1, String retirementAgeValueForBaseBenefit, String maxSumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3,String varientType3,  String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4,
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		
 		selectVisibleText(benefitsDropDown, benefits1);
@@ -7978,11 +7422,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Graded Cover Salary Multiple’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Graded Cover Salary Multiple’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcsmRGcsmGcsmGcsm (String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcsmRGcsmGcsmGcsm (String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, 
 				String gradeValueForBaseBenefit1, String multiplesOfSalaryValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 				String gradeValueForBaseBenefit2, String multiplesOfSalaryValueForBaseBenefit2, String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -8001,11 +7446,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 				String gradeValueForFifthRider2, String multiplesOfSalaryValueForFifthRider2,String freeCoverLimitValueForFifthRider2, String minimumCapValueForFifthRider2, String maximumCapValueForFifthRider2, 
 				String gradeValueForFifthRider3, String multiplesOfSalaryValueForFifthRider3,String freeCoverLimitValueForFifthRider3, String minimumCapValueForFifthRider3, String maximumCapValueForFifthRider3) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -8097,11 +7541,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Graded Cover Salary Multiple’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcsmRGcsmRGcsm (String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcsmRGcsmRGcsm (String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, 
 				String gradeValueForBaseBenefit1, String multiplesOfSalaryValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 				String gradeValueForBaseBenefit2, String multiplesOfSalaryValueForBaseBenefit2, String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -8117,11 +7562,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 				String gradeValueForFifthRider2, String multiplesOfSalaryValueForFifthRider2,String freeCoverLimitValueForFifthRider2, String minimumCapValueForFifthRider2, String maximumCapValueForFifthRider2, 
 				String gradeValueForFifthRider3, String multiplesOfSalaryValueForFifthRider3,String freeCoverLimitValueForFifthRider3, String minimumCapValueForFifthRider3, String maximumCapValueForFifthRider3) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -8201,11 +7645,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Graded Cover Salary Multiple’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcsmRRGcsmR (String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcsmRRGcsmR (String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, 
 				String gradeValueForBaseBenefit1, String multiplesOfSalaryValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 				String gradeValueForBaseBenefit2, String multiplesOfSalaryValueForBaseBenefit2, String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -8218,11 +7663,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 				String gradeValueForFourthRider3, String multiplesOfSalaryValueForFourthRider3,String freeCoverLimitValueForFourthRider3, String minimumCapValueForFourthRider3, String maximumCapValueForFourthRider3,
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -8290,11 +7734,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Graded Cover Salary Multiple’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcsmRGcsmGcsmR (String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcsmRGcsmGcsmR (String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, 
 				String gradeValueForBaseBenefit1, String multiplesOfSalaryValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 				String gradeValueForBaseBenefit2, String multiplesOfSalaryValueForBaseBenefit2, String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -8310,11 +7755,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 				String gradeValueForFourthRider3, String multiplesOfSalaryValueForFourthRider3,String freeCoverLimitValueForFourthRider3, String minimumCapValueForFourthRider3, String maximumCapValueForFourthRider3,
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -8394,11 +7838,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Graded Cover Salary Multiple’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcsmRRRGcsm (String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcsmRRRGcsm (String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, 
 				String gradeValueForBaseBenefit1, String multiplesOfSalaryValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 				String gradeValueForBaseBenefit2, String multiplesOfSalaryValueForBaseBenefit2, String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -8411,11 +7856,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 				String gradeValueForFifthRider2, String multiplesOfSalaryValueForFifthRider2,String freeCoverLimitValueForFifthRider2, String minimumCapValueForFifthRider2, String maximumCapValueForFifthRider2, 
 				String gradeValueForFifthRider3, String multiplesOfSalaryValueForFifthRider3,String freeCoverLimitValueForFifthRider3, String minimumCapValueForFifthRider3, String maximumCapValueForFifthRider3) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -8483,11 +7927,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Graded Cover Salary Multiple’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Graded Cover Salary Multiple’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcsmRRGcsmGcsm (String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcsmRRGcsmGcsm (String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, 
 				String gradeValueForBaseBenefit1, String multiplesOfSalaryValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 				String gradeValueForBaseBenefit2, String multiplesOfSalaryValueForBaseBenefit2, String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -8503,11 +7948,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 				String gradeValueForFifthRider2, String multiplesOfSalaryValueForFifthRider2,String freeCoverLimitValueForFifthRider2, String minimumCapValueForFifthRider2, String maximumCapValueForFifthRider2, 
 				String gradeValueForFifthRider3, String multiplesOfSalaryValueForFifthRider3,String freeCoverLimitValueForFifthRider3, String minimumCapValueForFifthRider3, String maximumCapValueForFifthRider3) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -8587,11 +8031,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcsmRGcsmRR (String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcsmRGcsmRR (String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, 
 				String gradeValueForBaseBenefit1, String multiplesOfSalaryValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 				String gradeValueForBaseBenefit2, String multiplesOfSalaryValueForBaseBenefit2, String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -8604,11 +8049,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4,
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -8676,11 +8120,12 @@ public class MasterPolicyMakerPage extends AbsliBase {
 					4. Riders as ‘GPS V09-Rider - Accidental Death’ & variant type as ‘Rider’
 					5. Riders as ‘GPS Rider - Total Permanent Disability’ & variant type as ‘Rider’
 	 */
-	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcsmRRRR (String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void masterPolicyWith5BenefitsAndRidersWithVariantTypeAsGcsmRRRR (String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, 
 				String gradeValueForBaseBenefit1, String multiplesOfSalaryValueForBaseBenefit1,String freeCoverLimitValueForBaseBenefit1, String minimumCapValueForBaseBenefit1, String maximumCapValueForBaseBenefit1, 
 				String gradeValueForBaseBenefit2, String multiplesOfSalaryValueForBaseBenefit2, String freeCoverLimitValueForBaseBenefit2, String minimumCapValueForBaseBenefit2, String maximumCapValueForBaseBenefit2, 
@@ -8690,11 +8135,10 @@ public class MasterPolicyMakerPage extends AbsliBase {
 			String benefits4, String varientType4,String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4,
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 		
 		selectVisibleText(benefitsDropDown, benefits1);
 		selectVisibleText(variantTypeDropDown, varientType1);
@@ -8742,29 +8186,929 @@ public class MasterPolicyMakerPage extends AbsliBase {
 		acceptPopupMsgAndCaptureTheMsg();
 	}
 	
+	public void demo() throws Throwable
+	{
+		wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+		sentToCheckerButton.click();
+		String popUpMessageTextValue = popupMessageText();
+		while(true) {		
+			switch (popUpMessageTextValue) {
+			case "Please enter the Agreement Number.": 
+				agreementNumber.sendKeys("1234",Keys.ENTER);
+				sentToCheckerButton.click();
+				popUpMessageTextValue = popupMessageText();
+				break;
+			case "Please enter 6 digit Agreement Number":
+				agreementNumber.clear();
+				agreementNumber.sendKeys("234567",Keys.ENTER);
+				sentToCheckerButton.click();
+				popUpMessageTextValue = popupMessageText();
+				break;
+			case "Please enter the Quotation Details.":
+				quotationDetails.sendKeys("NA",Keys.ENTER);
+				Thread.sleep(2000);
+				sentToCheckerButton.click();
+				popUpMessageTextValue = popupMessageText();
+				break;
+			case "Please enter the Client Name.":
+				clienNameSearchField.sendKeys("Absli-Grade-001");
+				Thread.sleep(2000);
+				clienNameSearchField.sendKeys(Keys.ARROW_DOWN,Keys.ENTER);
+				Thread.sleep(6000);
+				agreementNumber.sendKeys("234567",Keys.ENTER);
+				quotationDetails.sendKeys("NA",Keys.ENTER);
+				Thread.sleep(2000);
+				sentToCheckerButton.click();
+				popUpMessageTextValue = popupMessageText();
+				break;
+			case "Please select the Contact Person Salutation.":
+				selectVisibleText(contactPersonTitle, "Mr");
+				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+				sentToCheckerButton.click();
+				popUpMessageTextValue = popupMessageText();
+				break;
+			case "Please enter the Contact Person First Name.":
+				contactPersonFirstName.sendKeys("Gokul");
+				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+				sentToCheckerButton.click();
+				popUpMessageTextValue = popupMessageText();
+				break;
+			case "Please enter the Contact Number.":
+				contactNumber.sendKeys("9089674511");
+				contactNumber.sendKeys(Keys.BACK_SPACE);
+				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+				sentToCheckerButton.click();
+				popUpMessageTextValue = popupMessageText();
+				break;
+			case "Contact Number should not be less than 10 digits":
+				contactNumber.clear();
+				contactNumber.sendKeys("9089674512");
+				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+				sentToCheckerButton.click();
+				popUpMessageTextValue = popupMessageText();
+				break;
+			case "Please enter the Email ID.":
+				emailID.sendKeys("absli.com");
+				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+				sentToCheckerButton.click();
+				popUpMessageTextValue = driver.switchTo().alert().getText();
+				System.out.println("Popup Message: " + popUpMessageTextValue);
+				break;
+			case "Please provide a valid email address":
+				driver.switchTo().alert().accept();
+				wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+				okButtonInPopMessage.click();
+				emailID.sendKeys("absli@gmail.com");
+				wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+				sentToCheckerButton.click();
+				popUpMessageTextValue = popupMessageText();
+				break;
+					
+			default:
+				System.out.println("successfully tested");
+				return;
+			}
+		}
+	}
 	
+	//TC_MPM_126 - Verify the Error Popup Messages for Mandatory Fields, Flat Sum Assured and In build Rider on GPS OYRT_V08
+	public void verifyTheErrorMessagesForMandatoryFieldsAndFlatSumAssuredAndRider(String clientName, 
+			String invalidAgreementNumberStringValue, String agreementNumberStringValue, String quotationDetailsStringValue, 
+			String title, String firstName, String invalidNumber, String number, String invalidMailIDValue, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, String inceptionDateValue, 
+			String invalidAgentCodeValue, String agentCodeValue, String brokerageUpdationValue, String varient, String benefitType, 
+			String typeOfRenewal, String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, 
+			String maximumAge, String reinsurerValue, String unitAddress, String addressDetails, String benefits1, 
+			String invalidVarientType, String varientType1, String sumAssuredValue, String freeCoverLimitValueForBaseBenefit, String benefits2, 
+			String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, 
+			String minimumCapValue, String maximumCapValue) throws Throwable
+	{
+			
+		wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+		sentToCheckerButton.click();
+		//Agreement Number - Invalid
+		String popUpMessageTextValue = popupMessageText();
+		if (popUpMessageTextValue.equals("Please enter the Agreement Number.")) {
+			agreementNumber.sendKeys(invalidAgreementNumberStringValue,Keys.ENTER);
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		}
+		else {
+			System.out.println("Agreement Number popup message is Wrong or Not Present");
+		}
+		
+		//Agreement Number
+		if (popUpMessageTextValue.equals("Please enter 6 digit Agreement Number")) {
+			agreementNumber.clear();
+			agreementNumber.sendKeys(agreementNumberStringValue,Keys.ENTER);
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		}
+		else {
+			System.out.println("Agreement Number popup message is Wrong or Not Present");
+		}
+		
+		//Quotation Details
+		if(popUpMessageTextValue.equals("Please enter the Quotation Details.")) {
+			quotationDetails.sendKeys(quotationDetailsStringValue,Keys.ENTER);
+			Thread.sleep(2000);
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		}
+		else{
+			System.out.println("Quotation Details popup message is Wrong or Not Present");
+		}
+		
+		//Client Name
+		if (popUpMessageTextValue.equals("Please enter the Client Name.")) {
+			clienNameSearchField.sendKeys(clientName);
+			Thread.sleep(2000);
+			clienNameSearchField.sendKeys(Keys.ARROW_DOWN,Keys.ENTER);
+			Thread.sleep(6000);
+			agreementNumber.sendKeys(agreementNumberStringValue,Keys.ENTER);
+			quotationDetails.sendKeys(quotationDetailsStringValue,Keys.ENTER);
+			Thread.sleep(2000);
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		}
+		else {
+			System.out.println("Client Name popup message is Wrong or Not Present");
+		}
+		
+		// Contact Person Salutation
+		if (popUpMessageTextValue.equals("Please select the Contact Person Salutation.")) {
+			selectVisibleText(contactPersonTitle, title);
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		}
+		else { 
+			System.out.println("Contact Person Salutation popup message is Wrong or Not Present");
+		}
+		
+		//Contact Person First Name
+		if(popUpMessageTextValue.equals("Please enter the Contact Person First Name.")) {
+			contactPersonFirstName.sendKeys(firstName);
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		}
+		else {
+			System.out.println("Contact Person First Name popup message is Wrong or Not Present");
+		}
+		
+		//Contact Number - Invalid
+		if(popUpMessageTextValue.equals("Please enter the Contact Number.")) {
+			contactNumber.sendKeys(invalidNumber);
+			contactNumber.sendKeys(Keys.BACK_SPACE);
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		}else {
+			System.out.println("Contact Number popup message for 10 digits is Wrong or Not Present");
+		}
+		
+		//Contact Number 
+		if (popUpMessageTextValue.equals("Contact Number should not be less than 10 digits")) {
+			contactNumber.clear();
+			contactNumber.sendKeys(number);
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		}else {
+			System.out.println("Contact Number popup message is Wrong or Not Present");
+		}
+		
+		//Email ID - Invalid
+		if (popUpMessageTextValue.equals("Please enter the Email ID.")) {
+			emailID.sendKeys(invalidMailIDValue);
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();			
+		}else {
+			System.out.println("Email ID popup message is Wrong or Not Present");
+		}
+		
+		//Email ID 
+		String alertTextValue = driver.switchTo().alert().getText();
+		System.out.println("Popup Message: " + alertTextValue);
+		if (alertTextValue.equals("Please provide a valid email address")) {
+			driver.switchTo().alert().accept();
+			emailID.sendKeys(emailIDStringValue);
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		}else {
+			System.out.println("Email ID entered popup message is Wrong or Not Present");
+		}
+		
+		//Total Probable Number of Insured
+		if (popUpMessageTextValue.equals("Please enter the Total Probable Number of Insured.")) {
+			totalProbableNumberOfInsured.sendKeys(totalSumAssuredStringValue);
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		}
+		else {
+			System.out.println("Total Probable Number of Insured popup message is Wrong or Not Present");
+		}
+		
+		//Total Sum Assured at the time of Inception policy
+		if(popUpMessageTextValue.equals("Please enter the Total Sum Assured at the time of Inception policy.")) {
+			totalSumAssured.sendKeys(totalSumAssuredStringValue);
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		}
+		else {
+			System.out.println("Total Sum Assured at the time of Inception policy popup message is Wrong or Not Present");
+		}
+		
+		//Master Policy Inception Date.
+		if (popUpMessageTextValue.equals("Please enter the Master Policy Inception Date.")) {
+			inceptionDate.sendKeys(inceptionDateValue);
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Master Policy Inception Date popup message is Wrong or Not Present");
+		}
+		
+		//Agent Code Invalid
+		if (popUpMessageTextValue.equals("Please enter the Agent Code.")) {
+			agentCode.sendKeys(invalidAgentCodeValue,Keys.ENTER);
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			//Thread.sleep(2000);
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Invalid Agent Code popup message is Wrong or Not Present");
+		}
+		
+		//Agent Code
+		if (popUpMessageTextValue.equals("Please enter Correct Agent Code.")) {
+			agentCode.sendKeys(agentCodeValue,Keys.ENTER);
+			Thread.sleep(2000);
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Agent Code popup message is Wrong or Not Present");
+		}
+		
+		//Brokerage Updation
+		if (popUpMessageTextValue.equals("Please enter the Brokerage Updation.")) {
+			brokerageUpdation.sendKeys(brokerageUpdationValue);
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Brokerage Updation popup message is Wrong or Not Present");
+		}
+		
+		//Variant
+		if (popUpMessageTextValue.equals("Please select the Variant.")) {
+			selectVisibleText(variantDropDown, varient);
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Variant popup message is Wrong or Not Present");
+		}
+		
+		//Benefit Type
+		if (popUpMessageTextValue.equals("Please select the Benefit Type.")) {
+			selectVisibleText(benefitTypeDropDown, benefitType);
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Benefit Type popup message is Wrong or Not Present");
+		}
+		
+		//Type of Renewal
+		if (popUpMessageTextValue.equals("Please Select atleast one Type of Renewal.")) {
+			if (typeOfRenewal.equals(typeOfRenewal)) {
+				schemeLevelButton.click();
+			} else {
+				memberLevelButton.click();
+			}
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Type of Renewal popup message is Wrong or Not Present");
+		}
+		
+		//Window Period for Member Addition
+		if (popUpMessageTextValue.equals("Please enter the Window Period for Member Addition.")) {
+			windowPeriodForMemberAddition.sendKeys(windowPeriodValue,Keys.ENTER);
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Window Period for Member Addition popup message is Wrong or Not Present");
+		}
+		
+		//Frequency
+		if (popUpMessageTextValue.equals("Please select the Frequency.")) {
+			selectVisibleText(frequencyDropDown, frequency);
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Frequency popup message is Wrong or Not Present");
+		}
+		
+		//Zone
+		if (popUpMessageTextValue.equals("Please select the Zone.")) {
+			selectVisibleText(zoneDropDown, zone);
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Zone popup message is Wrong or Not Present");
+		}
+		
+		//Reinsurer
+		if (popUpMessageTextValue.equals("Please select the Reinsurer.")) {
+			selectVisibleText(reInsurerDropDown, reinsurerValue);
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Reinsurer is selected");
+		}
+		
+		//Underwriting Minimum Age
+		if (popUpMessageTextValue.equals("Please Enter the Underwriting Minimum Age")) {
+			underwritingMinimumAge.sendKeys(minimumAge);
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Underwriting Minimum popup message is Wrong or Not Present");
+		}
+		
+		//Underwriting Maximum Age.
+		if (popUpMessageTextValue.equals("Please enter the Underwriting Maximum Age.")) {
+			underwritingMaximumAge.sendKeys(maximumAge);
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Underwriting Maximum Age popup message is Wrong or Not Present");
+		}
+		
+		//Unit Details
+		if (popUpMessageTextValue.equals("Please add atleast one Unit Details")) {
+			unitAddressNoButton.click();
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Unit Details popup message is Wrong or Not Present");
+		}
+		
+		//Address Details
+		if (popUpMessageTextValue.equals("Please select the Is Master Policy Address different from Client Organization Address? .")) {
+			addressNoButton.click();
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Address Details popup message is Wrong or Not Present");
+		}
+		
+		//Add - Benefits/Riders
+		if (popUpMessageTextValue.equals("Please Add atleast one Benefits/Riders")) {
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		
+		} else {
+			System.out.println("Add - Benefits/Riders popup message is Wrong or Not Present");
+		}
+		
+		//Benefits/Riders
+		if (popUpMessageTextValue.equals("Please select the Benefits/Riders.")) {
+			selectVisibleText(benefitsDropDown, benefits1);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+			
+		} else {
+			System.out.println("Benefits/Riders popup message is Wrong or Not Present");
+		}
+		
+		//Variant Type - Invalid
+		if (popUpMessageTextValue.equals("Please select the Variant Type.")) {
+			selectVisibleText(variantTypeDropDown, invalidVarientType);
+			wait.until(ExpectedConditions.elementToBeClickable(percentageOfBaseBenefit));
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Invalid Variant Type popup message is Wrong or Not Present");
+		}
+		
+		//Variant Type
+		if (popUpMessageTextValue.equals("Variant Type Rider not applicable for Base Coverage")) {
+			selectVisibleText(variantTypeDropDown, varientType1);
+			wait.until(ExpectedConditions.elementToBeClickable(sumAssured));
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Variant Type popup message is Wrong or Not Present");
+		}
+		
+		//Sum Assured
+		if (popUpMessageTextValue.equals("Please enter the Sum Assured.")) {
+			sumAssured.sendKeys(sumAssuredValue);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Sum Assured popup message is Wrong or Not Present");
+		}
+		
+		//Free Cover Limit
+		if (popUpMessageTextValue.equals("Please enter the Free Cover Limit (Sum Assured).")) {
+			freeCoverLimit.sendKeys(freeCoverLimitValueForBaseBenefit);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Free Cover Limit popup message is Wrong or Not Present");
+		}
+		
+		//Benefits/Riders Added Successfully
+		if (popUpMessageTextValue.equals("Benefits/Riders Added Successfully")) {
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Benefits/Riders Added Successfully popup message is Wrong or Not Present");
+		}
+		
+		//In-Built Coverage
+		if (popUpMessageTextValue.equals("Please Add the In-Built Coverage")) {
+			selectVisibleText(benefitsDropDown, benefits2);
+			selectVisibleText(variantTypeDropDown, varientType2);
+			wait.until(ExpectedConditions.elementToBeClickable(percentageOfBaseBenefit));
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("In-Built Coverage popup message is Wrong or Not Present");
+		}
+		
+		//Percentage of Base Benefit
+		if (popUpMessageTextValue.equals("Please enter the Percentage of Base Benefit.")) {
+			percentageOfBaseBenefit.sendKeys(percentageofBaseBenefitValue);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Percentage of Base Benefit popup message is Wrong or Not Present");
+		}
+		
+		//Minimum Cap
+		if (popUpMessageTextValue.equals("Please enter the Minimum Cap.")) {
+			minimumCap.sendKeys(minimumCapValue);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Minimum Cap popup message is Wrong or Not Present");
+		}
+		
+		//Maximum Cap
+		if (popUpMessageTextValue.equals("Please enter the Maximum Cap.")) {
+			maximumCap.sendKeys(maximumCapValue);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Maximum Cap popup message is Wrong or Not Present");
+		}
+		
+		//Free Cover Limit
+		if (popUpMessageTextValue.equals("Please enter the Free Cover Limit (Sum Assured).")) {
+			freeCoverLimit.sendKeys(freeCoverLimitValueForRider);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Free Cover Limit popup message is Wrong or Not Present");
+		}
+		
+		//Benefits/Riders Added Successfully
+		if (popUpMessageTextValue.equals("Benefits/Riders Added Successfully")) {
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Benefits/Riders Added Successfully popup message is Wrong or Not Present");
+		}
+		
+	}
+	
+	//TC_MPM_127 - Verify the Error Popup Messages for In build Rider on GPS OYRT_V09
+	public void verifyTheErrorMessagesForRiderOnGPSOYRT_V09(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
+			String benefits1, String varientType1, String sumAssuredValue, String freeCoverLimitValueForBaseBenefit, 
+			String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider) throws Throwable
+	{
+		mandatoryFields(clientName, agreementNumberValue, 
+				quotationDetailsValue, title, firstName, number, emailIDStringValue, numberOfInsured, 
+				totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
+				reinsurerValue, unitAddress, addressDetails);
+		
+		selectVisibleText(benefitsDropDown, benefits1);
+		selectVisibleText(variantTypeDropDown, varientType1);
+		flatSumAssured(totalSumAssuredValue, freeCoverLimitValueForBaseBenefit);
+		addRidersButton.click();
+		acceptPopupMsg();
+		
+		selectVisibleText(benefitsDropDown, benefits2);
+		selectVisibleText(variantTypeDropDown, varientType2);
+		addRidersButton.click();
+		
+		//Percentage of Base Benefit
+				String popUpMessageTextValue = popupMessageText();
+				if (popUpMessageTextValue.equals("Please enter the Percentage of Base Benefit.")) {
+					percentageOfBaseBenefit.sendKeys(percentageofBaseBenefitValue);
+					addRidersButton.click();
+					popUpMessageTextValue = popupMessageText();
+				} else {
+					System.out.println("Percentage of Base Benefit popup message is Wrong or Not Present");
+				}
+				
+		//Free Cover Limit
+				if (popUpMessageTextValue.equals("Please enter the Free Cover Limit (Sum Assured).")) {
+					freeCoverLimit.sendKeys(freeCoverLimitValueForRider);
+					addRidersButton.click();
+					popUpMessageTextValue = popupMessageText();
+				} else {
+					System.out.println("Free Cover Limit popup message is Wrong or Not Present");
+				}
+				
+		//Benefits/Riders Added Successfully
+				if (popUpMessageTextValue.equals("Benefits/Riders Added Successfully")) {
+					wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+					sentToCheckerButton.click();
+					popUpMessageTextValue = popupMessageText();
+				} else {
+					System.out.println("Benefits/Riders Added Successfully popup message is Wrong or Not Present");
+				}
+		
+	}
+	
+	//TC_MPM_128 - Verify the Error Popup Messages for Customer Defined SA
+	public void verifyTheErrorMessagesForCustomerDefinedSA(String clientName, String agreementNumberValue, 
+			String quotationDetailsValue, String title, String firstName, String number, String emailIDStringValue, 
+			String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, String agentCodeValue, 
+			String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, String windowPeriodValue, 
+			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
+			String unitAddress, String addressDetails, 
+			String benefits, String varientType, String freeCoverLimitValue) throws Throwable 
+	{
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, 
+				emailIDStringValue, numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, 
+				frequency, zone, minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails);
+		selectVisibleText(benefitsDropDown, benefits);
+		selectVisibleText(variantTypeDropDown, varientType);
+		addRidersButton.click();
+		String popUpMessageTextValue = popupMessageText();
+		
+		//Free Cover Limit
+		if (popUpMessageTextValue.equals("Please enter the Free Cover Limit (Sum Assured).")) {
+			freeCoverLimit.sendKeys(freeCoverLimitValue);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Free Cover Limit popup message is Wrong or Not Present");
+		}
+		
+		//Benefits/Riders Added Successfully
+		if (popUpMessageTextValue.equals("Benefits/Riders Added Successfully")) {
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Benefits/Riders Added Successfully popup message is Wrong or Not Present");
+		}
+				
+	}
+	
+	//TC_MPM_129 - Verify the Error Popup Messages for Multiple Of Salary
+	public void verifyTheErrorMessagesForMultipleOfSalary(String clientName, String agreementNumberValue, 
+			String quotationDetailsValue, String title, String firstName, String number, String emailIDStringValue, 
+			String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, String agentCodeValue, 
+			String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, String windowPeriodValue, 
+			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
+			String unitAddress, String addressDetails, 
+			String benefits, String varientType, String multiplesOfSalaryValue, String freeCoverLimitValue, String minimumCapValue, 
+			String maximumCapValue) throws Throwable 
+	{
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, 
+				emailIDStringValue, numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, 
+				frequency, zone, minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails);
+		
+		selectVisibleText(benefitsDropDown, benefits);
+		selectVisibleText(variantTypeDropDown, varientType);
+		addRidersButton.click();
+		String popUpMessageTextValue = popupMessageText();
+		
+		//Multiples Of Salary 
+		if (popUpMessageTextValue.equals("Please enter the Multiples Of Salary.")) {
+			multiplesOfSalary.sendKeys(multiplesOfSalaryValue);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Multiples Of Salary popup message is Wrong or Not Present");
+		}
+		
+		//Minimum Cap 
+		if (popUpMessageTextValue.equals("Please enter the Minimum Cap.")) {
+			minimumCap.sendKeys(minimumCapValue);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Minimum Cap popup message is Wrong or Not Present");
+		}
+		
+		//Maximum Cap
+		if (popUpMessageTextValue.equals("Please enter the Maximum Cap.")) {
+			maximumCap.sendKeys(maximumCapValue);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Maximum Cap popup message is Wrong or Not Present");
+		}
+		
+		//Free Cover Limit
+		if (popUpMessageTextValue.equals("Please enter the Free Cover Limit (Sum Assured).")) {
+			freeCoverLimit.sendKeys(freeCoverLimitValue);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Free Cover Limit popup message is Wrong or Not Present");
+		}
+
+		//Benefits/Riders Added Successfully
+		if (popUpMessageTextValue.equals("Benefits/Riders Added Successfully")) {
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Benefits/Riders Added Successfully popup message is Wrong or Not Present");
+		}
+		
+	}
+	
+	//TC_MPM_130 - Verify the Error Popup Messages for Graded Cover
+	public void verifyTheErrorMessagesForGradedCover(String clientName, String agreementNumberValue, 
+			String quotationDetailsValue, String title, String firstName, String number, String emailIDStringValue, 
+			String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, String agentCodeValue, 
+			String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, String windowPeriodValue, 
+			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
+			String unitAddress, String addressDetails,
+			String benefits, String varientType, 
+			String gradeValue1, String sumAssuredValue1,String freeCoverLimitValue1, String minimumCapValue1, String maximumCapValue1, 
+			String gradeValue2, String sumAssuredValue2,String freeCoverLimitValue2, String minimumCapValue2, String maximumCapValue2, 
+			String gradeValue3, String sumAssuredValue3,String freeCoverLimitValue3, String minimumCapValue3, String maximumCapValue3) throws Throwable 
+	{
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, 
+				emailIDStringValue, numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, 
+				minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails);
+
+		selectVisibleText(benefitsDropDown, benefits);
+		selectVisibleText(variantTypeDropDown, varientType);
+		addRidersButton.click();
+		String popUpMessageTextValue = popupMessageText();
+		
+		//Grade 
+		if (popUpMessageTextValue.equals("Please select the Grade.")) {
+			selectVisibleText(gradeDropDown, gradeValue1);
+			addRidersButton.click();
+			popUpMessageTextValue=popupMessageText();
+		} else {
+			System.out.println("Grade popup message is Wrong or Not Present");
+		}
+		
+		//Sum Assured
+		if (popUpMessageTextValue.equals("Please enter the Sum Assured.")) {
+			sumAssured.sendKeys(sumAssuredValue1);
+			addRidersButton.click();
+			popUpMessageTextValue=popupMessageText();
+		} else {
+			System.out.println("Sum Assured popup message is Wrong or Not Present");
+		}
+		
+		//Minimum Cap 
+		if (popUpMessageTextValue.equals("Please enter the Minimum Cap.")) {
+			minimumCap.sendKeys(minimumCapValue1);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Minimum Cap popup message is Wrong or Not Present");
+		}
+
+		//Maximum Cap
+		if (popUpMessageTextValue.equals("Please enter the Maximum Cap.")) {
+			maximumCap.sendKeys(maximumCapValue1);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Maximum Cap popup message is Wrong or Not Present");
+		}
+
+		//Free Cover Limit
+		if (popUpMessageTextValue.equals("Please enter the Free Cover Limit (Sum Assured).")) {
+			freeCoverLimit.sendKeys(freeCoverLimitValue1);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Free Cover Limit popup message is Wrong or Not Present");
+		}
+
+		//Benefits/Riders Added Successfully
+		if (popUpMessageTextValue.equals("Benefits/Riders Added Successfully")) {
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Benefits/Riders Added Successfully popup message is Wrong or Not Present");
+		}
+	}
+	
+	//TC_MPM_131 - Verify the Error Popup Messages for Future Service Gratuity Amount
+	public void verifyTheErrorMessagesForFutureServiceGratuityAmount(String clientName, String agreementNumberValue, 
+			String quotationDetailsValue, String title, String firstName, String number, String emailIDStringValue, 
+			String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, String agentCodeValue, 
+			String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, String windowPeriodValue, 
+			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
+			String unitAddress, String addressDetails,
+			String benefits,String varientType, String retirementAgeValueInVariantType, String maxSumAssuredValue, String freeCoverLimitValue, String minimumCapValue, 
+			String maximumCapValue) throws Throwable
+	{
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, 
+				emailIDStringValue, numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, 
+				minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails);
+		
+		selectVisibleText(benefitsDropDown, benefits);
+		selectVisibleText(variantTypeDropDown, varientType);
+		addRidersButton.click();
+		String popUpMessageTextValue = popupMessageText();
+		
+		//Retirement Age
+		if (popUpMessageTextValue.equals("Please enter the Retirement Age.")) {
+			retirementAgeInVariantType.sendKeys(retirementAgeValueInVariantType);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Retirement Age popup message is Wrong or Not Present");
+		}
+		
+		//Max Sum Assured
+		if (popUpMessageTextValue.equals("Please enter the Max Sum Assured.")) {
+			maxSumAssured.sendKeys(maxSumAssuredValue);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Max Sum Assured popup message is Wrong or Not Present");
+		}
+		
+		//Minimum Cap 
+		if (popUpMessageTextValue.equals("Please enter the Minimum Cap.")) {
+			minimumCap.sendKeys(minimumCapValue);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Minimum Cap popup message is Wrong or Not Present");
+		}
+
+		//Maximum Cap
+		if (popUpMessageTextValue.equals("Please enter the Maximum Cap.")) {
+			maximumCap.sendKeys(maximumCapValue);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Maximum Cap popup message is Wrong or Not Present");
+		}
+
+		//Free Cover Limit
+		if (popUpMessageTextValue.equals("Please enter the Free Cover Limit (Sum Assured).")) {
+			freeCoverLimit.sendKeys(freeCoverLimitValue);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Free Cover Limit popup message is Wrong or Not Present");
+		}
+
+		//Benefits/Riders Added Successfully
+		if (popUpMessageTextValue.equals("Benefits/Riders Added Successfully")) {
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Benefits/Riders Added Successfully popup message is Wrong or Not Present");
+		}
+	}
+	
+	//TC_MPM_132 - Verify the Error Popup Messages for Graded Cover Salary Multiple
+	public void verifyTheErrorMessagesForGradedCoverSalaryMultiple(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
+			String benefits, String varientType, String gradeValue, String multiplesOfSalaryValue,String freeCoverLimitValue, 
+			String minimumCapValue, String maximumCapValue) throws Throwable 
+	{
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, 
+				emailIDStringValue, numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, 
+				brokerageUpdationValue, varient, benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, 
+				minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails);
+		
+		selectVisibleText(benefitsDropDown, benefits);
+		selectVisibleText(variantTypeDropDown, varientType);
+		addRidersButton.click();
+		String popUpMessageTextValue = popupMessageText();
+		
+		//Grade 
+		if (popUpMessageTextValue.equals("Please select the Grade.")) {
+			selectVisibleText(gradeDropDown, gradeValue);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Grade popup message is Wrong or Not Present");
+		}
+		
+		//Multiples Of Salary
+		if (popUpMessageTextValue.equals("Please enter the Multiples Of Salary.")) {
+			multiplesOfSalary.sendKeys(multiplesOfSalaryValue);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();			
+		} else {
+			System.out.println("Multiples Of Salary popup message is Wrong or Not Present");
+		}
+		
+		//Minimum Cap 
+		if (popUpMessageTextValue.equals("Please enter the Minimum Cap.")) {
+			minimumCap.sendKeys(minimumCapValue);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Minimum Cap popup message is Wrong or Not Present");
+		}
+
+		//Maximum Cap
+		if (popUpMessageTextValue.equals("Please enter the Maximum Cap.")) {
+			maximumCap.sendKeys(maximumCapValue);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Maximum Cap popup message is Wrong or Not Present");
+		}
+
+		//Free Cover Limit
+		if (popUpMessageTextValue.equals("Please enter the Free Cover Limit (Sum Assured).")) {
+			freeCoverLimit.sendKeys(freeCoverLimitValue);
+			addRidersButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Free Cover Limit popup message is Wrong or Not Present");
+		}
+
+		//Benefits/Riders Added Successfully
+		if (popUpMessageTextValue.equals("Benefits/Riders Added Successfully")) {
+			wait.until(ExpectedConditions.elementToBeClickable(sentToCheckerButton));
+			sentToCheckerButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Benefits/Riders Added Successfully popup message is Wrong or Not Present");
+		}
+	}
 	
 	
 	//Verify able to capture the Error popup message & screenshot
-	
-	public void captureAErrorPopupMessage(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,String benefits, 
+	public void captureAErrorPopupMessage(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,String benefits, 
 			String varientType, String freeCoverLimitValue) throws Throwable 
 	{
-		mandatoryFields(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
-				reinsurerValue, unitAddress, addressDetails);
+		mandatoryFields(clientName, agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails);
 
 		selectVisibleText(benefitsDropDown, benefits);
 		selectVisibleText(variantTypeDropDown, varientType);
 		customerDefinedSA(freeCoverLimitValue);
 		addRidersButton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
 		okButtonInPopMessage.click();
 		sentToCheckerButton.click();
 		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));

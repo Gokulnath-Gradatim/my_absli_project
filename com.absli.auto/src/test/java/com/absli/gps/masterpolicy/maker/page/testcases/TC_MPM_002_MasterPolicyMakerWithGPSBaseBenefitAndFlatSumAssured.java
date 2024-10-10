@@ -34,7 +34,7 @@ public class TC_MPM_002_MasterPolicyMakerWithGPSBaseBenefitAndFlatSumAssured ext
 	@DataProvider(name="TestDataFromTC_MPM_002")
 	public Object[][] getTestDataFromTestDataFromTC_MPM_002()
 	{
-		Object arrobj[][]=TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\git\\com.absli.auto\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\gps\\Master Policy Maker - Test Data.xlsx", "TC_MPM_002");
+		Object arrobj[][]=TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\git\\com.absli.auto\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\gps\\masterpolicymaker\\Test Data For TC_MPM_002.xlsx", "TC_MPM_002");
 		return arrobj;
 				
 	}
@@ -42,17 +42,18 @@ public class TC_MPM_002_MasterPolicyMakerWithGPSBaseBenefitAndFlatSumAssured ext
 	@Test(priority = 1,dataProvider = "TestDataFromTC_MPM_002", dataProviderClass = TC_MPM_002_MasterPolicyMakerWithGPSBaseBenefitAndFlatSumAssured.class)
 	public void createAMasterPolicyWithFlatSumAssured(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
 			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,String benefits, 
+			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient,  
+			String benefitType, String typeOfRenewal, String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, 
+			String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,String benefits, 
 			String varientType, String sumAssuredValue, String freeCoverLimitValue) throws Throwable {
 		
 		homePage.masterPolicyMakerPage();
 		masterPolicyMakerPage= new MasterPolicyMakerPage();
-		masterPolicyMakerPage.masterPolicyWithMandatoryFieldsAndFlatSumAssured(clientName, agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, 
-				emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
-				conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, retirementAgeValue, nraLetterReceivedDateValue, 
-				typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails, benefits, varientType, sumAssuredValue, freeCoverLimitValue);
+		masterPolicyMakerPage.masterPolicyWithMandatoryFieldsAndFlatSumAssured(clientName, agreementNumberStringValue, 
+				quotationDetailsStringValue, title, firstName, number, emailIDStringValue, numberOfInsured, 
+				totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient,  
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
+				unitAddress, addressDetails, benefits, varientType, sumAssuredValue, freeCoverLimitValue);
 	}
 	
 	@AfterMethod

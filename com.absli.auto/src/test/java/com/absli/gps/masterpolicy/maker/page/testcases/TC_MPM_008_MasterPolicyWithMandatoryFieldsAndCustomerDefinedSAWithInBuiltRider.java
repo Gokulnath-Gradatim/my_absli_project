@@ -40,21 +40,20 @@ public class TC_MPM_008_MasterPolicyWithMandatoryFieldsAndCustomerDefinedSAWithI
 	@Test(priority = 7,dataProvider = "TestDataFromTC_MPM_008", dataProviderClass = TC_MPM_008_MasterPolicyWithMandatoryFieldsAndCustomerDefinedSAWithInBuiltRider.class)
 	public void createAMasterPolicyWithRider(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
 			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
-			String benefits1, String varientType1, String freeCoverLimitValueForBaseBenefit, String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, 
-			String minimumCapValue, String maximumCapValue) throws Throwable {
+			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String benefitType, 
+			String typeOfRenewal, String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, 
+			String maximumAge, String reinsurerValue, String unitAddress, String addressDetails, String benefits1, 
+			String varientType1, String freeCoverLimitValueForBaseBenefit, String benefits2, String varientType2, 
+			String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, String minimumCapValue, String maximumCapValue) throws Throwable {
 		
 		homePage.masterPolicyMakerPage();
 		masterPolicyMakerPage= new MasterPolicyMakerPage();
 		masterPolicyMakerPage.masterPolicyWithMandatoryFieldsAndCustomerDefinedSAWithInBuiltRider(clientName, 
 				agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, emailIDStringValue, 
 				numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, 
-				varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, retirementAgeValue, 
-				nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, unitAddress, 
-				addressDetails, benefits1, varientType1, freeCoverLimitValueForBaseBenefit, benefits2, varientType2, 
-				percentageofBaseBenefitValue, freeCoverLimitValueForRider, minimumCapValue, maximumCapValue);
+				varient, benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails, benefits1, varientType1, freeCoverLimitValueForBaseBenefit, 
+				benefits2, varientType2, percentageofBaseBenefitValue, freeCoverLimitValueForRider, minimumCapValue, maximumCapValue);
 	}
 	
 	@AfterMethod

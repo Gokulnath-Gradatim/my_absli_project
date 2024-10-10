@@ -39,23 +39,21 @@ public class TC_MPM_081_MasterPolicyWith4BenefitsAndRidersWithVariantTypeAsFsgaR
 	}
 	
 	@Test(priority = 80,dataProvider = "TestDataFromTC_MPM_081", dataProviderClass = TC_MPM_081_MasterPolicyWith4BenefitsAndRidersWithVariantTypeAsFsgaRRR.class)
-	public void createAMasterPolicyWith4BenefitsAndRidersWithVariantTypeAsFsgaRRR (String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, 
-			String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
-			String unitAddress, String addressDetails, 
+	public void createAMasterPolicyWith4BenefitsAndRidersWithVariantTypeAsFsgaRRR (String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails, 
 			String benefits1,String varientType1, String retirementAgeValueForBaseBenefit, String maxSumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3,String varientType3,  String percentageofBaseBenefitValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider, String minimumCapValueForAdditionalRider, String maximumCapValueForAdditionalRider,
 			String benefits4, String varientType4, String percentageofBaseBenefitValue4, String freeCoverLimitValue4, String minimumCapValue4, String maximumCapValue4) throws Throwable	{
 		homePage.masterPolicyMakerPage();
 		masterPolicyMakerPage= new MasterPolicyMakerPage();
-		masterPolicyMakerPage.masterPolicyWith4BenefitsAndRidersWithVariantTypeAsFsgaRRR(clientName, agreementNumberStringValue, 
-				quotationDetailsStringValue, title, firstName, number, emailIDStringValue, numberOfInsured, 
-				totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, conditionsValue, 
-				benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, retirementAgeValue, nraLetterReceivedDateValue, 
+		masterPolicyMakerPage.masterPolicyWith4BenefitsAndRidersWithVariantTypeAsFsgaRRR(clientName, agreementNumberValue, 
+				quotationDetailsValue, title, firstName, number, emailIDStringValue, numberOfInsured, totalSumAssuredValue, 
+				inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, benefitType, typeOfRenewal, windowPeriodValue, 
 				typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails, benefits1, 
 				varientType1, retirementAgeValueForBaseBenefit, maxSumAssuredValueForBaseBenefit, freeCoverLimitValueForBaseBenefit, 
 				minimumCapValueForBaseBenefit, maximumCapValueForBaseBenefit, benefits2, varientType2, 

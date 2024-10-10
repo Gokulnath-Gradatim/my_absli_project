@@ -38,28 +38,25 @@ public class TC_MPM_012_MasterPolicyWithMandatoryFieldsAndFutureServiceGratuityA
 	}
 	
 	@Test(priority = 11,dataProvider = "TestDataFromTC_MPM_012", dataProviderClass = TC_MPM_012_MasterPolicyWithMandatoryFieldsAndFutureServiceGratuityAmountWithInBuiltRider.class)
-	public void createAMasterPolicyWithMandatoryFieldsAndFutureServiceGratuityAmountWithInBuiltRider(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, 
-			String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, 
-			String unitAddress, String addressDetails, String benefits1,String varientType1, 
-			String retirementAgeValueInVariantType, String maxSumAssuredValueString, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, 
-			String maximumCapValueForBaseBenefit, String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, 
-			String minimumCapValueForRider, String maximumCapValueForRider) throws Throwable
+	public void createAMasterPolicyWithMandatoryFieldsAndFutureServiceGratuityAmountWithInBuiltRider(String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails, 
+			String benefits1,String varientType1, String retirementAgeValueInVariantType, String maxSumAssuredValueString, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
+			String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, String minimumCapValueForRider, String maximumCapValueForRider) throws Throwable
 	{
 		homePage.masterPolicyMakerPage();
 		masterPolicyMakerPage= new MasterPolicyMakerPage();
 		masterPolicyMakerPage.masterPolicyWithMandatoryFieldsAndFutureServiceGratuityAmountWithInBuiltRider(clientName, 
-				agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, emailIDStringValue, 
-				numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, 
-				varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, retirementAgeValue, 
-				nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, unitAddress, 
-				addressDetails, benefits1, varientType1, retirementAgeValueInVariantType, maxSumAssuredValueString, 
-				freeCoverLimitValueForBaseBenefit, minimumCapValueForBaseBenefit, maximumCapValueForBaseBenefit, benefits2, 
-				varientType2, percentageofBaseBenefitValue, freeCoverLimitValueForRider, minimumCapValueForRider, 
-				maximumCapValueForRider);
+				agreementNumberValue, quotationDetailsValue, title, firstName, number, emailIDStringValue, 
+				numberOfInsured, totalSumAssuredValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, 
+				varient, benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, maximumAge, 
+				reinsurerValue, unitAddress, addressDetails, benefits1, varientType1, retirementAgeValueInVariantType, 
+				maxSumAssuredValueString, freeCoverLimitValueForBaseBenefit, minimumCapValueForBaseBenefit, 
+				maximumCapValueForBaseBenefit, benefits2, varientType2, percentageofBaseBenefitValue, freeCoverLimitValueForRider, 
+				minimumCapValueForRider, maximumCapValueForRider);
 	}
 	
 	@AfterMethod

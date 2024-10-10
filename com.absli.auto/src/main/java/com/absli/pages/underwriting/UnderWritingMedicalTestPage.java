@@ -59,11 +59,29 @@ public class UnderWritingMedicalTestPage extends AbsliBase  {
 	@FindBy(id = "ContentPlaceHolder1_Messagebox_btnMessageOk")
 	private WebElement okButtonInSelectedRecordsPopMessage;
 	
+	@FindBy(id = "ContentPlaceHolder1_gvUnderwriting_btngvSelect_0")
+	private WebElement editButton;
 	
+	@FindBy(id = "ContentPlaceHolder1_txtUnderwritersComments")
+	private WebElement commentsTextBox;
+	
+	@FindBy(id = "ContentPlaceHolder1_btnSave")
+	private WebElement approvedButton;
 	
 	public UnderWritingMedicalTestPage()
 	{
 		PageFactory.initElements(driver, this);
+	}
+	
+	//Popup Messages and Screenshot
+	public String popupMessageText() throws Throwable
+	{
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		String popUpTextMessage = popMessageText.getText();
+		System.out.println("Popup Message: " + popUpTextMessage);
+	//	TestUtill.takeScreenshotAtEndOfTest(popUpTextMessage);
+		okButtonInPopMessage.click();
+		return popUpTextMessage;
 	}
 	
 	//TC_UW_MT_001 - Verify user able to approved or send the member to UW details page.
@@ -95,5 +113,56 @@ public class UnderWritingMedicalTestPage extends AbsliBase  {
 		okButtonInPopMessage.click();
 		
 	}
+	
+	//TC_UW_MT_002 - Verify the Error Popup Messages in Underwriting Medical Test
+	public void verifyTheErrorPopupMessagesInUnderwritingMedicalTest(String fromDateValue, String toDateValue, String employeeID, String comments) throws Throwable
+	{
+		wait.until(ExpectedConditions.elementToBeClickable(searchButton));
+		searchButton.click();
+		String popUpMessageTextValue = popupMessageText();
+		
+		//From Date 
+		if (popUpMessageTextValue.equals("Please select From Date")) {
+			fromDate.sendKeys(fromDateValue);
+			searchButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("From Date popup message is Wrong or Not Present");
+		}
+		
+		//To Date
+		if (popUpMessageTextValue.equals("Please select To Date")) {
+			toDate.sendKeys(toDateValue);
+			searchButton.click();
+			approvedAndSendToUWDetailsButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("To Date popup message is Wrong or Not Present");
+		}
+		
+		//Underwriting Medical grid
+		if (popUpMessageTextValue.equals("Please select at least one Underwriting Medical grid")) {
+			memberEmployeeID.sendKeys(employeeID);
+			searchButton.click();
+			Thread.sleep(1000);
+			editButton.click();
+			wait.until(ExpectedConditions.elementToBeClickable(commentsTextBox));
+			approvedButton.click();
+			popUpMessageTextValue = popupMessageText();			
+		} else {
+			System.out.println("Underwriting Medical grid popup message is Wrong or Not Present");
+		}
+		
+		//Comments
+		if (popUpMessageTextValue.equals("Please enter the Comments.")) {
+			commentsTextBox.sendKeys(comments);
+			approvedButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Application Moved to Underwriting Details popup message is Wrong or Not Present");
+		}
+	}
+	
+	
 	
 }

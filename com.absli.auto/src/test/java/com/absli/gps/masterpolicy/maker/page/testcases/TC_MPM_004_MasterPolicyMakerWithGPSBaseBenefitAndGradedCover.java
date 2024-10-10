@@ -34,7 +34,7 @@ public class TC_MPM_004_MasterPolicyMakerWithGPSBaseBenefitAndGradedCover extend
 	@DataProvider(name="TestDataFromTC_MPM_004")
 	public Object[][] getTestDataFromTestDataFromTC_MPM_004()
 	{
-		Object arrobj[][]=TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\git\\com.absli.auto\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\gps\\Master Policy Maker - Test Data.xlsx", "TC_MPM_004");
+		Object arrobj[][]=TestUtill.getDataFromExcel("C:\\Users\\Gokulnath\\git\\com.absli.auto\\com.absli.auto\\src\\main\\java\\com\\absli\\testdata\\gps\\masterpolicymaker\\Test Data For TC_MPM_004.xlsx", "TC_MPM_004");
 		return arrobj;
 				
 	}
@@ -42,21 +42,21 @@ public class TC_MPM_004_MasterPolicyMakerWithGPSBaseBenefitAndGradedCover extend
 	@Test(priority = 3,dataProvider = "TestDataFromTC_MPM_004", dataProviderClass = TC_MPM_004_MasterPolicyMakerWithGPSBaseBenefitAndGradedCover.class)
 	public void createAMasterPolicyWithGradedCover(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
 			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,String benefits, 
-			String varientType, String noOfGrade, String gradeValue1, String sumAssuredValue1,String freeCoverLimitValue1, String minimumCapValue1, 
-			String maximumCapValue1, String gradeValue2, String sumAssuredValue2,String freeCoverLimitValue2, String minimumCapValue2, 
-			String maximumCapValue2, String gradeValue3, String sumAssuredValue3,String freeCoverLimitValue3, String minimumCapValue3, 
-			String maximumCapValue3) throws Throwable {
+			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient,  
+			String benefitType, String typeOfRenewal, String windowPeriodValue,	String typeOfClient, String frequency, String zone, 
+			String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+			String benefits, String varientType,
+			String gradeValue1, String sumAssuredValue1,String freeCoverLimitValue1, String minimumCapValue1, String maximumCapValue1, 
+			String gradeValue2, String sumAssuredValue2,String freeCoverLimitValue2, String minimumCapValue2, String maximumCapValue2, 
+			String gradeValue3, String sumAssuredValue3,String freeCoverLimitValue3, String minimumCapValue3, String maximumCapValue3) throws Throwable {
 		
 		homePage.masterPolicyMakerPage();
 		masterPolicyMakerPage= new MasterPolicyMakerPage();
 		masterPolicyMakerPage.masterPolicyWithMandatoryFieldsAndGradedCover(clientName, agreementNumberStringValue, quotationDetailsStringValue, 
 				title, firstName, number, emailIDStringValue, numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, 
-				brokerageUpdationValue, varient, conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, 
-				retirementAgeValue, nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails, 
-				benefits, varientType, noOfGrade, gradeValue1, sumAssuredValue1, freeCoverLimitValue1, minimumCapValue1, maximumCapValue1, 
+				brokerageUpdationValue, varient, benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, 
+				maximumAge, reinsurerValue, unitAddress, addressDetails, 
+				benefits, varientType, gradeValue1, sumAssuredValue1, freeCoverLimitValue1, minimumCapValue1, maximumCapValue1, 
 				gradeValue2, sumAssuredValue2, freeCoverLimitValue2, minimumCapValue2, maximumCapValue2, 
 				gradeValue3, sumAssuredValue3, freeCoverLimitValue3, minimumCapValue3, maximumCapValue3);
 	}

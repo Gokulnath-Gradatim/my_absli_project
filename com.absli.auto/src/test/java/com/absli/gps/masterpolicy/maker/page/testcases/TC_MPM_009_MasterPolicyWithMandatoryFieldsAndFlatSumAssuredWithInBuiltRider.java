@@ -39,13 +39,13 @@ public class TC_MPM_009_MasterPolicyWithMandatoryFieldsAndFlatSumAssuredWithInBu
 	}
 	
 	@Test(priority = 8,dataProvider = "TestDataFromTC_MPM_009", dataProviderClass = TC_MPM_009_MasterPolicyWithMandatoryFieldsAndFlatSumAssuredWithInBuiltRider.class)
-	public void createAMasterPolicyWithRider(String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
-			String benefits1, String varientType1, String sumAssuredValue, String freeCoverLimitValueForBaseBenefit, 
-			String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, 
+	public void createAMasterPolicyWithRider(String clientName, String agreementNumberStringValue, 
+			String quotationDetailsStringValue, String title, String firstName, String number, String emailIDStringValue, 
+			String numberOfInsured, String totalSumAssuredStringValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
+			String benefits1, String varientType1, String sumAssuredValue, String freeCoverLimitValueForBaseBenefit, String benefits2, String varientType2, String percentageofBaseBenefitValue, String freeCoverLimitValueForRider, 
 			String minimumCapValue, String maximumCapValue) throws Throwable {
 		
 		homePage.masterPolicyMakerPage();
@@ -53,9 +53,8 @@ public class TC_MPM_009_MasterPolicyWithMandatoryFieldsAndFlatSumAssuredWithInBu
 		masterPolicyMakerPage.masterPolicyWithMandatoryFieldsAndFlatSumAssuredWithInBuiltRider(clientName, 
 				agreementNumberStringValue, quotationDetailsStringValue, title, firstName, number, emailIDStringValue, 
 				numberOfInsured, totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, 
-				conditionsValue, benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, retirementAgeValue, 
-				nraLetterReceivedDateValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, unitAddress, 
-				addressDetails, benefits1, varientType1, sumAssuredValue, freeCoverLimitValueForBaseBenefit, benefits2, 
+				benefitType, typeOfRenewal, windowPeriodValue, typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, 
+				unitAddress, addressDetails, benefits1, varientType1, sumAssuredValue, freeCoverLimitValueForBaseBenefit, benefits2, 
 				varientType2, percentageofBaseBenefitValue, freeCoverLimitValueForRider, minimumCapValue, maximumCapValue);
 	}
 	

@@ -38,11 +38,12 @@ public class TC_MPM_092_MasterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsaRF
 	}
 	
 	@Test(priority = 91,dataProvider = "TestDataFromTC_MPM_092", dataProviderClass = TC_MPM_092_MasterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsaRFsaRR.class)
-	public void createAMasterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsaRFsaRR (String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, String totalSumAssuredStringValue, 
-			String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, String varient, String conditionsValue, 
-			String benefitType, String typeOfRenewal, String windowPeriodValue,	String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, String reinsurerValue, String unitAddress, String addressDetails,
+	public void createAMasterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsaRFsaRR (String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String sumAssuredValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
 			String benefits3, String varientType3, String sumAssuredValueForAdditionalRider, String freeCoverLimitValueForAdditionalRider,
@@ -50,17 +51,16 @@ public class TC_MPM_092_MasterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsaRF
 			String benefits5, String varientType5, String percentageofBaseBenefitValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable	{
 		homePage.masterPolicyMakerPage();
 		masterPolicyMakerPage= new MasterPolicyMakerPage();
-		masterPolicyMakerPage.masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsaRFsaRR(clientName, agreementNumberStringValue, 
-				quotationDetailsStringValue, title, firstName, number, emailIDStringValue, numberOfInsured, 
-				totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, conditionsValue, 
-				benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, retirementAgeValue, nraLetterReceivedDateValue, 
+		masterPolicyMakerPage.masterPolicyWith5BenefitsAndRidersWithVariantTypeAsFsaRFsaRR(clientName, agreementNumberValue, 
+				quotationDetailsValue, title, firstName, number, emailIDStringValue, numberOfInsured, totalSumAssuredValue, 
+				inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, benefitType, typeOfRenewal, windowPeriodValue, 
 				typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails, benefits1, 
 				varientType1, sumAssuredValueForBaseBenefit, freeCoverLimitValueForBaseBenefit, benefits2, varientType2, 
 				percentageofBaseBenefitValueForInbuildRider, freeCoverLimitValueForInbuildRider, minimumCapValueForInbuildRider, 
 				maximumCapValueForInbuildRider, benefits3, varientType3, sumAssuredValueForAdditionalRider, 
-				freeCoverLimitValueForAdditionalRider, benefits4, varientType4, percentageofBaseBenefitValue4, freeCoverLimitValue4, 
-				minimumCapValue4, maximumCapValue4, benefits5, varientType5, percentageofBaseBenefitValue5, freeCoverLimitValue5, 
-				minimumCapValue5, maximumCapValue5);
+				freeCoverLimitValueForAdditionalRider, benefits4, varientType4, percentageofBaseBenefitValue4, 
+				freeCoverLimitValue4, minimumCapValue4, maximumCapValue4, benefits5, varientType5, percentageofBaseBenefitValue5, 
+				freeCoverLimitValue5, minimumCapValue5, maximumCapValue5);
 	}
 	
 	@AfterMethod

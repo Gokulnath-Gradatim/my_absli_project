@@ -38,12 +38,11 @@ public class TC_MPM_099_MasterPolicyWith5BenefitsAndRidersWithVariantTypeAsMosRR
 	}
 	
 	@Test(priority = 98,dataProvider = "TestDataFromTC_MPM_099", dataProviderClass = TC_MPM_099_MasterPolicyWith5BenefitsAndRidersWithVariantTypeAsMosRRMosMos.class)
-	public void createAMasterPolicyWith5BenefitsAndRidersWithVariantTypeAsMosRRMosMos (String clientName, String agreementNumberStringValue, String quotationDetailsStringValue, 
-			String title, String firstName, String number, String emailIDStringValue, String numberOfInsured, 
-			String totalSumAssuredStringValue, String inceptionDateValue, String agentCodeValue, String brokerageUpdationValue, 
-			String varient, String conditionsValue, String benefitType, String typeOfRenewal, String windowPeriodValue,	
-			String nraLetterReceived, String retirementAgeValue, String nraLetterReceivedDateValue,
-			String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
+	public void createAMasterPolicyWith5BenefitsAndRidersWithVariantTypeAsMosRRMosMos (String clientName, 
+			String agreementNumberValue, String quotationDetailsValue, String title, String firstName, String number, 
+			String emailIDStringValue, String numberOfInsured, String totalSumAssuredValue, String inceptionDateValue, 
+			String agentCodeValue, String brokerageUpdationValue, String varient,String benefitType, String typeOfRenewal, 
+			String windowPeriodValue,	String typeOfClient, String frequency, String zone, String minimumAge, String maximumAge, 
 			String reinsurerValue, String unitAddress, String addressDetails,
 			String benefits1, String varientType1, String multiplesOfSalaryValueForBaseBenefit, String freeCoverLimitValueForBaseBenefit, String minimumCapValueForBaseBenefit, String maximumCapValueForBaseBenefit, 
 			String benefits2, String varientType2, String percentageofBaseBenefitValueForInbuildRider, String freeCoverLimitValueForInbuildRider, String minimumCapValueForInbuildRider, String maximumCapValueForInbuildRider,
@@ -52,10 +51,9 @@ public class TC_MPM_099_MasterPolicyWith5BenefitsAndRidersWithVariantTypeAsMosRR
 			String benefits5, String varientType5, String multiplesOfSalaryValue5, String freeCoverLimitValue5, String minimumCapValue5, String maximumCapValue5) throws Throwable	{
 		homePage.masterPolicyMakerPage();
 		masterPolicyMakerPage= new MasterPolicyMakerPage();
-		masterPolicyMakerPage.masterPolicyWith5BenefitsAndRidersWithVariantTypeAsMosRRMosMos(clientName, agreementNumberStringValue, 
-				quotationDetailsStringValue, title, firstName, number, emailIDStringValue, numberOfInsured, 
-				totalSumAssuredStringValue, inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, conditionsValue, 
-				benefitType, typeOfRenewal, windowPeriodValue, nraLetterReceived, retirementAgeValue, nraLetterReceivedDateValue, 
+		masterPolicyMakerPage.masterPolicyWith5BenefitsAndRidersWithVariantTypeAsMosRRMosMos(clientName, agreementNumberValue, 
+				quotationDetailsValue, title, firstName, number, emailIDStringValue, numberOfInsured, totalSumAssuredValue, 
+				inceptionDateValue, agentCodeValue, brokerageUpdationValue, varient, benefitType, typeOfRenewal, windowPeriodValue, 
 				typeOfClient, frequency, zone, minimumAge, maximumAge, reinsurerValue, unitAddress, addressDetails, benefits1, 
 				varientType1, multiplesOfSalaryValueForBaseBenefit, freeCoverLimitValueForBaseBenefit, minimumCapValueForBaseBenefit, 
 				maximumCapValueForBaseBenefit, benefits2, varientType2, percentageofBaseBenefitValueForInbuildRider, 

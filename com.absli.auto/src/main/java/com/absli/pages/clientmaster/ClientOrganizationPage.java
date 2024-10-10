@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -36,7 +37,7 @@ public class ClientOrganizationPage extends AbsliBase {
 
 	@FindBy(id="ContentPlaceHolder1_ucGroupParty_txtPANNo")
 	private WebElement panNumber;
-	
+
 	@FindBy(id = "ContentPlaceHolder1_ucGroupParty_ddlChangePassword")
 	private WebElement changePasswordAccessRequiredAtclaimPortalDropDown;
 
@@ -51,10 +52,10 @@ public class ClientOrganizationPage extends AbsliBase {
 
 	@FindBy(id = "ContentPlaceHolder1_txtAgentCode")
 	private WebElement marketingOfficerCode; 
-	
+
 	@FindBy(id="ContentPlaceHolder1_txtGrade")
 	private WebElement gradeField;
-	
+
 	@FindBy(id = "ContentPlaceHolder1_btnGradeSave")
 	private WebElement saveGradeButton;
 
@@ -84,17 +85,28 @@ public class ClientOrganizationPage extends AbsliBase {
 
 	@FindBy(id = "ContentPlaceHolder1_btnAddParty")
 	private WebElement addClientButton;
-	
+
 	@FindBy(id = "ContentPlaceHolder1_MessageBox_lblMsg")
-	private WebElement popMsgText;
+	private WebElement popMessageText;
 
 	public ClientOrganizationPage()
 	{
 		PageFactory.initElements(driver, this);
 	}
 
+	//Popup Messages and Screenshot
+	public String popupMessageText() throws Throwable
+	{
+		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
+		String popUpTextMessage = popMessageText.getText();
+		System.out.println("Popup Message: " + popUpTextMessage);
+		//	TestUtill.takeScreenshotAtEndOfTest(popUpTextMessage);
+		okButtonInPopMessage.click();
+		return popUpTextMessage;
+	}
+
 	//TC_CO_001 - Verify user able to create the Client Organization by providing only the Mandatory fields & without GST
-	
+
 	public void passTheValueToMandatoryFieldsWithoutGST(String cName, String occup, String title, String Fname, String typeofClient, 
 			String Pan, String gstType, String changePasswordAccessValue, String servicingBranchDropDown, String marketingOfficerCodeNum, String adds1, String adds2, String zipCode, 
 			String county, String state, String district) throws Throwable  {
@@ -127,16 +139,16 @@ public class ClientOrganizationPage extends AbsliBase {
 		okButtonInPopMessage.click();
 		addClientButton.click();
 		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-		String popMsgTextValue = popMsgText.getText();
+		String popMsgTextValue = popMessageText.getText();
 		System.out.println("Popup Message: " + popMsgTextValue);
 		okButtonInPopMessage.click();
 	}
-	
+
 	//TC_CO_002 - Verify user able to create the Client Organization by providing only the Mandatory fields & with GST
 	public void passTheValueToMandatoryFieldsWithGST(String cName, String occup, String title, String Fname, String typeofClient, String gstType, 
 			String Pan, String gstNumberValue, String changePasswordAccessValue, String servicingBranchDropDown, String marketingOfficerCodeNum, String adds1, String adds2, String zipCode, 
 			String county, String state, String district) throws Exception  {
-		
+
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(7000));
 		clientNameAdd.sendKeys(cName);
 		occuption.sendKeys(occup);
@@ -170,17 +182,17 @@ public class ClientOrganizationPage extends AbsliBase {
 		okButtonInPopMessage.click();
 		addClientButton.click();
 		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-		String popMsgTextValue = popMsgText.getText();
+		String popMsgTextValue = popMessageText.getText();
 		System.out.println("Popup Message: " + popMsgTextValue);
 		okButtonInPopMessage.click();
 	}
-	
+
 	//TC_CO_003 - Verify user able to create the Client Organization by providing only the Mandatory fields with Grade & without GST
 	public void passTheValueToMandatoryFieldsAndGradeWithoutGST(String cName, String occup, String title, String Fname, 
 			String typeofClient, String gstType, String Pan, String changePasswordAccessValue, String servicingBranchDropDown, String marketingOfficerCodeNum, 
 			String gradeValue, String adds1, String adds2, String zipCode, 
 			String county, String state, String district) throws Exception  {
-		
+
 		clientNameAdd.sendKeys(cName);
 		occuption.sendKeys(occup);
 		selectVisibleText(titleDropdown, title);
@@ -219,17 +231,17 @@ public class ClientOrganizationPage extends AbsliBase {
 		okButtonInPopMessage.click();
 		addClientButton.click();
 		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-		String popMsgTextValue = popMsgText.getText();
+		String popMsgTextValue = popMessageText.getText();
 		System.out.println("Popup Message: " + popMsgTextValue);
 		okButtonInPopMessage.click();
 	}
-	
+
 	//TC_CO_004 - Verify user able to create the Client Organization by providing only the Mandatory fields & with GST and Grade
-	
+
 	public void passTheValueToMandatoryFieldsWithGSTAndGrade(String cName, String occup, String title, String Fname, String typeofClient, String gstType, 
 			String Pan, String gstNumberValue, String changePasswordAccessValue, String servicingBranchDropDown, String marketingOfficerCodeNum, String gradeValue, String adds1, String adds2, String zipCode, 
 			String county, String state, String district) throws Exception  {
-		
+
 		clientNameAdd.sendKeys(cName);
 		occuption.sendKeys(occup);
 		selectVisibleText(titleDropdown, title);
@@ -271,9 +283,195 @@ public class ClientOrganizationPage extends AbsliBase {
 		okButtonInPopMessage.click();
 		addClientButton.click();
 		wait.until(ExpectedConditions.elementToBeClickable(okButtonInPopMessage));
-		String popMsgTextValue = popMsgText.getText();
+		String popMsgTextValue = popMessageText.getText();
 		System.out.println("Popup Message: " + popMsgTextValue);
 		okButtonInPopMessage.click();
 	}
+
+	//TC_CO_005 - Verify the Error Popup Messages for Client Organization without GST
+	public void VerifyTheErrorPopupMessagesForClientOrganizationwithoutGST() throws Throwable
+	{
+		Actions actions = null;
+		wait.until(ExpectedConditions.elementToBeClickable(addClientButton));
+		addClientButton.click();
+		String popUpMessageTextValue = popupMessageText();
+
+		// Client Name
+		if (popUpMessageTextValue.equals("Please enter the Client Name.")) {
+			clientNameAdd.sendKeys("Automation Testing");
+			wait.until(ExpectedConditions.elementToBeClickable(addClientButton));
+			actions = new Actions(driver);
+			actions.doubleClick(addClientButton).perform();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Client Name popup message popup message is Wrong or Not Present");
+		}
+
+		//Occupation/Trade/Business 
+		if (popUpMessageTextValue.equals("Please enter the Occupation/Trade/Business.")) {
+			occuption.sendKeys("Business");
+			addClientButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Occupation/Trade/Business popup message popup message is Wrong or Not Present");
+		}
+
+		//Salutation
+		if (popUpMessageTextValue.equals("Please select the Salutation.")) {
+			selectVisibleText(titleDropdown, "Mr");
+			addClientButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Salutation popup message is Wrong or Not Present");
+		}
+
+		//First Name
+		if (popUpMessageTextValue.equals("Please enter the Contact Person First Name.")) {
+			firstName.sendKeys("Absli");
+			addClientButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("First Name popup message is Wrong or Not Present");
+		}
+
+		//Type Of Client
+		if (popUpMessageTextValue.equals("Please select the Type Of Client.")) {
+			selectVisibleText(typeOfClientDropDown, "Regular Customer");
+			addClientButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Type Of Client popup message is Wrong or Not Present");
+		}
+
+		//GST Type
+		if (popUpMessageTextValue.equals("Please select the GST Type.")) {
+			selectVisibleText(gstTypeForRegular, "NO GST");
+			addClientButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("GST Type popup message is Wrong or Not Present");
+		}
+
+		// PAN Number
+		if (popUpMessageTextValue.equals("Please enter the PAN Number.")) {
+			panNumber.sendKeys("CDEFG1234H");
+			Thread.sleep(3000);
+			actions.doubleClick(addClientButton).perform();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("PAN Number popup message is Wrong or Not Present");
+		}
+
+		//Change Password access required at claim portal
+		if (popUpMessageTextValue.equals("Please select the Change Password access required at claim portal")) {
+			selectVisibleText(changePasswordAccessRequiredAtclaimPortalDropDown, "No");
+			addClientButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Change Password access required at claim portal popup message is Wrong or Not Present");
+		}
+
+		//Servicing Branch
+		if (popUpMessageTextValue.equals("Please select the Servicing Branch.")) {
+			selectVisibleText(servicingBranch, "Bangalore");
+			addClientButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Servicing Branch popup message is Wrong or Not Present");
+		}
+
+		//Marketing Officer Code 
+		if (popUpMessageTextValue.equals("Please enter the Marketing Officer Code.")) {
+			marketingOfficerCode.sendKeys("132430",Keys.ENTER);
+			Thread.sleep(3000);
+			actions.doubleClick(addClientButton).perform();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Marketing Officer Code popup message is Wrong or Not Present");
+		}
+
+		//Address Details
+		if (popUpMessageTextValue.equals("Please Add Address Details.")) {
+			addAddressButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Address Details popup message is Wrong or Not Present");
+		}
+
+		//Address 1
+		if (popUpMessageTextValue.equals("Please enter the Address 1.")) {
+			address1.sendKeys("BTM");
+			addAddressButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Address 1 popup message is Wrong or Not Present");
+		}
+
+		//Pin Code / Zip Code
+		if (popUpMessageTextValue.equals("Please enter the Pin Code / Zip Code.")) {
+			pinCode.sendKeys("560076",Keys.ENTER);
+			Thread.sleep(2000);
+			selectVisibleText(countryDropDown, "---Select---");
+			Thread.sleep(3000);
+			addAddressButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Pin Code / Zip Code popup message is Wrong or Not Present");
+		}
+
+		//Country 
+		if (popUpMessageTextValue.equals("Please Select the Country.")) {
+			selectVisibleText(countryDropDown, "India");
+			addAddressButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Country popup message is Wrong or Not Present");
+		}
+
+		//State
+		if (popUpMessageTextValue.equals("Please Select the State.")) {
+			selectVisibleText(stateDropDown, "Karnataka");
+			addAddressButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Country popup message is Wrong or Not Present");
+		}
+
+		//District 
+		if (popUpMessageTextValue.equals("Please select the District.")) {
+			selectVisibleText(districtDropDown, "Bangalore");
+			addAddressButton.click();
+			popUpMessageTextValue = popupMessageText();
+			addClientButton.click();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("District popup message is Wrong or Not Present");
+		}
+
+
+		//Exist Client Name
+		if (popUpMessageTextValue.equals("Client Name Already Exist.")) {
+			clientNameAdd.clear();
+			clientNameAdd.sendKeys("Automation Testing-001");
+			wait.until(ExpectedConditions.elementToBeClickable(addClientButton));
+			actions = new Actions(driver);
+			actions.doubleClick(addClientButton).perform();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Exist Client Name popup message popup message is Wrong or Not Present");
+		}
+		
+		//Exist PAN Number
+		if (popUpMessageTextValue.equals("PAN Number Already Exist.")) {
+			panNumber.clear();
+			panNumber.sendKeys("WXYZA0123R",Keys.ENTER);
+			Thread.sleep(4000);
+			actions.doubleClick(addClientButton).perform();
+			popUpMessageTextValue = popupMessageText();
+		} else {
+			System.out.println("Exist PAN Number popup message is Wrong or Not Present");
+		}
+	}
+
 }
 

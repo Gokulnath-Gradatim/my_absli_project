@@ -40,7 +40,7 @@ public class CreateAClientOrga extends AbsliBase {
 	
 	@Test(priority = 0, dataProvider = "DataFromTC_CO_001", dataProviderClass = CreateAClientOrga.class)
 	public void createClientWithMandatoryFieldsAndWithoutGST (String clientName, String occupation, String title, String firstName, String typeOfClient, String pan, String gstType, 
-			String changePasswordAccessValue, String servicingBranchDropDown, String marketingOfficerCode, String address1, String address2,  String zipCode, String county, String state, String district) throws Exception 
+			String changePasswordAccessValue, String servicingBranchDropDown, String marketingOfficerCode, String address1, String address2,  String zipCode, String county, String state, String district) throws Throwable 
 	{
 		homePage.clientOrganizationPage();
 		ClientOrganizationPage co = new ClientOrganizationPage();
